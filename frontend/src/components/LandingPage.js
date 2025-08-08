@@ -111,8 +111,8 @@ const LandingPage = () => {
                 />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-white">Bsky Tracker</h1>
-                <p className="text-sm text-blue-200">Manager for Bluesky</p>
+                <h1 className="text-xl font-bold text-white">Tracker - Manager for Bluesky</h1>
+                <p className="text-sm text-blue-200">Real-time Bluesky Analytics</p>
               </div>
             </div>
             <nav className="hidden md:flex items-center space-x-8">
