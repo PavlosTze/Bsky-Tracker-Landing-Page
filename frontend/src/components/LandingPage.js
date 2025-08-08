@@ -403,7 +403,7 @@ const LandingPage = () => {
               <ul className="space-y-2 text-white/60 text-sm">
                 <li><a href="mailto:tzegianapps@gmail.com" className="hover:text-white">Contact</a></li>
                 <li><a href="https://github.com/PavlosTze/Bluesky-Followers-Analyzer-Privacy-Policy/blob/main/Privacy-Policy.md" target="_blank" rel="noopener noreferrer" className="hover:text-white">Privacy Policy</a></li>
-                <li><a href="https://bsky.app/profile/bluesky-tracker.bsky.social" target="_blank" rel="noopener noreferrer" className="hover:text-white">Find us on Bluesky</a></li>
+                <li><a href="https://bsky.app/profile/bluesky-tracker.bsky.social" target="_blank" rel="noopener noreferrer" className="hover:text-white">Find me on Bluesky</a></li>
               </ul>
             </div>
             
