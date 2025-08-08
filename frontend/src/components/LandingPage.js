@@ -33,19 +33,10 @@ import { mockData } from '../data/mock';
 
 const LandingPage = () => {
   const [activeFeature, setActiveFeature] = useState(0);
-  const [stats, setStats] = useState(mockData.stats);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setStats(prev => ({
-        ...prev,
-        downloads: prev.downloads + Math.floor(Math.random() * 3),
-        activeUsers: prev.activeUsers + Math.floor(Math.random() * 5)
-      }));
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, []);
+  const scrollToCTA = () => {
+    document.querySelector('#cta-section')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   const features = [
     {
