@@ -4,27 +4,15 @@ import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
 import { 
-  TrendingUp, 
   Users, 
   Shield, 
-  Activity, 
-  Eye, 
   Filter, 
   BarChart3, 
   Clock, 
   Star,
   Download,
   CheckCircle,
-  Zap,
   Target,
-  Globe,
-  Lock,
-  UserPlus,
-  UserMinus,
-  Heart,
-  MessageCircle,
-  Repeat2,
-  ChevronRight,
   Smartphone,
   Trophy,
   ExternalLink
