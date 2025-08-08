@@ -71,27 +71,6 @@ const LandingPage = () => {
     }
   ];
 
-  const benefits = [
-    {
-      icon: <TrendingUp className="w-8 h-8 text-blue-500" />,
-      title: "Track Your Growth",
-      description: "Monitor your follower changes and understand your network dynamics",
-      stats: "Real-time tracking"
-    },
-    {
-      icon: <Eye className="w-8 h-8 text-green-500" />,
-      title: "Deep Network Insights",
-      description: "Understand your audience behavior and connection patterns",
-      stats: "50+ data points tracked"
-    },
-    {
-      icon: <Zap className="w-8 h-8 text-purple-500" />,
-      title: "Save Time",
-      description: "Automate follower management and streamline your Bluesky experience",
-      stats: "5+ hours saved weekly"
-    }
-  ];
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
       {/* Header */}
