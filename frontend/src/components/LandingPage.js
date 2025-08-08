@@ -210,43 +210,6 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section id="benefits" className="py-20 bg-white/5 backdrop-blur-sm">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-4">
-              Essential Tool for Bluesky Users
-            </h2>
-            <p className="text-xl text-white/70 max-w-2xl mx-auto">
-              Join thousands of users who rely on Bsky Tracker to manage their Bluesky presence effectively
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {benefits.map((benefit, index) => (
-              <Card key={index} className="bg-white/10 border-white/20 backdrop-blur-md hover:bg-white/15 transition-all duration-300 group">
-                <CardHeader>
-                  <div className="flex items-center space-x-4">
-                    <div className="p-3 bg-white/10 rounded-xl group-hover:scale-110 transition-transform">
-                      {benefit.icon}
-                    </div>
-                    <div>
-                      <CardTitle className="text-white">{benefit.title}</CardTitle>
-                      <Badge variant="outline" className="mt-1 text-xs border-green-400/50 text-green-300">
-                        {benefit.stats}
-                      </Badge>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-white/70">{benefit.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Features Section */}
       <section id="features" className="py-20">
         <div className="container mx-auto px-6">
