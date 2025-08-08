@@ -1,26 +1,26 @@
 export const mockData = {
   stats: {
-    downloads: 5247,
-    activeUsers: 3892,
-    rating: 4.6,
-    reviews: 347
+    downloads: 10247,
+    activeUsers: 4156,
+    rating: 4.7,
+    reviews: 452
   },
   
   testimonials: [
     {
-      name: "Sarah Chen",
+      name: "Alex Johnson",
+      role: "Bluesky User",
+      content: "This is such a cool and powerful tool to manage your bluesky account and it is totally free! It is also rapidly growing and adding new features! I love this thing and keep recommending it to everyone!"
+    },
+    {
+      name: "Sarah Davis", 
       role: "Content Creator",
-      content: "This app transformed how I manage my Bluesky presence. The real-time tracking is incredible - I can see exactly who unfollows me and when!"
+      content: "Love this app! Makes keeping track of my followers, who hasn't followed me back yet, and who I need to follow. Also see who blocks you. Has a follow all option or you can check each individually. Makes keeping track SO much easier."
     },
     {
-      name: "Marcus Rodriguez", 
-      role: "Digital Marketer",
-      content: "The bulk follow/unfollow feature saved me hours every week. Plus the analytics help me understand what content resonates with my audience."
-    },
-    {
-      name: "Emma Thompson",
-      role: "Influencer",
-      content: "Privacy-first approach is what sold me. My data stays on my device, but I still get all the insights I need to grow my following."
+      name: "Mike Thompson",
+      role: "Social Media User",
+      content: "This app does exactly what I need without any fuss. I can easily see who unfollowed me (most because of account suspensions and deactivations) and who I'm not following. Simple to use and reliable. Can't say enough."
     }
   ],
 
@@ -65,40 +65,21 @@ export const mockData = {
       answer: "Yes! You can analyze any public Bluesky user's followers, following lists, and post performance to understand their strategies and discover new connections."
     },
     {
-      question: "Does this work with private Bluesky accounts?",
-      answer: "The app respects privacy settings. For private accounts, you can only access data that's publicly available or accounts that follow you back."
-    },
-    {
       question: "Is there a limit to bulk follow/unfollow actions?",
       answer: "To comply with Bluesky's guidelines and prevent spam, we implement rate limiting on bulk actions. This ensures your account stays in good standing."
-    },
-    {
-      question: "How often is the app updated?",
-      answer: "We regularly update the app with new features and improvements based on user feedback. Recent updates include mute lists and improved bulk actions."
     }
   ],
 
-  pricing: {
-    free: {
-      name: "Free",
-      price: "$0",
-      features: [
-        "Basic follower tracking",
-        "Up to 100 bulk actions/day", 
-        "7-day history",
-        "Basic analytics"
-      ]
+  additionalReviews: [
+    {
+      name: "Jordan Wilson",
+      role: "Digital Marketer", 
+      content: "Terrific app for checking out your followers and unfollowers on Bluesky. Links back to the app so you can decide what you want to do with those peeps. Has a handy feature that shows you who doesn't follow YOU back and also THOSE people who you Don't follow back. Within that feature it has an option for you to Bulk Unfollow or Follow those profiles. Great app. Kudos Devs!"
     },
-    pro: {
-      name: "Pro",
-      price: "$4.99/month",
-      features: [
-        "Unlimited tracking",
-        "Unlimited bulk actions",
-        "Full history & analytics",
-        "Advanced filters",
-        "Priority support"
-      ]
+    {
+      name: "Casey Martinez",
+      role: "Influencer",
+      content: "Tracker-Manager is invaluable. I would be lost without it. I can't imagine how else I could get a handle on who's following and who isn't. The app is ingeniously designed and blessed with a developer who actually listens to users. Highly recommended!"
     }
-  }
+  ]
 };
