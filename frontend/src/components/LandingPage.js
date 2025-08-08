@@ -378,14 +378,15 @@ const LandingPage = () => {
               </ul>
             </div>
             
-            <div>
-              <h4 className="text-white font-semibold mb-4">Support</h4>
-              <ul className="space-y-2 text-white/60 text-sm">
-                <li><a href="mailto:tzegianapps@gmail.com" className="hover:text-white">Contact</a></li>
-                <li><a href="https://github.com/PavlosTze/Bluesky-Followers-Analyzer-Privacy-Policy/blob/main/Privacy-Policy.md" target="_blank" rel="noopener noreferrer" className="hover:text-white">Privacy Policy</a></li>
-                <li><a href="https://bsky.app/profile/bluesky-tracker.bsky.social" target="_blank" rel="noopener noreferrer" className="hover:text-white">Find me on Bluesky</a></li>
-              </ul>
-            </div>
+                          <div>
+                <h4 className="text-white font-semibold mb-4">Support</h4>
+                <ul className="space-y-2 text-white/60 text-sm">
+                  <li><a href="mailto:tzegianapps@gmail.com" className="hover:text-white">Contact</a></li>
+                  <li><a href="/privacy-policy" className="hover:text-white">Privacy Policy</a></li>
+                  <li><a href="/csae-policy" className="hover:text-white">CSAE Policy</a></li>
+                  <li><a href="https://bsky.app/profile/bluesky-tracker.bsky.social" target="_blank" rel="noopener noreferrer" className="hover:text-white">Find me on Bluesky</a></li>
+                </ul>
+              </div>
             
             <div>
               <h4 className="text-white font-semibold mb-4">Download</h4>
