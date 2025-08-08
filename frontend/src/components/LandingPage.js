@@ -190,11 +190,11 @@ const LandingPage = () => {
             {/* Live Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
               <div className="text-center">
-                <div className="text-2xl font-bold text-white">{stats.downloads.toLocaleString()}+</div>
+                <div className="text-2xl font-bold text-white">10,000+</div>
                 <div className="text-sm text-white/60">Downloads</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-white">{stats.activeUsers.toLocaleString()}+</div>
+                <div className="text-2xl font-bold text-white">4,000+</div>
                 <div className="text-sm text-white/60">Active Users</div>
               </div>
               <div className="text-center">
