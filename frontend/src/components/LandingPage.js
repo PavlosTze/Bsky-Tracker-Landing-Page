@@ -118,7 +118,18 @@ const LandingPage = () => {
             <nav className="hidden md:flex items-center space-x-8">
               <a href="#features" className="text-white/80 hover:text-white transition-colors">Features</a>
               <a href="#benefits" className="text-white/80 hover:text-white transition-colors">Benefits</a>
-              <Button className="bg-blue-500 hover:bg-blue-600 text-white">
+              <Button 
+                variant="outline" 
+                className="border-white/30 text-white hover:bg-white/10 mr-4"
+                onClick={() => window.open('https://bsky.app/profile/bluesky-tracker.bsky.social', '_blank')}
+              >
+                <ExternalLink className="w-4 h-4 mr-2" />
+                Find me on Bluesky
+              </Button>
+              <Button 
+                className="bg-blue-500 hover:bg-blue-600 text-white"
+                onClick={scrollToCTA}
+              >
                 <Download className="w-4 h-4 mr-2" />
                 Download for Free
               </Button>
