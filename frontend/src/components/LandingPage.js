@@ -154,8 +154,7 @@ const LandingPage = () => {
             </h1>
             
             <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
-              The ultimate tool to track followers, unfollowers, blocks, and post analytics on Bluesky. 
-              Real-time insights that help you understand your network better.
+              The must-have companion app for Bluesky. Real-time insights that help you understand your network better.
             </p>
 
             {/* Mobile App Screenshots */}
