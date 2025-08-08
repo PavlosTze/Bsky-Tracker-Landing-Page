@@ -267,9 +267,33 @@ const LandingPage = () => {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {mockData.testimonials.map((testimonial, index) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {mockData.testimonials.slice(0, 3).map((testimonial, index) => (
               <Card key={index} className="bg-white/10 border-white/20 backdrop-blur-md">
+                <CardContent className="p-6">
+                  <div className="flex items-center space-x-2 mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                    ))}
+                  </div>
+                  <p className="text-white/80 mb-4 italic">"{testimonial.content}"</p>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+                      <span className="text-white font-semibold">{testimonial.name[0]}</span>
+                    </div>
+                    <div>
+                      <div className="text-white font-semibold">{testimonial.name}</div>
+                      <div className="text-white/60 text-sm">{testimonial.role}</div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8 mt-8 max-w-4xl mx-auto">
+            {mockData.testimonials.slice(3).map((testimonial, index) => (
+              <Card key={index + 3} className="bg-white/10 border-white/20 backdrop-blur-md">
                 <CardContent className="p-6">
                   <div className="flex items-center space-x-2 mb-4">
                     {[...Array(5)].map((_, i) => (
