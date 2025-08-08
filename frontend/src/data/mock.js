@@ -21,6 +21,16 @@ export const mockData = {
       name: "Mike Thompson",
       role: "Social Media User",
       content: "This app does exactly what I need without any fuss. I can easily see who unfollowed me (most because of account suspensions and deactivations) and who I'm not following. Simple to use and reliable. Can't say enough."
+    },
+    {
+      name: "Jordan Wilson",
+      role: "Digital Marketer", 
+      content: "Terrific app for checking out your followers and unfollowers on Bluesky. Links back to the app so you can decide what you want to do with those peeps. Has a handy feature that shows you who doesn't follow YOU back and also THOSE people who you Don't follow back. Within that feature it has an option for you to Bulk Unfollow or Follow those profiles. Great app. Kudos Devs!"
+    },
+    {
+      name: "Casey Martinez",
+      role: "Influencer",
+      content: "Tracker-Manager is invaluable. I would be lost without it. I can't imagine how else I could get a handle on who's following and who isn't. The app is ingeniously designed and blessed with a developer who actually listens to users. Highly recommended!"
     }
   ],
 
