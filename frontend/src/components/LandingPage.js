@@ -79,12 +79,10 @@ const LandingPage = () => {
               </div>
               <div>
                 <h1 className="text-xl font-bold text-white">Tracker - Manager for Bluesky</h1>
-                <p className="text-sm text-blue-200">Real-time Bluesky Analytics</p>
               </div>
             </div>
             <nav className="hidden md:flex items-center space-x-8">
               <a href="#features" className="text-white/80 hover:text-white transition-colors">Features</a>
-              <a href="#benefits" className="text-white/80 hover:text-white transition-colors">Benefits</a>
               <Button 
                 variant="outline" 
                 className="border-white/30 text-white hover:bg-white/10 mr-4"
@@ -148,7 +146,11 @@ const LandingPage = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-              <Button size="lg" className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 text-lg">
+              <Button 
+                size="lg" 
+                className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 text-lg"
+                onClick={scrollToCTA}
+              >
                 <Download className="w-5 h-5 mr-2" />
                 Download for Free
               </Button>
@@ -245,13 +247,7 @@ const LandingPage = () => {
                   </div>
                   <p className="text-white/80 mb-4 italic">"{testimonial.content}"</p>
                   <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
-                      <span className="text-white font-semibold">{testimonial.name[0]}</span>
-                    </div>
-                    <div>
-                      <div className="text-white font-semibold">{testimonial.name}</div>
-                      <div className="text-white/60 text-sm">{testimonial.role}</div>
-                    </div>
+                    <div className="text-white font-semibold">A happy Bluesky user</div>
                   </div>
                 </CardContent>
               </Card>
@@ -269,13 +265,7 @@ const LandingPage = () => {
                   </div>
                   <p className="text-white/80 mb-4 italic">"{testimonial.content}"</p>
                   <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
-                      <span className="text-white font-semibold">{testimonial.name[0]}</span>
-                    </div>
-                    <div>
-                      <div className="text-white font-semibold">{testimonial.name}</div>
-                      <div className="text-white/60 text-sm">{testimonial.role}</div>
-                    </div>
+                    <div className="text-white font-semibold">A happy Bluesky user</div>
                   </div>
                 </CardContent>
               </Card>
@@ -285,7 +275,7 @@ const LandingPage = () => {
       </section>
 
       {/* FAQ */}
-      <section className="py-20">
+      <section id="faq" className="py-20">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-white mb-4">
@@ -343,7 +333,7 @@ const LandingPage = () => {
             </div>
 
             <Badge className="bg-green-500/20 text-green-300 border-green-400/50 mb-8">
-              ✓ Free forever • No credit card required
+              ✓ 100% Free forever • No credit card required
             </Badge>
 
             <div className="flex items-center justify-center flex-wrap gap-6 text-white/60 text-sm">
@@ -376,7 +366,7 @@ const LandingPage = () => {
                 <span className="text-white font-semibold">Tracker - Manager for Bluesky</span>
               </div>
               <p className="text-white/60 text-sm">
-                The ultimate Bluesky management tool for tracking and managing your network.
+                The ultimate Bluesky companion app for tracking and managing your network.
               </p>
             </div>
             
@@ -384,8 +374,7 @@ const LandingPage = () => {
               <h4 className="text-white font-semibold mb-4">Product</h4>
               <ul className="space-y-2 text-white/60 text-sm">
                 <li><a href="#features" className="hover:text-white">Features</a></li>
-                <li><a href="#benefits" className="hover:text-white">Benefits</a></li>
-                <li><a href="#" className="hover:text-white">FAQ</a></li>
+                <li><a href="#faq" className="hover:text-white">FAQ</a></li>
               </ul>
             </div>
             
