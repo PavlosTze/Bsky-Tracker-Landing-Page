@@ -19,7 +19,6 @@ import {
 } from 'lucide-react';
 import { mockData } from '../data/mock';
 import logo from '../assets/logo.png';
-import { Analytics } from "@vercel/analytics/next"
 
 const LandingPage = () => {
   const [activeFeature, setActiveFeature] = useState(0);
@@ -227,6 +226,16 @@ const LandingPage = () => {
               ))}
             </div>
           </div>
+          <div className="text-center mt-12">
+            <Button
+              size="lg"
+              className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 text-lg"
+              onClick={scrollToCTA}
+            >
+              <Download className="w-5 h-5 mr-2" />
+              Download for Free
+            </Button>
+          </div>
         </div>
       </section>
 
@@ -279,6 +288,16 @@ const LandingPage = () => {
                 </CardContent>
               </Card>
             ))}
+          </div>
+          <div className="text-center mt-12">
+            <Button
+              size="lg"
+              className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 text-lg"
+              onClick={scrollToCTA}
+            >
+              <Download className="w-5 h-5 mr-2" />
+              Download for Free
+            </Button>
           </div>
         </div>
       </section>
@@ -363,7 +382,7 @@ const LandingPage = () => {
         </div>
       </section>
 
-      <Analytics />
+      {/* Removed Next.js-specific <Analytics /> to avoid build errors in CRA */}
 
       {/* Footer */}
       <footer className="bg-black/20 backdrop-blur-md border-t border-white/10">
