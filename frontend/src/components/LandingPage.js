@@ -18,6 +18,7 @@ import {
   ExternalLink
 } from 'lucide-react';
 import { mockData } from '../data/mock';
+import logo from '../assets/logo.png';
 
 const LandingPage = () => {
   const [activeFeature, setActiveFeature] = useState(0);
@@ -26,36 +27,40 @@ const LandingPage = () => {
     document.querySelector('#cta-section')?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const features = [
     {
       icon: <Users className="w-6 h-6" />,
       title: "Real-time Follower Tracking",
-      description: "Instantly see when someone follows or unfollows you with live updates"
+      description: "Instantly see when someone follows or unfollows you with live updates."
     },
     {
       icon: <Shield className="w-6 h-6" />,
       title: "Block & Mute Management", 
-      description: "See who has blocked you and manage your blocking lists effectively"
+      description: "See who has blocked you and manage your blocking and muting lists effectively."
     },
     {
       icon: <Filter className="w-6 h-6" />,
       title: "Advanced Filtering",
-      description: "Filter users based on keywords, follower count, engagement, and activity level"
+      description: "Filter users based on keywords, followers count, follower-to-following ratio, engagement, and activity level."
+    },
+    {
+      icon: <Target className="w-6 h-6" />,
+      title: "Bulk Follow & Unfollow",
+      description: "Follow or unfollow users in bulk to efficiently manage your network."
     },
     {
       icon: <BarChart3 className="w-6 h-6" />,
       title: "Post Analytics",
-      description: "Detailed metrics for any user's posts including reach, replies, and engagement"
-    },
-    {
-      icon: <Target className="w-6 h-6" />,
-      title: "Bulk Actions",
-      description: "Follow or unfollow users in bulk to efficiently manage your network"
+      description: "Detailed metrics for any user's posts including reach, replies, and engagement."
     },
     {
       icon: <Clock className="w-6 h-6" />,
       title: "Relationship History",
-      description: "Track when you followed someone and when they followed you back"
+      description: "Track when you followed someone and when they followed you back."
     }
   ];
 
@@ -63,22 +68,25 @@ const LandingPage = () => {
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
       {/* Header */}
       <header className="relative z-50 bg-white/10 backdrop-blur-md border-b border-white/10">
-        <div className="container mx-auto px-6 py-4">
+        <div className="container mx-auto px-6 py-3 sm:py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-blue-500 rounded-xl flex items-center justify-center overflow-hidden">
-                <img 
-                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" 
-                  alt="Bsky Tracker"
-                  className="w-full h-full object-cover"
-                  style={{
-                    background: 'linear-gradient(135deg, #1e90ff 0%, #0066cc 100%)',
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='35' fill='none' stroke='white' stroke-width='8' opacity='0.8'/%3E%3Ccircle cx='50' cy='30' r='4' fill='white'/%3E%3Ccircle cx='30' cy='45' r='4' fill='white'/%3E%3Ccircle cx='70' cy='45' r='4' fill='white'/%3E%3Ccircle cx='35' cy='70' r='4' fill='white'/%3E%3Ccircle cx='65' cy='70' r='4' fill='white'/%3E%3C/svg%3E")`
-                  }}
-                />
-              </div>
+            <div className="flex items-center space-x-2 md:space-x-3">
+              <a
+                href="#"
+                onClick={(e) => { e.preventDefault(); scrollToTop(); }}
+                className="block"
+                aria-label="Scroll to top"
+              >
+                <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl overflow-hidden">
+                  <img
+                    src={logo}
+                    alt="Bsky Tracker"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+              </a>
               <div>
-                <h1 className="text-xl font-bold text-white">Tracker - Manager for Bluesky</h1>
+                <h1 className="sm:text-sm md:text-base lg:text-lg font-bold text-white leading-tight">Tracker - Manager for Bluesky</h1>
               </div>
             </div>
             <nav className="hidden md:flex items-center space-x-8">
@@ -114,7 +122,7 @@ const LandingPage = () => {
             
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
               Track & Manage Your 
-              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"> Bluesky</span>
+              <span className="bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent"> Bluesky</span>
               <br />Network in Real-Time
             </h1>
             
@@ -160,19 +168,19 @@ const LandingPage = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
               <div className="text-center">
                 <div className="text-2xl font-bold text-white">10,000+</div>
-                <div className="text-sm text-white/60">Downloads</div>
+                <div className="text-sm text-white/70">Downloads</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-white">4,000+</div>
-                <div className="text-sm text-white/60">Active Users</div>
+                <div className="text-sm text-white/70">Active Users</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-white">4.7⭐</div>
-                <div className="text-sm text-white/60">App Rating</div>
+                <div className="text-sm text-white/70">App Rating</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-white">450+</div>
-                <div className="text-sm text-white/60">Reviews</div>
+                <div className="text-sm text-white/70">Reviews</div>
               </div>
             </div>
           </div>
@@ -187,7 +195,7 @@ const LandingPage = () => {
               Powerful Features That Deliver Results
             </h2>
             <p className="text-xl text-white/70">
-              Everything you need to understand your Bluesky network
+              Everything you need to take control of your Bluesky network
             </p>
           </div>
 
@@ -211,7 +219,7 @@ const LandingPage = () => {
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-white mb-2">{feature.title}</h3>
-                      <p className="text-white/70">{feature.description}</p>
+                      <p className="text-white/80">{feature.description}</p>
                     </div>
                   </div>
                 </div>
@@ -253,8 +261,8 @@ const LandingPage = () => {
               </Card>
             ))}
           </div>
-          
-          <div className="grid md:grid-cols-2 gap-8 mt-8 max-w-4xl mx-auto">
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
             {mockData.testimonials.slice(3).map((testimonial, index) => (
               <Card key={index + 3} className="bg-white/10 border-white/20 backdrop-blur-md">
                 <CardContent className="p-6">
@@ -290,7 +298,7 @@ const LandingPage = () => {
                   <AccordionTrigger className="text-white hover:text-blue-300">
                     {item.question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-white/70">
+                  <AccordionContent className="text-white/80">
                     {item.answer}
                   </AccordionContent>
                 </AccordionItem>
@@ -309,7 +317,7 @@ const LandingPage = () => {
               Ready to Master Your Bluesky Network?
             </h2>
             <p className="text-xl text-white/80 mb-8">
-              Join 10,000+ users who trust Bsky Tracker to track and manage their Bluesky presence. 
+              Join 15,000+ users who trust Bsky Tracker to track and manage their Bluesky presence. 
               Download now and see results immediately.
             </p>
             
@@ -336,7 +344,7 @@ const LandingPage = () => {
               ✓ 100% Free forever • No credit card required
             </Badge>
 
-            <div className="flex items-center justify-center flex-wrap gap-6 text-white/60 text-sm">
+            <div className="flex items-center justify-center flex-wrap gap-6 text-white/70 text-sm">
               <div className="flex items-center space-x-2">
                 <CheckCircle className="w-4 h-4 text-green-400" />
                 <span>Privacy-first</span>
@@ -360,31 +368,35 @@ const LandingPage = () => {
           <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center space-x-3 mb-4">
-                <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
-                  <BarChart3 className="w-5 h-5 text-white" />
+                <div className="w-8 h-8 rounded-lg overflow-hidden">
+                  <img
+                    src={logo}
+                    alt="Bsky Tracker"
+                    className="w-full h-full object-contain"
+                  />
                 </div>
                 <span className="text-white font-semibold">Tracker - Manager for Bluesky</span>
               </div>
-              <p className="text-white/60 text-sm">
+              <p className="text-white/70 text-sm">
                 The ultimate Bluesky companion app for tracking and managing your network.
               </p>
             </div>
             
             <div>
               <h4 className="text-white font-semibold mb-4">Product</h4>
-              <ul className="space-y-2 text-white/60 text-sm">
+              <ul className="space-y-2 text-white/70 text-sm">
                 <li><a href="#features" className="hover:text-white">Features</a></li>
                 <li><a href="#faq" className="hover:text-white">FAQ</a></li>
               </ul>
             </div>
             
-                          <div>
+              <div>
                 <h4 className="text-white font-semibold mb-4">Support</h4>
-                <ul className="space-y-2 text-white/60 text-sm">
+                <ul className="space-y-2 text-white/70 text-sm">
+                <li><a href="https://bsky.app/profile/bluesky-tracker.bsky.social" target="_blank" rel="noopener noreferrer" className="hover:text-white">Find me on Bluesky</a></li>
                   <li><a href="mailto:tzegianapps@gmail.com" className="hover:text-white">Contact</a></li>
                   <li><a href="/privacy-policy" className="hover:text-white">Privacy Policy</a></li>
                   <li><a href="/csae-policy" className="hover:text-white">CSAE Policy</a></li>
-                  <li><a href="https://bsky.app/profile/bluesky-tracker.bsky.social" target="_blank" rel="noopener noreferrer" className="hover:text-white">Find me on Bluesky</a></li>
                 </ul>
               </div>
             
