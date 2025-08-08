@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { mockData } from '../data/mock';
 import logo from '../assets/logo.png';
+import { Analytics } from "@vercel/analytics/next"
 
 const LandingPage = () => {
   const [activeFeature, setActiveFeature] = useState(0);
@@ -361,6 +362,8 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
+
+      <Analytics />
 
       {/* Footer */}
       <footer className="bg-black/20 backdrop-blur-md border-t border-white/10">

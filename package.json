@@ -10,5 +10,8 @@
     "start": "cd frontend && yarn start",
     "dev": "cd frontend && yarn start"
   },
-  "packageManager": "yarn@1.22.22"
+  "packageManager": "yarn@1.22.22",
+  "dependencies": {
+    "@vercel/analytics": "^1.5.0"
+  }
 }
