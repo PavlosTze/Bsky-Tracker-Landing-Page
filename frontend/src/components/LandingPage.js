@@ -320,7 +320,7 @@ const LandingPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600/20 to-purple-600/20">
+      <section id="cta-section" className="py-20 bg-gradient-to-r from-blue-600/20 to-purple-600/20">
         <div className="container mx-auto px-6 text-center">
           <div className="max-w-3xl mx-auto">
             <Trophy className="w-16 h-16 text-yellow-400 mx-auto mb-6" />
@@ -335,20 +335,19 @@ const LandingPage = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
               <Button 
                 size="lg" 
-                className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 text-lg"
+                className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-lg"
                 onClick={() => window.open('https://play.google.com/store/apps/details?id=com.bluesky.followers.analyzer', '_blank')}
               >
                 <Download className="w-5 h-5 mr-2" />
-                Download for Free
+                Android
               </Button>
               <Button 
                 size="lg" 
-                variant="outline" 
-                className="border-white/30 text-white hover:bg-white/10 px-8 py-4 text-lg"
+                className="bg-gray-800 hover:bg-gray-900 text-white px-8 py-4 text-lg"
                 onClick={() => window.open('https://apps.apple.com/us/app/tracker-manager-for-bluesky/id6740998282', '_blank')}
               >
-                <ExternalLink className="w-5 h-5 mr-2" />
-                App Store
+                <Download className="w-5 h-5 mr-2" />
+                iOS
               </Button>
             </div>
 
@@ -367,15 +366,7 @@ const LandingPage = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <CheckCircle className="w-4 h-4 text-green-400" />
-                <span>Bulk/Mass actions</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <CheckCircle className="w-4 h-4 text-green-400" />
                 <span>Advanced Filters for your network</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <CheckCircle className="w-4 h-4 text-green-400" />
-                <span>24/7 support</span>
               </div>
             </div>
           </div>
