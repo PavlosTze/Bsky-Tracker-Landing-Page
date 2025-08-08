@@ -19,9 +19,18 @@ import {
 } from 'lucide-react';
 import { mockData } from '../data/mock';
 import logo from '../assets/logo.png';
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from './ui/carousel';
+import { Dialog, DialogContent } from './ui/dialog';
+import ss1 from '../assets/1.png';
+import ss2 from '../assets/2.png';
+import ss3 from '../assets/3.png';
+import ss4 from '../assets/4.png';
+import ss5 from '../assets/5.png';
 
 const LandingPage = () => {
   const [activeFeature, setActiveFeature] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
 
   const scrollToCTA = () => {
     document.querySelector('#cta-section')?.scrollIntoView({ behavior: 'smooth' });
@@ -64,6 +73,12 @@ const LandingPage = () => {
     }
   ];
 
+  const screenshots = [ss1, ss2, ss3, ss4, ss5];
+  const openLightbox = (index) => {
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
       {/* Header */}
@@ -86,7 +101,7 @@ const LandingPage = () => {
                 </div>
               </a>
               <div>
-                <h1 className="sm:text-sm md:text-base lg:text-lg font-bold text-white leading-tight">Tracker - Manager for Bluesky</h1>
+                <span className="text-base lg:text-lg font-bold text-white leading-tight">Tracker - Manager for Bluesky</span>
               </div>
             </div>
             <nav className="hidden md:flex items-center space-x-8">
@@ -130,28 +145,78 @@ const LandingPage = () => {
               The must-have companion app for Bluesky. Real-time insights that help you understand your network better.
             </p>
 
-            {/* Mobile App Screenshots */}
-            <div className="mb-12">
-              <div className="relative max-w-4xl mx-auto">
-                <img 
-                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg=="
-                  alt="Tracker - Manager for Bluesky App Screenshots"
-                  className="w-full h-auto rounded-2xl shadow-2xl"
-                  style={{
-                    background: 'linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%)',
-                    aspectRatio: '16/9',
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E%3Crect x='50' y='50' width='140' height='280' rx='20' fill='%23ffffff' fill-opacity='0.1'/%3E%3Crect x='200' y='50' width='140' height='280' rx='20' fill='%23ffffff' fill-opacity='0.1'/%3E%3Crect x='350' y='50' width='140' height='280' rx='20' fill='%23ffffff' fill-opacity='0.1'/%3E%3Crect x='500' y='50' width='140' height='280' rx='20' fill='%23ffffff' fill-opacity='0.1'/%3E%3Crect x='650' y='50' width='140' height='280' rx='20' fill='%23ffffff' fill-opacity='0.1'/%3E%3Ctext x='400' y='400' text-anchor='middle' fill='white' font-size='20' font-family='Arial'%3EApp Interface Preview%3C/text%3E%3C/svg%3E")`
-                  }}
-                />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-white text-center">
-                    <Smartphone className="w-16 h-16 mx-auto mb-4 opacity-60" />
-                    <p className="text-lg font-medium">5 Mobile App Screens</p>
-                    <p className="text-sm opacity-75">Real app interface preview</p>
-                  </div>
-                </div>
+            {/* App Screenshots */}
+            {/* Mobile: Carousel */}
+            <div className="mb-12 md:hidden">
+              <Carousel className="w-full max-w-3xl mx-auto" opts={{ align: 'center', loop: true }}>
+                <CarouselContent>
+                  {screenshots.map((src, index) => (
+                    <CarouselItem key={index} className="basis-[85%]">
+                      <button
+                        type="button"
+                        className="w-full h-72 flex items-center justify-center bg-black/20 rounded-2xl shadow-2xl overflow-hidden"
+                        onClick={() => openLightbox(index)}
+                      >
+                        <img
+                          src={src}
+                          alt={`App screenshot ${index + 1}`}
+                          className="w-full h-full object-contain"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      </button>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious />
+                <CarouselNext />
+              </Carousel>
+            </div>
+
+            {/* Desktop: Grid side-by-side */}
+            <div className="hidden md:block mb-12">
+              <div className="grid grid-cols-3 lg:grid-cols-5 gap-4 max-w-6xl mx-auto">
+                {screenshots.map((src, index) => (
+                  <button
+                    key={index}
+                    type="button"
+                    className="group w-full rounded-xl shadow-xl overflow-hidden transition-transform hover:scale-[1.01]"
+                    onClick={() => openLightbox(index)}
+                  >
+                    <img
+                      src={src}
+                      alt={`App screenshot ${index + 1}`}
+                      className="w-full h-auto"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </button>
+                ))}
               </div>
             </div>
+
+            <Dialog open={lightboxOpen} onOpenChange={setLightboxOpen}>
+              <DialogContent className="w-[95vw] max-w-5xl bg-black/90 border-white/10 p-4">
+                <Carousel key={lightboxIndex} className="w-full" opts={{ align: 'center', loop: true, startIndex: lightboxIndex }}>
+                  <CarouselContent>
+                    {screenshots.map((src, index) => (
+                      <CarouselItem key={index} className="basis-full">
+                        <div className="w-full h-[70vh] flex items-center justify-center overflow-hidden">
+                          <img
+                            src={src}
+                            alt={`App screenshot ${index + 1}`}
+                            className="max-h-full max-w-full object-contain"
+                          />
+                        </div>
+                        <p className="mt-3 text-center text-white/80 text-sm">Screenshot {index + 1}</p>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <CarouselPrevious className="left-2" />
+                  <CarouselNext className="right-2" />
+                </Carousel>
+              </DialogContent>
+            </Dialog>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
               <Button 
@@ -381,8 +446,6 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
-
-      {/* Removed Next.js-specific <Analytics /> to avoid build errors in CRA */}
 
       {/* Footer */}
       <footer className="bg-black/20 backdrop-blur-md border-t border-white/10">
