@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracker - Manager for Bluesky | Real-time Bluesky Analytics</title>
+    <meta name="description" content="Track followers, unfollowers, blocks, and post analytics on Bluesky. The must-have companion app with real-time insights for your network.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #ffffff;
+            background: #0f172a;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.1);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(59, 130, 246, 0.3);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(59, 130, 246, 0.5);
+        }
+
+        /* Smooth transitions for all interactive elements */
+        button, a, [role="button"] {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        button:hover {
+            transform: translateY(-1px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        /* Button styles */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            text-decoration: none;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #2563eb;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-lg {
+            padding: 1rem 2rem;
+            font-size: 1.125rem;
+        }
+
+        .btn-android {
+            background: #16a34a;
+            color: white;
+        }
+
+        .btn-android:hover {
+            background: #15803d;
+        }
+
+        .btn-ios {
+            background: #374151;
+            color: white;
+        }
+
+        .btn-ios:hover {
+            background: #1f2937;
+        }
+
+        /* Layout utilities */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .grid {
+            display: grid;
+        }
+
+        .grid-cols-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .grid-cols-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .grid-cols-4 {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .gap-4 { gap: 1rem; }
+        .gap-6 { gap: 1.5rem; }
+        .gap-8 { gap: 2rem; }
+
+        .flex {
+            display: flex;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .justify-center {
+            justify-content: center;
+        }
+
+        .justify-between {
+            justify-content: space-between;
+        }
+
+        .space-x-2 > * + * { margin-left: 0.5rem; }
+        .space-x-3 > * + * { margin-left: 0.75rem; }
+        .space-x-4 > * + * { margin-left: 1rem; }
+        .space-x-6 > * + * { margin-left: 1.5rem; }
+        .space-x-8 > * + * { margin-left: 2rem; }
+
+        .space-y-2 > * + * { margin-top: 0.5rem; }
+        .space-y-3 > * + * { margin-top: 0.75rem; }
+        .space-y-4 > * + * { margin-top: 1rem; }
+        .space-y-6 > * + * { margin-top: 1.5rem; }
+
+        /* Text utilities */
+        .text-center {
+            text-align: center;
+        }
+
+        .text-white {
+            color: white;
+        }
+
+        .text-white-80 {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .text-white-70 {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .text-white-60 {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .text-blue-200 {
+            color: #bfdbfe;
+        }
+
+        .text-blue-300 {
+            color: #93c5fd;
+        }
+
+        .text-green-300 {
+            color: #86efac;
+        }
+
+        .text-yellow-400 {
+            color: #fbbf24;
+        }
+
+        .font-bold {
+            font-weight: 700;
+        }
+
+        .font-semibold {
+            font-weight: 600;
+        }
+
+        /* Spacing utilities */
+        .p-2 { padding: 0.5rem; }
+        .p-3 { padding: 0.75rem; }
+        .p-4 { padding: 1rem; }
+        .p-6 { padding: 1.5rem; }
+        .p-8 { padding: 2rem; }
+
+        .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+        .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
+        .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+
+        .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+        .px-8 { padding-left: 2rem; padding-right: 2rem; }
+
+        .pt-20 { padding-top: 5rem; }
+        .pb-32 { padding-bottom: 8rem; }
+
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-6 { margin-bottom: 1.5rem; }
+        .mb-8 { margin-bottom: 2rem; }
+        .mb-12 { margin-bottom: 3rem; }
+        .mb-16 { margin-bottom: 4rem; }
+
+        .mt-8 { margin-top: 2rem; }
+        .mr-2 { margin-right: 0.5rem; }
+        .mr-4 { margin-right: 1rem; }
+
+        /* Background utilities */
+        .bg-gradient {
+            background: linear-gradient(135deg, #1e293b 0%, #1e40af 50%, #1e293b 100%);
+            min-height: 100vh;
+        }
+
+        .bg-white-5 {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .bg-white-10 {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .bg-blue-500-20 {
+            background: rgba(59, 130, 246, 0.2);
+        }
+
+        .backdrop-blur {
+            backdrop-filter: blur(12px);
+        }
+
+        /* Border utilities */
+        .border {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .border-white-10 {
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .border-white-20 {
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .border-blue-400-50 {
+            border-color: rgba(96, 165, 250, 0.5);
+        }
+
+        .border-green-400-50 {
+            border-color: rgba(74, 222, 128, 0.5);
+        }
+
+        .rounded-lg {
+            border-radius: 0.5rem;
+        }
+
+        .rounded-xl {
+            border-radius: 0.75rem;
+        }
+
+        .rounded-2xl {
+            border-radius: 1rem;
+        }
+
+        .rounded-full {
+            border-radius: 9999px;
+        }
+
+        /* Card styles */
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(12px);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        /* Feature card styles */
+        .feature-card {
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .feature-card.active {
+            background: rgba(59, 130, 246, 0.2);
+            border-color: rgba(96, 165, 250, 0.5);
+        }
+
+        /* Badge styles */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .badge-blue {
+            background: rgba(59, 130, 246, 0.2);
+            color: #bfdbfe;
+            border: 1px solid rgba(96, 165, 250, 0.3);
+        }
+
+        .badge-green {
+            background: rgba(34, 197, 94, 0.2);
+            color: #86efac;
+            border: 1px solid rgba(74, 222, 128, 0.5);
+        }
+
+        .badge-outline-green {
+            background: transparent;
+            color: #86efac;
+            border: 1px solid rgba(74, 222, 128, 0.5);
+        }
+
+        /* Icon utilities */
+        .w-4 { width: 1rem; height: 1rem; }
+        .w-5 { width: 1.25rem; height: 1.25rem; }
+        .w-6 { width: 1.5rem; height: 1.5rem; }
+        .w-8 { width: 2rem; height: 2rem; }
+        .w-10 { width: 2.5rem; height: 2.5rem; }
+        .w-16 { width: 4rem; height: 4rem; }
+
+        .h-4 { height: 1rem; }
+        .h-5 { height: 1.25rem; }
+        .h-6 { height: 1.5rem; }
+        .h-8 { height: 2rem; }
+        .h-10 { height: 2.5rem; }
+        .h-16 { height: 4rem; }
+
+        /* Header styles */
+        .header {
+            position: relative;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Hero section styles */
+        .hero {
+            position: relative;
+            padding: 5rem 0 8rem;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.2));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Typography */
+        .text-5xl {
+            font-size: 3rem;
+            line-height: 1.1;
+        }
+
+        .text-4xl {
+            font-size: 2.25rem;
+            line-height: 1.1;
+        }
+
+        .text-2xl {
+            font-size: 1.5rem;
+        }
+
+        .text-xl {
+            font-size: 1.25rem;
+        }
+
+        .text-lg {
+            font-size: 1.125rem;
+        }
+
+        .text-sm {
+            font-size: 0.875rem;
+        }
+
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(to right, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Accordion styles */
+        .accordion-item {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .accordion-trigger {
+            width: 100%;
+            padding: 1.5rem;
+            text-align: left;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.125rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: color 0.2s;
+        }
+
+        .accordion-trigger:hover {
+            color: #93c5fd;
+        }
+
+        .accordion-content {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .accordion-content.active {
+            max-height: 200px;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .accordion-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-icon.rotated {
+            transform: rotate(180deg);
+        }
+
+        /* Mobile screenshots placeholder */
+        .app-screenshots {
+            position: relative;
+            max-width: 4rem;
+            margin: 0 auto 3rem;
+        }
+
+        .app-screenshots-placeholder {
+            width: 100%;
+            height: auto;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
+            aspect-ratio: 16/9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+            text-align: center;
+        }
+
+        .star-filled {
+            color: #fbbf24;
+            fill: currentColor;
+        }
+
+        /* Footer styles */
+        .footer {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .text-5xl {
+                font-size: 2.5rem;
+            }
+
+            .text-4xl {
+                font-size: 2rem;
+            }
+
+            .grid-cols-2,
+            .grid-cols-3,
+            .grid-cols-4 {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .hero {
+                padding: 3rem 0 5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .btn-lg {
+                padding: 0.75rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .md\\:grid-cols-2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .md\\:grid-cols-3 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .md\\:grid-cols-4 {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .md\\:flex {
+                display: flex;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .lg\\:grid-cols-3 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Animation for statistics */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Text selection */
+        ::selection {
+            background: rgba(59, 130, 246, 0.3);
+            color: white;
+        }
+
+        /* Scroll margin for smooth scrolling to sections */
+        section {
+            scroll-margin-top: 4rem;
+        }
+
+        /* Hide elements that are shown with JavaScript */
+        .js-only {
+            display: none;
+        }
+
+        /* Custom checkbox styles for features */
+        .checkmark {
+            color: #10b981;
+        }
+
+        /* CTA section specific styles */
+        .cta-section {
+            background: linear-gradient(to right, rgba(37, 99, 235, 0.2), rgba(147, 51, 234, 0.2));
+        }
+
+        /* Flexbox utilities for responsive design */
+        .flex-col {
+            flex-direction: column;
+        }
+
+        .flex-wrap {
+            flex-wrap: wrap;
+        }
+
+        @media (min-width: 640px) {
+            .sm\\:flex-row {
+                flex-direction: row;
+            }
+        }
+
+        /* Max width utilities */
+        .max-w-2xl {
+            max-width: 42rem;
+        }
+
+        .max-w-3xl {
+            max-width: 48rem;
+        }
+
+        .max-w-4xl {
+            max-width: 56rem;
+        }
+
+        .mx-auto {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Leading utilities */
+        .leading-tight {
+            line-height: 1.25;
+        }
+
+        /* Icon container */
+        .icon-container {
+            width: 2.5rem;
+            height: 2.5rem;
+            background: #3b82f6;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .icon-container.bg-white-10 {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .icon-container.bg-blue-500 {
+            background: #3b82f6;
+        }
+    </style>
+</head>
+<body class="bg-gradient">
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="flex items-center justify-between py-4">
+                <div class="flex items-center space-x-3">
+                    <div class="icon-container">
+                        <i data-lucide="bar-chart-3" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-white">Tracker - Manager for Bluesky</h1>
+                        <p class="text-sm text-blue-200">Real-time Bluesky Analytics</p>
+                    </div>
+                </div>
+                <nav class="nav-links md:flex items-center space-x-8">
+                    <a href="#features" class="text-white-80 hover:text-white">Features</a>
+                    <a href="#benefits" class="text-white-80 hover:text-white">Benefits</a>
+                    <button class="btn btn-outline mr-4" onclick="window.open('https://bsky.app/profile/bluesky-tracker.bsky.social', '_blank')">
+                        <i data-lucide="external-link" class="w-4 h-4 mr-2"></i>
+                        Find me on Bluesky
+                    </button>
+                    <button class="btn btn-primary" onclick="scrollToCTA()">
+                        <i data-lucide="download" class="w-4 h-4 mr-2"></i>
+                        Download for Free
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="container">
+                <div class="text-center max-w-4xl mx-auto">
+                    <div class="badge badge-blue mb-6">
+                        ✨ 10K+ downloads • 4.7⭐ rating • Privacy-first
+                    </div>
+                    
+                    <h1 class="text-5xl font-bold text-white mb-6 leading-tight">
+                        Track & Manage Your 
+                        <span class="gradient-text">Bluesky</span><br>
+                        Network in Real-Time
+                    </h1>
+                    
+                    <p class="text-xl text-white-80 mb-8 max-w-2xl mx-auto">
+                        The must-have companion app for Bluesky. Real-time insights that help you understand your network better.
+                    </p>
+
+                    <!-- Mobile App Screenshots -->
+                    <div class="app-screenshots mb-12">
+                        <div class="app-screenshots-placeholder">
+                            <i data-lucide="smartphone" class="w-16 h-16 mb-4" style="opacity: 0.6;"></i>
+                            <p class="text-lg font-medium">5 Mobile App Screens</p>
+                            <p class="text-sm" style="opacity: 0.75;">Real app interface preview</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+                        <button class="btn btn-primary btn-lg" onclick="scrollToCTA()">
+                            <i data-lucide="download" class="w-5 h-5 mr-2"></i>
+                            Download for Free
+                        </button>
+                    </div>
+
+                    <!-- Live Stats -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
+                        <div class="text-center animate-fade-in-up">
+                            <div class="text-2xl font-bold text-white">10,000+</div>
+                            <div class="text-sm text-white-60">Downloads</div>
+                        </div>
+                        <div class="text-center animate-fade-in-up">
+                            <div class="text-2xl font-bold text-white">4,000+</div>
+                            <div class="text-sm text-white-60">Active Users</div>
+                        </div>
+                        <div class="text-center animate-fade-in-up">
+                            <div class="text-2xl font-bold text-white">4.7⭐</div>
+                            <div class="text-sm text-white-60">App Rating</div>
+                        </div>
+                        <div class="text-center animate-fade-in-up">
+                            <div class="text-2xl font-bold text-white">450+</div>
+                            <div class="text-sm text-white-60">Reviews</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20">
+        <div class="container">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">
+                    Powerful Features That Deliver Results
+                </h2>
+                <p class="text-xl text-white-70">
+                    Everything you need to understand your Bluesky network
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="feature-card active" onclick="setActiveFeature(0)">
+                        <div class="flex space-x-4">
+                            <div class="icon-container bg-blue-500">
+                                <i data-lucide="users" class="w-6 h-6 text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-white mb-2">Real-time Follower Tracking</h3>
+                                <p class="text-white-70">Instantly see when someone follows or unfollows you with live updates</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feature-card" onclick="setActiveFeature(1)">
+                        <div class="flex space-x-4">
+                            <div class="icon-container bg-white-10">
+                                <i data-lucide="shield" class="w-6 h-6 text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-white mb-2">Block & Mute Management</h3>
+                                <p class="text-white-70">See who has blocked you and manage your blocking lists effectively</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feature-card" onclick="setActiveFeature(2)">
+                        <div class="flex space-x-4">
+                            <div class="icon-container bg-white-10">
+                                <i data-lucide="filter" class="w-6 h-6 text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-white mb-2">Advanced Filtering</h3>
+                                <p class="text-white-70">Filter users based on keywords, follower count, engagement, and activity level</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feature-card" onclick="setActiveFeature(3)">
+                        <div class="flex space-x-4">
+                            <div class="icon-container bg-white-10">
+                                <i data-lucide="bar-chart-3" class="w-6 h-6 text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-white mb-2">Post Analytics</h3>
+                                <p class="text-white-70">Detailed metrics for any user's posts including reach, replies, and engagement</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feature-card" onclick="setActiveFeature(4)">
+                        <div class="flex space-x-4">
+                            <div class="icon-container bg-white-10">
+                                <i data-lucide="target" class="w-6 h-6 text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-white mb-2">Bulk Actions</h3>
+                                <p class="text-white-70">Follow or unfollow users in bulk to efficiently manage your network</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feature-card" onclick="setActiveFeature(5)">
+                        <div class="flex space-x-4">
+                            <div class="icon-container bg-white-10">
+                                <i data-lucide="clock" class="w-6 h-6 text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-white mb-2">Relationship History</h3>
+                                <p class="text-white-70">Track when you followed someone and when they followed you back</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="py-20 bg-white-5">
+        <div class="container">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">
+                    Real Reviews from App Stores
+                </h2>
+                <div class="flex items-center justify-center space-x-2 mb-8">
+                    <i data-lucide="star" class="w-6 h-6 star-filled"></i>
+                    <i data-lucide="star" class="w-6 h-6 star-filled"></i>
+                    <i data-lucide="star" class="w-6 h-6 star-filled"></i>
+                    <i data-lucide="star" class="w-6 h-6 star-filled"></i>
+                    <i data-lucide="star" class="w-6 h-6 star-filled"></i>
+                    <span class="text-white-70 ml-2">4.7/5 from 450+ reviews</span>
+                </div>
+            </div>
+
+            <!-- First 3 reviews -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 star-filled"></i>
+                        <i data-lucide="star" class="w-4 h-4 star-filled"></i>
+                        <i data-lucide="star" class="w-4 h-4 star-filled"></i>
+                        <i data-lucide="star" class="w-4 h-4 star-filled"></i>
+                        <i data-lucide="star" class="w-4 h-4 star-filled"></i>
+                    </div>
+                    <p class="text-white-80 mb-4" style="font-style: italic;">"This is such a cool and powerful tool to manage your bluesky account and it is totally free! It is also rapidly growing and adding new features! I love this thing and keep recommending it to everyone!"</p>
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center" style="background: linear-gradient(to right, #3b82f6, #a855f7);">
+                            <span class="text-white font-semibold">A</span>
+                        </div>
+                        <div>
+                            <div class="text-white font-semibold">Alex Johnson</div>
+                            <div class="text-white-60 text-sm">Bluesky User</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 star-filled"></i>
+                        <i data-lucide="star" class="w-4 h-4 star-filled"></i>
+                        <i data-lucide="star" class="w-4 h-4 star-filled"></i>
+                        <i data-lucide="star" class="w-4 h-4 star-filled"></i>
+                        <i data-lucide="star" class="w-4 h-4 star-filled"></i>
+                    </div>
+                    <p class="text-white-80 mb-4" style="font-style: italic;">"Love this app! Makes keeping track of my followers, who hasn't followed me back yet, and who I need to follow. Also see who blocks you. Has a follow all option or you can check each individually. Makes keeping track SO much easier."</p>
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center" style="background: linear-gradient(to right, #3b82f6, #a855f7);">
+                            <span class="text-white font-semibold">S</span>
+                        </div>
+                        <div>
+                            <div class="text-white font-semibold">Sarah Davis</div>
+                            <div class="text-white-60 text-sm">Content Creator</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 star-filled"></i>
+                        <i data-lucide="star" class="w-4 h-4 star-filled"></i>
+                        <i data-lucide="star" class="w-4 h-4 star-filled"></i>
+                        <i data-lucide="star" class="w-4 h-4 star-filled"></i>
+                        <i data-lucide="star" class="w-4 h-4 star-filled"></i>
+                    </div>
+                    <p class="text-white-80 mb-4" style="font-style: italic;">"This app does exactly what I need without any fuss. I can easily see who unfollowed me (most because of account suspensions and deactivations) and who I'm not following. Simple to use and reliable. Can't say enough."</p>
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center" style="background: linear-gradient(to right, #3b82f6, #a855f7);">
+                            <span class="text-white font-semibold">M</span>
+                        </div>
+                        <div>
+                            <div class="text-white font-semibold">Mike Thompson</div>
+                            <div class="text-white-60 text-sm">Social Media User</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Last 2 reviews -->
+            <div class="grid md:grid-cols-2 gap-8 mt-8 max-w-4xl mx-auto">
+                <div class="card">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 star-filled"></i>
+                        <i data-lucide="star" class="w-4 h-4 star-filled"></i>
+                        <i data-lucide="star" class="w-4 h-4 star-filled"></i>
+                        <i data-lucide="star" class="w-4 h-4 star-filled"></i>
+                        <i data-lucide="star" class="w-4 h-4 star-filled"></i>
+                    </div>
+                    <p class="text-white-80 mb-4" style="font-style: italic;">"Terrific app for checking out your followers and unfollowers on Bluesky. Links back to the app so you can decide what you want to do with those peeps. Has a handy feature that shows you who doesn't follow YOU back and also THOSE people who you Don't follow back. Within that feature it has an option for you to Bulk Unfollow or Follow those profiles. Great app. Kudos Devs!"</p>
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center" style="background: linear-gradient(to right, #3b82f6, #a855f7);">
+                            <span class="text-white font-semibold">J</span>
+                        </div>
+                        <div>
+                            <div class="text-white font-semibold">Jordan Wilson</div>
+                            <div class="text-white-60 text-sm">Digital Marketer</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 star-filled"></i>
+                        <i data-lucide="star" class="w-4 h-4 star-filled"></i>
+                        <i data-lucide="star" class="w-4 h-4 star-filled"></i>
+                        <i data-lucide="star" class="w-4 h-4 star-filled"></i>
+                        <i data-lucide="star" class="w-4 h-4 star-filled"></i>
+                    </div>
+                    <p class="text-white-80 mb-4" style="font-style: italic;">"Tracker-Manager is invaluable. I would be lost without it. I can't imagine how else I could get a handle on who's following and who isn't. The app is ingeniously designed and blessed with a developer who actually listens to users. Highly recommended!"</p>
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center" style="background: linear-gradient(to right, #3b82f6, #a855f7);">
+                            <span class="text-white font-semibold">C</span>
+                        </div>
+                        <div>
+                            <div class="text-white font-semibold">Casey Martinez</div>
+                            <div class="text-white-60 text-sm">Influencer</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-20">
+        <div class="container">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">
+                    Frequently Asked Questions
+                </h2>
+            </div>
+
+            <div class="max-w-3xl mx-auto space-y-4">
+                <div class="accordion-item">
+                    <button class="accordion-trigger" onclick="toggleAccordion(0)">
+                        <span>Is my Bluesky data safe and private?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 accordion-icon"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="text-white-70">Absolutely! We follow a privacy-first approach. Your data is never stored on our servers or shared with third parties. Everything stays secure on your device.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger" onclick="toggleAccordion(1)">
+                        <span>How accurate is the follower tracking?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 accordion-icon"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="text-white-70">Our tracking is real-time and highly accurate. We update follower changes within minutes, giving you the most current information about your network.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger" onclick="toggleAccordion(2)">
+                        <span>Can I track other users' followers and analytics?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 accordion-icon"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="text-white-70">Yes! You can analyze any public Bluesky user's followers, following lists, and post performance to understand their strategies and discover new connections.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-trigger" onclick="toggleAccordion(3)">
+                        <span>Is there a limit to bulk follow/unfollow actions?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 accordion-icon"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="text-white-70">To comply with Bluesky's guidelines and prevent spam, we implement rate limiting on bulk actions. This ensures your account stays in good standing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="cta-section" class="cta-section py-20">
+        <div class="container">
+            <div class="text-center max-w-3xl mx-auto">
+                <i data-lucide="trophy" class="w-16 h-16 text-yellow-400 mx-auto mb-6"></i>
+                <h2 class="text-4xl font-bold text-white mb-4">
+                    Ready to Master Your Bluesky Network?
+                </h2>
+                <p class="text-xl text-white-80 mb-8">
+                    Join 10,000+ users who trust Bsky Tracker to track and manage their Bluesky presence. 
+                    Download now and see results immediately.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+                    <button class="btn btn-android btn-lg" onclick="window.open('https://play.google.com/store/apps/details?id=com.bluesky.followers.analyzer', '_blank')">
+                        <i data-lucide="download" class="w-5 h-5 mr-2"></i>
+                        Android
+                    </button>
+                    <button class="btn btn-ios btn-lg" onclick="window.open('https://apps.apple.com/us/app/tracker-manager-for-bluesky/id6740998282', '_blank')">
+                        <i data-lucide="download" class="w-5 h-5 mr-2"></i>
+                        iOS
+                    </button>
+                </div>
+
+                <div class="badge badge-green mb-8">
+                    ✓ Free forever • No credit card required
+                </div>
+
+                <div class="flex items-center justify-center flex-wrap gap-6 text-white-60 text-sm">
+                    <div class="flex items-center space-x-2">
+                        <i data-lucide="check-circle" class="w-4 h-4 checkmark"></i>
+                        <span>Privacy-first</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <i data-lucide="check-circle" class="w-4 h-4 checkmark"></i>
+                        <span>Real-time tracking</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <i data-lucide="check-circle" class="w-4 h-4 checkmark"></i>
+                        <span>Advanced Filters for your network</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container py-12">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
+                            <i data-lucide="bar-chart-3" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span class="text-white font-semibold">Tracker - Manager for Bluesky</span>
+                    </div>
+                    <p class="text-white-60 text-sm">
+                        The ultimate Bluesky management tool for tracking and managing your network.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Product</h4>
+                    <div class="space-y-2 text-white-60 text-sm">
+                        <div><a href="#features" class="hover:text-white">Features</a></div>
+                        <div><a href="#benefits" class="hover:text-white">Benefits</a></div>
+                        <div><a href="#" class="hover:text-white">FAQ</a></div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Support</h4>
+                    <div class="space-y-2 text-white-60 text-sm">
+                        <div><a href="mailto:tzegianapps@gmail.com" class="hover:text-white">Contact</a></div>
+                        <div><a href="https://github.com/PavlosTze/Bluesky-Followers-Analyzer-Privacy-Policy/blob/main/Privacy-Policy.md" target="_blank" rel="noopener noreferrer" class="hover:text-white">Privacy Policy</a></div>
+                        <div><a href="https://bsky.app/profile/bluesky-tracker.bsky.social" target="_blank" rel="noopener noreferrer" class="hover:text-white">Find me on Bluesky</a></div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Download</h4>
+                    <div class="space-y-3">
+                        <button class="btn btn-outline w-full" onclick="window.open('https://play.google.com/store/apps/details?id=com.bluesky.followers.analyzer', '_blank')">
+                            <i data-lucide="smartphone" class="w-4 h-4 mr-2"></i>
+                            Google Play
+                        </button>
+                        <button class="btn btn-outline w-full" onclick="window.open('https://apps.apple.com/us/app/tracker-manager-for-bluesky/id6740998282', '_blank')">
+                            <i data-lucide="smartphone" class="w-4 h-4 mr-2"></i>
+                            App Store
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t mt-8 pt-8 text-center" style="border-color: rgba(255, 255, 255, 0.1);">
+                <p class="text-white-60 text-sm">
+                    © 2025 Tracker - Manager for Bluesky. Not affiliated with Bluesky Social.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Smooth scroll to CTA section
+        function scrollToCTA() {
+            document.getElementById('cta-section').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+
+        // Feature card selection
+        function setActiveFeature(index) {
+            // Remove active class from all cards
+            const cards = document.querySelectorAll('.feature-card');
+            cards.forEach((card, i) => {
+                if (i === index) {
+                    card.classList.add('active');
+                    // Set icon container to blue
+                    const iconContainer = card.querySelector('.icon-container');
+                    iconContainer.classList.remove('bg-white-10');
+                    iconContainer.classList.add('bg-blue-500');
+                } else {
+                    card.classList.remove('active');
+                    // Set icon container to white-10
+                    const iconContainer = card.querySelector('.icon-container');
+                    iconContainer.classList.remove('bg-blue-500');
+                    iconContainer.classList.add('bg-white-10');
+                }
+            });
+        }
+
+        // Accordion functionality
+        function toggleAccordion(index) {
+            const accordionItems = document.querySelectorAll('.accordion-item');
+            const currentItem = accordionItems[index];
+            const currentContent = currentItem.querySelector('.accordion-content');
+            const currentIcon = currentItem.querySelector('.accordion-icon');
+            
+            // Close all other accordions
+            accordionItems.forEach((item, i) => {
+                if (i !== index) {
+                    const content = item.querySelector('.accordion-content');
+                    const icon = item.querySelector('.accordion-icon');
+                    content.classList.remove('active');
+                    icon.classList.remove('rotated');
+                }
+            });
+            
+            // Toggle current accordion
+            if (currentContent.classList.contains('active')) {
+                currentContent.classList.remove('active');
+                currentIcon.classList.remove('rotated');
+            } else {
+                currentContent.classList.add('active');
+                currentIcon.classList.add('rotated');
+            }
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation to stats when they come into view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        // Observe stats elements when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            const statsElements = document.querySelectorAll('.text-center.animate-fade-in-up');
+            statsElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
