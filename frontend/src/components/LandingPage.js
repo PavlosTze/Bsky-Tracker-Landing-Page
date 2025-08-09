@@ -26,6 +26,7 @@ import ss2 from '../assets/2.png';
 import ss3 from '../assets/3.png';
 import ss4 from '../assets/4.png';
 import ss5 from '../assets/5.png';
+import { Analytics } from "@vercel/analytics/react";
 
 const LandingPage = () => {
   const [activeFeature, setActiveFeature] = useState(0);
@@ -130,18 +131,18 @@ const LandingPage = () => {
       <section className="relative pt-20 pb-32 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-pink-500/20" />
         <div className="container mx-auto px-6 relative z-10">
-          <div className="text-center max-w-4xl mx-auto">
+          <div className="text-center max-w-6xl mx-auto">
             <Badge className="mb-6 bg-blue-500/20 text-blue-200 border-blue-400/30">
               ✨ 10K+ downloads • 4.7⭐ rating • Privacy-first
             </Badge>
             
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-              Track & Manage Your 
+              Track & Manage Your <br />
               <span className="bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent"> Bluesky</span>
               <br />Network in Real-Time
             </h1>
             
-            <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-white/80 mb-12 max-w-2xl mx-auto">
               The must-have companion app for Bluesky. Real-time insights that help you understand your network better.
             </p>
 
@@ -159,7 +160,7 @@ const LandingPage = () => {
                       >
                         <img
                           src={src}
-                          alt={`App screenshot ${index + 1}`}
+                          alt={`Bluesky App screenshot ${index + 1}`}
                           className="w-full h-full object-contain"
                           loading="lazy"
                           decoding="async"
@@ -185,7 +186,7 @@ const LandingPage = () => {
                   >
                     <img
                       src={src}
-                      alt={`App screenshot ${index + 1}`}
+                      alt={`Bluesky App screenshot ${index + 1}`}
                       className="w-full h-auto"
                       loading="lazy"
                       decoding="async"
@@ -229,7 +230,7 @@ const LandingPage = () => {
               </Button>
             </div>
 
-            {/* Live Stats */}
+            {/* Download & User Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
               <div className="text-center">
                 <div className="text-2xl font-bold text-white">10,000+</div>
@@ -515,6 +516,8 @@ const LandingPage = () => {
           </div>
         </div>
       </footer>
+      
+      <Analytics />
     </div>
   );
 };
