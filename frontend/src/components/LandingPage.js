@@ -15,12 +15,14 @@ import {
   Target,
   Smartphone,
   Trophy,
-  ExternalLink
+  ExternalLink,
+  Menu
 } from 'lucide-react';
 import { mockData } from '../data/mock';
 import logo from '../assets/logo.png';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from './ui/carousel';
 import { Dialog, DialogContent } from './ui/dialog';
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from './ui/sheet';
 import ss1 from '../assets/1.png';
 import ss2 from '../assets/2.png';
 import ss3 from '../assets/3.png';
@@ -50,7 +52,7 @@ const LandingPage = () => {
     {
       icon: <Shield className="w-6 h-6" />,
       title: "Block & Mute Management", 
-      description: "See who has blocked you and manage your blocking and muting lists effectively."
+      description: "See who has blocked you and manage your blocks and mutes effectively."
     },
     {
       icon: <Filter className="w-6 h-6" />,
@@ -60,7 +62,7 @@ const LandingPage = () => {
     {
       icon: <Target className="w-6 h-6" />,
       title: "Bulk Follow & Unfollow",
-      description: "Follow or unfollow users in bulk to efficiently manage your network."
+      description: "Follow or unfollow users in bulk to efficiently manage your Bluesky network."
     },
     {
       icon: <BarChart3 className="w-6 h-6" />,
@@ -123,6 +125,49 @@ const LandingPage = () => {
                 Download for Free
               </Button>
             </nav>
+            {/* Mobile menu button */}
+            <div className="md:hidden">
+              <Sheet>
+                <SheetTrigger asChild>
+                  <button type="button" aria-label="Open menu" className="p-2 rounded-lg border border-white/20 text-white hover:bg-white/10">
+                    <Menu className="w-5 h-5" />
+                  </button>
+                </SheetTrigger>
+                <SheetContent
+                  side="right"
+                  className="bg-slate-900/95 border-l border-white/10 w-80"
+                  onOpenAutoFocus={(e) => e.preventDefault()}
+                  onCloseAutoFocus={(e) => e.preventDefault()}
+                >
+                  <div className="mt-6 flex flex-col gap-4">
+                    <SheetClose asChild>
+                      <button
+                        type="button"
+                        className="text-white text-lg text-left"
+                        onClick={() => document.querySelector('#features')?.scrollIntoView({ behavior: 'smooth' })}
+                      >
+                        Features
+                      </button>
+                    </SheetClose>
+                    <SheetClose asChild>
+                      <button
+                        type="button"
+                        className="text-white text-lg text-left"
+                        onClick={() => window.open('https://bsky.app/profile/bluesky-tracker.bsky.social', '_blank')}
+                      >
+                        Find me on Bluesky
+                      </button>
+                    </SheetClose>
+                    <SheetClose asChild>
+                      <Button className="bg-blue-500 hover:bg-blue-600 text-white" onClick={scrollToCTA}>
+                        <Download className="w-4 h-4 mr-2" />
+                        Download for Free
+                      </Button>
+                    </SheetClose>
+                  </div>
+                </SheetContent>
+              </Sheet>
+            </div>
           </div>
         </div>
       </header>
