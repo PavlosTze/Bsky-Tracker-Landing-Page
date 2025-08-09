@@ -178,7 +178,7 @@ const LandingPage = () => {
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center max-w-6xl mx-auto">
             <Badge className="mb-6 bg-blue-500/20 text-blue-200 border-blue-400/30">
-              ✨ 10K+ downloads • 4.7⭐ rating • Privacy-first
+              ✨ 13K+ downloads • 4.7⭐ rating • Privacy-first
             </Badge>
             
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
@@ -278,7 +278,7 @@ const LandingPage = () => {
             {/* Download & User Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
               <div className="text-center">
-                <div className="text-2xl font-bold text-white">10,000+</div>
+                <div className="text-2xl font-bold text-white">13,000+</div>
                 <div className="text-sm text-white/70">Downloads</div>
               </div>
               <div className="text-center">
@@ -448,7 +448,7 @@ const LandingPage = () => {
               Ready to Master Your Bluesky Network?
             </h2>
             <p className="text-xl text-white/80 mb-8">
-              Join 15,000+ users who trust Bsky Tracker to track and manage their Bluesky presence. 
+              Join 13,000+ users who trust Bsky Tracker to track and manage their Bluesky presence. 
               Download now and see results immediately.
             </p>
             
