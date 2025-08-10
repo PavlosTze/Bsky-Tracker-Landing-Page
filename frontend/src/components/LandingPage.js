@@ -28,7 +28,6 @@ import ss2 from '../assets/2.png';
 import ss3 from '../assets/3.png';
 import ss4 from '../assets/4.png';
 import ss5 from '../assets/5.png';
-import { Analytics } from "@vercel/analytics/react";
 
 const LandingPage = () => {
   const [activeFeature, setActiveFeature] = useState(0);
@@ -561,8 +560,6 @@ const LandingPage = () => {
           </div>
         </div>
       </footer>
-      
-      <Analytics />
     </div>
   );
 };
