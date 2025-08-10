@@ -193,30 +193,32 @@ const LandingPage = () => {
 
             {/* App Screenshots */}
             {/* Mobile: Carousel */}
-            <div className="mb-12 md:hidden flex justify-center">
-              <Carousel className="w-full max-w-sm" opts={{ align: 'center', loop: true }}>
-                <CarouselContent className="-ml-2">
-                  {screenshots.map((src, index) => (
-                    <CarouselItem key={index} className="pl-2 basis-full">
-                      <button
-                        type="button"
-                        className="w-full h-72 flex items-center justify-center bg-black/20 rounded-2xl shadow-2xl overflow-hidden"
-                        onClick={() => openLightbox(index)}
-                      >
-                        <img
-                          src={src}
-                          alt={`Bluesky App screenshot ${index + 1}`}
-                          className="w-full h-full object-contain"
-                          loading="lazy"
-                          decoding="async"
-                        />
-                      </button>
-                    </CarouselItem>
-                  ))}
-                </CarouselContent>
-                <CarouselPrevious />
-                <CarouselNext />
-              </Carousel>
+            <div className="mb-12 md:hidden">
+              <div className="flex justify-center">
+                <Carousel className="w-full max-w-xs" opts={{ align: 'start', loop: true }}>
+                  <CarouselContent>
+                    {screenshots.map((src, index) => (
+                      <CarouselItem key={index} className="basis-full">
+                        <button
+                          type="button"
+                          className="w-full h-72 flex items-center justify-center bg-black/20 rounded-2xl shadow-2xl overflow-hidden"
+                          onClick={() => openLightbox(index)}
+                        >
+                          <img
+                            src={src}
+                            alt={`Bluesky App screenshot ${index + 1}`}
+                            className="w-full h-full object-contain"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </button>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <CarouselPrevious />
+                  <CarouselNext />
+                </Carousel>
+              </div>
             </div>
 
             {/* Desktop: Grid side-by-side */}
