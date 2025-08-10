@@ -178,7 +178,7 @@ const LandingPage = () => {
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center max-w-6xl mx-auto">
             <Badge className="mb-6 bg-blue-500/20 text-blue-200 border-blue-400/30">
-              ✨ 13K+ downloads • 4.7⭐ rating • Privacy-first
+              13K+ downloads • 4.7⭐ rating
             </Badge>
             
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
@@ -193,11 +193,11 @@ const LandingPage = () => {
 
             {/* App Screenshots */}
             {/* Mobile: Carousel */}
-            <div className="mb-12 md:hidden">
-              <Carousel className="w-full max-w-3xl mx-auto" opts={{ align: 'center', loop: true }}>
-                <CarouselContent>
+            <div className="mb-12 md:hidden flex justify-center">
+              <Carousel className="w-full max-w-sm" opts={{ align: 'center', loop: true }}>
+                <CarouselContent className="-ml-2">
                   {screenshots.map((src, index) => (
-                    <CarouselItem key={index} className="basis-[85%]">
+                    <CarouselItem key={index} className="pl-2 basis-full">
                       <button
                         type="button"
                         className="w-full h-72 flex items-center justify-center bg-black/20 rounded-2xl shadow-2xl overflow-hidden"
