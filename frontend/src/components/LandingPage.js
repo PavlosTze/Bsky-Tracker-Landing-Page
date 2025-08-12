@@ -263,7 +263,7 @@ const LandingPage = () => {
               </DialogContent>
             </Dialog>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
               <Button 
                 size="lg" 
                 className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 text-lg"
@@ -271,6 +271,18 @@ const LandingPage = () => {
               >
                 <Download className="w-5 h-5 mr-2" />
                 Download for Free
+              </Button>
+            </div>
+            
+            <div className="flex justify-center mb-12">
+              <Button 
+                variant="outline"
+                size="lg"
+                className="border-white/30 text-white hover:bg-white/10 px-8 py-4 text-lg"
+                onClick={() => window.open('https://bsky.app/profile/bluesky-tracker.bsky.social', '_blank')}
+              >
+                <ExternalLink className="w-5 h-5 mr-2" />
+                Find me on Bluesky
               </Button>
             </div>
 
