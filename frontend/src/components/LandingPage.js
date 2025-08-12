@@ -19,15 +19,15 @@ import {
   Menu
 } from 'lucide-react';
 import { mockData } from '../data/mock';
-import logo from '../assets/logo.png';
+import logo from '../assets/logo.webp';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from './ui/carousel';
 import { Dialog, DialogContent } from './ui/dialog';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from './ui/sheet';
-import ss1 from '../assets/1.png';
-import ss2 from '../assets/2.png';
-import ss3 from '../assets/3.png';
-import ss4 from '../assets/4.png';
-import ss5 from '../assets/5.png';
+import ss1 from '../assets/1.webp';
+import ss2 from '../assets/2.webp';
+import ss3 from '../assets/3.webp';
+import ss4 from '../assets/4.webp';
+import ss5 from '../assets/5.webp';
 
 const LandingPage = () => {
   const [activeFeature, setActiveFeature] = useState(0);
@@ -182,13 +182,13 @@ const LandingPage = () => {
             
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
               Track & Manage Your <br />
-              <span className="bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent"> Bluesky</span>
+              <span className="bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent"> Bluesky </span>
               <br />Network in Real-Time
             </h1>
-            
-            <p className="text-xl text-white/80 mb-12 max-w-2xl mx-auto">
+
+            <h2 className="text-xl text-white/80 mb-12 max-w-2xl mx-auto">
               The must-have companion app for Bluesky. Real-time insights that help you understand your network better.
-            </p>
+            </h2>
 
             {/* App Screenshots */}
             {/* Mobile: Carousel */}
