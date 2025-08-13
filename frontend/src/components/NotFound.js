@@ -11,7 +11,6 @@ const NotFound = () => {
       <Helmet>
         <title>Page Not Found | Bsky Tracker</title>
         <meta name="description" content="The page you're looking for could not be found. Return to the Bsky Tracker homepage." />
-        <link rel="canonical" href="https://blueskyapp.app/" />
         
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
