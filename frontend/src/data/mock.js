@@ -31,6 +31,10 @@ export const mockData = {
       answer: "Our tracking is real-time and highly accurate. We update follower changes on every refresh (automatically or manually triggered), giving you the most current information about your network."
     },
     {
+      question: "Do you support custom PDS domains?",
+      answer: "Yes! We fully support custom PDS domains. You can simply use your Bluesky handle as-is and the app will automatically detect and connect to the correct PDS server. No additional configuration needed - just log in with your handle and the app handles the rest."
+    },
+    {
       question: "Can I track other Bluesky users' followers and analytics?",
       answer: "Yes! You can analyze any public Bluesky user's followers, followings, likes, and post performance to understand their strategies and discover new connections."
     },
