@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LandingPage from "./components/LandingPage";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import CSAEPolicy from "./components/CSAEPolicy";
+import NotFound from "./components/NotFound";
 import { SpeedInsights } from "@vercel/speed-insights/react"
 import { Analytics } from '@vercel/analytics/react';
 
@@ -20,6 +21,7 @@ function App() {
           </Route>
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/csae-policy" element={<CSAEPolicy />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <Analytics />
       </BrowserRouter>

@@ -123,7 +123,7 @@ const LandingPage = () => {
               <Button 
                 variant="outline" 
                 className="border-white/30 text-white hover:bg-white/10 mr-4"
-                onClick={() => window.open('https://bsky.app/profile/bluesky-tracker.bsky.social', '_blank')}
+                onClick={() => window.open('https://bsky.app/profile/blueskytracker.app', '_blank')}
               >
                 <ExternalLink className="w-4 h-4 mr-2" />
                 Find me on Bluesky
@@ -164,7 +164,7 @@ const LandingPage = () => {
                       <button
                         type="button"
                         className="text-white text-lg text-left"
-                        onClick={() => window.open('https://bsky.app/profile/bluesky-tracker.bsky.social', '_blank')}
+                        onClick={() => window.open('https://bsky.app/profile/blueskytracker.app', '_blank')}
                       >
                         Find me on Bluesky
                       </button>
@@ -291,7 +291,7 @@ const LandingPage = () => {
                 variant="outline"
                 size="lg"
                 className="border-white/30 text-white hover:bg-white/10 px-8 py-4 text-lg"
-                onClick={() => window.open('https://bsky.app/profile/bluesky-tracker.bsky.social', '_blank')}
+                onClick={() => window.open('https://bsky.app/profile/blueskytracker.app', '_blank')}
               >
                 <ExternalLink className="w-5 h-5 mr-2" />
                 Find me on Bluesky
@@ -1075,7 +1075,7 @@ const LandingPage = () => {
               <div>
                 <h4 className="text-white font-semibold mb-4">Support</h4>
                 <ul className="space-y-2 text-white/70 text-sm">
-                <li><a href="https://bsky.app/profile/bluesky-tracker.bsky.social" target="_blank" rel="noopener noreferrer" className="hover:text-white">Find me on Bluesky</a></li>
+                <li><a href="https://bsky.app/profile/blueskytracker.app" target="_blank" rel="noopener noreferrer" className="hover:text-white">Find me on Bluesky</a></li>
                   <li><a href="mailto:tzegianapps@gmail.com" className="hover:text-white">Contact</a></li>
                   <li><a href="/privacy-policy" className="hover:text-white">Privacy Policy</a></li>
                   <li><a href="/csae-policy" className="hover:text-white">CSAE Policy</a></li>
