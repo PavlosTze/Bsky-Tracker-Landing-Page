@@ -224,9 +224,9 @@ const LandingPage = () => {
               <br />Network in Real-Time
             </h1>
 
-            <h2 className="text-xl text-white/80 mb-12 max-w-2xl mx-auto">
+            <div className="text-xl text-white/80 mb-12 max-w-2xl mx-auto">
               The must-have companion app for Bluesky. Real-time insights that help you understand your network better.
-            </h2>
+            </div>
 
             {/* App Screenshots */}
             {/* Mobile: Carousel */}
