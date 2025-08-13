@@ -8,7 +8,7 @@ export const mockData = {
       content: "This is such a cool and powerful tool to manage your bluesky account and it is totally free! It is also rapidly growing and adding new features! I love this thing and keep recommending it to everyone!"
     },
     {
-      content: "Love this app! Makes keeping track of my followers, who hasn't followed me back yet, and who I need to follow. Also see who blocks you. Has a follow all option or you can check each individually. Makes keeping track SO much easier."
+      content: "Love this app for Bluesky! Makes keeping track of my followers, who hasn't followed me back yet, and who I need to follow. Also see who blocks you. Has a follow all option or you can check each individually. Makes keeping track SO much easier."
     },
     {
       content: "Bsky Tracker does exactly what I need without any fuss. I can easily see who unfollowed me (most because of account suspensions and deactivations) and who I'm not following. Simple to use and reliable. Can't say enough."
@@ -41,6 +41,18 @@ export const mockData = {
     {
       question: "Is there a limit to bulk follow/unfollow actions?",
       answer: "To comply with Bluesky's guidelines and prevent spam, we implement rate limiting on bulk actions. This ensures your account stays in good standing."
+    },
+    {
+      question: "How does the real-time notification system work?",
+      answer: "Our background notification system alerts you when your follower count changes, helping you stay informed about your network activity without constantly checking the app. You can enable this feature in the app settings."
+    },
+    {
+      question: "What makes this different from other social media tracking apps?",
+      answer: "Bsky Tracker is specifically designed for Bluesky's unique ecosystem. Unlike generic social media tools, we understand Bluesky's features like custom PDS domains, the federated network structure, and Bluesky-specific engagement patterns. Our advanced filtering and bulk management tools are tailored specifically for Bluesky users."
+    },
+    {
+      question: "Is the app suitable for businesses and content creators?",
+      answer: "Absolutely! Many content creators, businesses, and influencers use Bsky Tracker to manage their Bluesky presence. The advanced filtering options help identify your most engaged followers, and the bulk management tools save significant time when growing your network."
     }
-  ],
+  ]
 };

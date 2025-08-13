@@ -16,7 +16,9 @@ import {
   Smartphone,
   Trophy,
   ExternalLink,
-  Menu
+  Menu,
+  History,
+  Heart
 } from 'lucide-react';
 import { mockData } from '../data/mock';
 import logo from '../assets/logo.webp';
@@ -72,6 +74,16 @@ const LandingPage = () => {
       icon: <Clock className="w-6 h-6" />,
       title: "Relationship History",
       description: "Track when you followed someone and when they followed you back."
+    },
+    {
+      icon: <Heart className="w-6 h-6" />,
+      title: "Likes Timeline",
+      description: "See posts liked by any user on Bluesky, including yourself, to explore interests and engagement patterns."
+    },
+    {
+      icon: <History className="w-6 h-6" />,
+      title: "Handle History",
+      description: "Check past usernames for any account to verify identity and name changes."
     }
   ];
 

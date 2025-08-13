@@ -1,7 +1,7 @@
 {
-    "name": "Tracker - Manager for Bluesky",
+    "name": "Tracker - Manager for Bluesky - Ultimate Bluesky Follower Analytics & Network Manager",
     "short_name": "Bsky Tracker",
-    "description": "The must-have companion app for tracking and managing your Bluesky network",
+    "description": "Track followers, analyze engagement, and manage your Bluesky network with real-time insights. Free app with advanced filtering and bulk actions.",
     "icons": [
         {
             "src": "/favicon-16x16.png",
