@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { Button } from './ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
@@ -6,7 +7,26 @@ import logo from '../assets/logo.webp';
 
 const NotFound = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center p-4">
+    <>
+      <Helmet>
+        <title>Page Not Found | Bsky Tracker</title>
+        <meta name="description" content="The page you're looking for could not be found. Return to the Bsky Tracker homepage." />
+        <link rel="canonical" href="https://blueskyapp.app/" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://blueskyapp.app/" />
+        <meta property="og:title" content="Page Not Found | Bsky Tracker" />
+        <meta property="og:description" content="The page you're looking for could not be found. Return to the Bsky Tracker homepage." />
+        <meta property="og:site_name" content="Bluesky Tracker" />
+        
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary" />
+        <meta property="twitter:url" content="https://blueskyapp.app/" />
+        <meta property="twitter:title" content="Page Not Found | Bsky Tracker" />
+        <meta property="twitter:description" content="The page you're looking for could not be found. Return to the Bsky Tracker homepage." />
+      </Helmet>
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center p-4">
       <div className="max-w-md w-full">
         <Card className="shadow-2xl border-0 bg-white/80 backdrop-blur-sm">
           <CardHeader className="text-center pb-4">
@@ -59,9 +79,10 @@ const NotFound = () => {
         <div className="absolute top-10 left-10 w-20 h-20 bg-blue-200 rounded-full opacity-20 animate-pulse"></div>
         <div className="absolute bottom-10 right-10 w-16 h-16 bg-purple-200 rounded-full opacity-20 animate-pulse delay-1000"></div>
         <div className="absolute top-1/2 left-5 w-8 h-8 bg-blue-300 rounded-full opacity-30 animate-bounce"></div>
-        <div className="absolute top-1/3 right-8 w-6 h-6 bg-purple-300 rounded-full opacity-30 animate-bounce delay-500"></div>
+        <div className="absolute top-1/3 right-8 w-6 h-6 bg-purple-300 rounded-full opacity-30 animate-bounce delay-500">        </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 };
 

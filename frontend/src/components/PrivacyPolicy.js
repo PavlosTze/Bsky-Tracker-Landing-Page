@@ -1,13 +1,34 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Button } from './ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import logo from '../assets/logo.webp';
 
 const PrivacyPolicy = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+    <>
+      <Helmet>
+        <title>Privacy Policy | Bsky Tracker</title>
+        <meta name="description" content="Privacy Policy for Tracker - Manager for Bluesky. Learn how we collect, use, and protect your data." />
+        <link rel="canonical" href="https://blueskyapp.app/privacy-policy" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://blueskyapp.app/privacy-policy" />
+        <meta property="og:title" content="Privacy Policy | Bsky Tracker" />
+        <meta property="og:description" content="Privacy Policy for Tracker - Manager for Bluesky. Learn how we collect, use, and protect your data." />
+        <meta property="og:site_name" content="Bluesky Tracker" />
+        
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary" />
+        <meta property="twitter:url" content="https://blueskyapp.app/privacy-policy" />
+        <meta property="twitter:title" content="Privacy Policy | Bsky Tracker" />
+        <meta property="twitter:description" content="Privacy Policy for Tracker - Manager for Bluesky. Learn how we collect, use, and protect your data." />
+      </Helmet>
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
       {/* Header */}
       <header className="relative z-50 bg-white/10 backdrop-blur-md border-b border-white/10">
         <div className="container mx-auto px-6 py-4">
@@ -23,15 +44,11 @@ const PrivacyPolicy = () => {
               </Button>
             </div>
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-blue-500 rounded-xl flex items-center justify-center overflow-hidden">
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center overflow-hidden">
                 <img 
-                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" 
-                  alt="Bsky Tracker"
+                  src={logo}
+                  alt="Bsky Tracker Logo"
                   className="w-full h-full object-cover"
-                  style={{
-                    background: 'linear-gradient(135deg, #1e90ff 0%, #0066cc 100%)',
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='35' fill='none' stroke='white' stroke-width='8' opacity='0.8'/%3E%3Ccircle cx='50' cy='30' r='4' fill='white'/%3E%3Ccircle cx='30' cy='45' r='4' fill='white'/%3E%3Ccircle cx='70' cy='45' r='4' fill='white'/%3E%3Ccircle cx='35' cy='70' r='4' fill='white'/%3E%3Ccircle cx='65' cy='70' r='4' fill='white'/%3E%3C/svg%3E")`
-                  }}
                 />
               </div>
               <div>
@@ -133,7 +150,8 @@ const PrivacyPolicy = () => {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 };
 

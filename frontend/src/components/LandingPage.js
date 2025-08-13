@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
@@ -94,7 +95,32 @@ const LandingPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+    <>
+      <Helmet>
+        <title>Bluesky Followers Tracker & Manager | Bsky Tracker</title>
+        <meta name="description" content="The ultimate Bluesky follower tracker and network management app. Real-time analytics, bulk actions, and advanced filtering to grow your Bluesky presence. Free download for iOS & Android." />
+        <link rel="canonical" href="https://blueskyapp.app/" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://blueskyapp.app/" />
+        <meta property="og:title" content="Bsky Tracker - Ultimate Bluesky Follower Analytics & Network Manager" />
+        <meta property="og:description" content="Track followers, analyze engagement, and manage your Bluesky network with real-time insights. Free app with advanced filtering and bulk actions for iOS & Android." />
+        <meta property="og:image" content="https://blueskyapp.app/banner.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:site_name" content="Bluesky Tracker" />
+        <meta property="og:locale" content="en_US" />
+        
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://blueskyapp.app/" />
+        <meta property="twitter:title" content="Bsky Tracker - Ultimate Bluesky Follower Analytics & Network Manager" />
+        <meta property="twitter:description" content="Track followers, analyze engagement, and manage your Bluesky network with real-time insights. Free app with advanced filtering and bulk actions for iOS & Android." />
+        <meta property="twitter:image" content="https://blueskyapp.app/banner.png" />
+        <meta property="twitter:image:alt" content="Bluesky Tracker Banner" />
+      </Helmet>
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
       {/* Header */}
       <header className="relative z-50 bg-white/10 backdrop-blur-md border-b border-white/10">
         <div className="container mx-auto px-6 py-3 sm:py-4">
@@ -1112,7 +1138,8 @@ const LandingPage = () => {
           </div>
         </div>
       </footer>
-    </div>
+      </div>
+    </>
   );
 };
 
