@@ -5,6 +5,8 @@ import LandingPage from "./components/LandingPage";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import CSAEPolicy from "./components/CSAEPolicy";
 import NotFound from "./components/NotFound";
+import Guides from "./components/Guides";
+import GuideBookmarks from "./components/GuideBookmarks";
 import { SpeedInsights } from "@vercel/speed-insights/react"
 import { Analytics } from '@vercel/analytics/react';
 
@@ -23,6 +25,8 @@ function App() {
             </Route>
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/csae-policy" element={<CSAEPolicy />} />
+            <Route path="/guides" element={<Guides />} />
+            <Route path="/guides/bookmarks" element={<GuideBookmarks />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Analytics />
