@@ -24,6 +24,11 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.webp';
+import openBookmarksScreen from '../assets/open_bookmarks_screen.webp';
+import copyLinkToPost from '../assets/copy_link_to_post.webp';
+import startBokomarkAdd from '../assets/start_bokomark_add.webp';
+import pasteLink from '../assets/paste_link.webp';
+import addBookmark from '../assets/add_bookmark.webp';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from './ui/sheet';
 import Header from './Header';
 import Footer from './Footer';
@@ -38,35 +43,40 @@ const GuideBookmarks = () => {
       title: "Access the Bookmarks Feature",
       description: "Open the app and navigate to the bookmarks section in the home screen.",
       details: "The bookmarks feature is located in the contents tab in the home screen. Tap on the bookmarks card to access your saved posts.",
-      imagePlaceholder: "Screenshot of bookmarks menu"
+      image: openBookmarksScreen,
+      imageAlt: "Screenshot showing the bookmarks screen in Bsky Tracker app"
     },
     {
       id: 2,
       title: "Share the Post from Bluesky",
       description: "In the official Bluesky app, find the post you want to bookmark and tap the share button.",
       details: "While browsing posts in the official Bluesky app, tap the share button on the post you want to save. Then select 'Copy link to post' to copy the post's URL to your clipboard.",
-      imagePlaceholder: "Screenshot showing share button and copy link option"
+      image: copyLinkToPost,
+      imageAlt: "Screenshot showing share button and copy link option in Bluesky app"
     },
     {
       id: 3,
       title: "Open Add Bookmark Dialog",
       description: "Go to the Bookmarks screen in Bsky Tracker and tap the 'Add Bookmark' button.",
       details: "Navigate to the Bookmarks screen in your Bsky Tracker app. You'll see an 'Add Bookmark' button - tap on it to open the bookmark creation dialog.",
-      imagePlaceholder: "Screenshot of Bookmarks screen with Add Bookmark button"
+      image: startBokomarkAdd,
+      imageAlt: "Screenshot of Bookmarks screen with Add Bookmark button"
     },
     {
       id: 4,
       title: "Paste the Post Link",
       description: "In the bottom sheet dialog, paste the copied post link into the input field.",
       details: "A bottom sheet dialog will slide up from the bottom of the screen. In the input field provided, paste the post link you copied from the Bluesky app.",
-      imagePlaceholder: "Screenshot of bottom sheet dialog with input field"
+      image: pasteLink,
+      imageAlt: "Screenshot of bottom sheet dialog with input field for pasting post link"
     },
     {
       id: 5,
       title: "Save the Bookmark",
-      description: "Tap the 'Save' button to add the post to your bookmarks.",
-      details: "After pasting the post link, tap the 'Save' button. The dialog will close and the post will be added to your bookmarks list, where you can view and manage it later.",
-      imagePlaceholder: "Screenshot showing Save button and confirmation"
+      description: "Tap the 'Add Bookmark' button to add the post to your bookmarks.",
+      details: "After pasting the post link, tap the 'Add Bookmark' button. The dialog will close and the post will be added to your bookmarks list, where you can view and manage it later.",
+      image: addBookmark,
+      imageAlt: "Screenshot showing Add Bookmark button and confirmation"
     }
   ];
 
@@ -194,8 +204,14 @@ const GuideBookmarks = () => {
                       <div className="space-y-4">
                         <p className="text-white/80 leading-relaxed">{step.details}</p>
                         
-                        <div className="bg-black/20 border border-white/10 rounded-lg p-4 text-center">
-                          <p className="text-white/60 text-sm">{step.imagePlaceholder}</p>
+                        <div className="bg-black/20 border border-white/10 rounded-lg p-4">
+                          <div className="flex justify-center">
+                            <img 
+                              src={step.image} 
+                              alt={step.imageAlt} 
+                              className="max-w-full h-auto rounded-lg shadow-lg max-h-96 object-contain" 
+                            />
+                          </div>
                         </div>
                       </div>
                     </CardContent>
