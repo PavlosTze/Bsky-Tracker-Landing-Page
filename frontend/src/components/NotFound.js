@@ -14,14 +14,14 @@ const NotFound = () => {
         
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://blueskyapp.app/" />
+        <meta property="og:url" content="https://blueskytracker.app/" />
         <meta property="og:title" content="Page Not Found | Bsky Tracker" />
         <meta property="og:description" content="The page you're looking for could not be found. Return to the Bsky Tracker homepage." />
         <meta property="og:site_name" content="Bluesky Tracker" />
         
         {/* Twitter */}
         <meta property="twitter:card" content="summary" />
-        <meta property="twitter:url" content="https://blueskyapp.app/" />
+        <meta property="twitter:url" content="https://blueskytracker.app/" />
         <meta property="twitter:title" content="Page Not Found | Bsky Tracker" />
         <meta property="twitter:description" content="The page you're looking for could not be found. Return to the Bsky Tracker homepage." />
       </Helmet>

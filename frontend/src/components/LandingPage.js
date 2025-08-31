@@ -116,15 +116,15 @@ const LandingPage = () => {
     <>
       <Helmet>
         <title>Bluesky Followers Tracker & Manager | Bsky Tracker</title>
-        <meta name="description" content="The ultimate Bluesky follower tracker and network management app. Real-time analytics, bulk actions, and advanced filtering to grow your Bluesky presence. Free download for iOS & Android." />
-        <link rel="canonical" href="https://blueskyapp.app/" />
+        <meta name="description" content="The must-have Bluesky follower tracker and network management app. Real-time analytics, bulk actions, and advanced filtering to grow your Bluesky presence. Free download for iOS & Android." />
+        <link rel="canonical" href="https://blueskytracker.app/" />
         
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://blueskyapp.app/" />
-        <meta property="og:title" content="Bsky Tracker - Ultimate Bluesky Follower Analytics & Network Manager" />
+        <meta property="og:url" content="https://blueskytracker.app/" />
+        <meta property="og:title" content="Bsky Tracker - The must-have Bluesky Followers Analytics & Network Manager" />
         <meta property="og:description" content="Track followers, analyze engagement, and manage your Bluesky network with real-time insights. Free app with advanced filtering and bulk actions for iOS & Android." />
-        <meta property="og:image" content="https://blueskyapp.app/banner.png" />
+        <meta property="og:image" content="https://blueskytracker.app/banner.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:site_name" content="Bluesky Tracker" />
@@ -132,10 +132,10 @@ const LandingPage = () => {
         
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://blueskyapp.app/" />
-        <meta property="twitter:title" content="Bsky Tracker - Ultimate Bluesky Follower Analytics & Network Manager" />
+        <meta property="twitter:url" content="https://blueskytracker.app/" />
+        <meta property="twitter:title" content="Bsky Tracker - The must-have Bluesky Followers Analytics & Network Manager" />
         <meta property="twitter:description" content="Track followers, analyze engagement, and manage your Bluesky network with real-time insights. Free app with advanced filtering and bulk actions for iOS & Android." />
-        <meta property="twitter:image" content="https://blueskyapp.app/banner.png" />
+        <meta property="twitter:image" content="https://blueskytracker.app/banner.png" />
         <meta property="twitter:image:alt" content="Bluesky Tracker Banner" />
       </Helmet>
       <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
@@ -147,7 +147,7 @@ const LandingPage = () => {
           <div className="container mx-auto px-6 relative z-10">
             <div className="text-center max-w-6xl mx-auto">
               <Badge className="mb-6 bg-blue-500/20 text-blue-200 border-blue-400/30">
-                13K+ downloads • 4.7⭐ rating
+                15K+ downloads • 4.7⭐ rating
               </Badge>
               
               <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">

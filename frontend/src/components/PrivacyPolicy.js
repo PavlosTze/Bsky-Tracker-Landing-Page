@@ -13,18 +13,18 @@ const PrivacyPolicy = () => {
       <Helmet>
         <title>Privacy Policy | Bsky Tracker</title>
         <meta name="description" content="Privacy Policy for Tracker - Manager for Bluesky. Learn how we collect, use, and protect your data." />
-        <link rel="canonical" href="https://blueskyapp.app/privacy-policy" />
+        <link rel="canonical" href="https://blueskytracker.app/privacy-policy" />
         
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://blueskyapp.app/privacy-policy" />
+        <meta property="og:url" content="https://blueskytracker.app/privacy-policy" />
         <meta property="og:title" content="Privacy Policy | Bsky Tracker" />
         <meta property="og:description" content="Privacy Policy for Tracker - Manager for Bluesky. Learn how we collect, use, and protect your data." />
         <meta property="og:site_name" content="Bluesky Tracker" />
         
         {/* Twitter */}
         <meta property="twitter:card" content="summary" />
-        <meta property="twitter:url" content="https://blueskyapp.app/privacy-policy" />
+        <meta property="twitter:url" content="https://blueskytracker.app/privacy-policy" />
         <meta property="twitter:title" content="Privacy Policy | Bsky Tracker" />
         <meta property="twitter:description" content="Privacy Policy for Tracker - Manager for Bluesky. Learn how we collect, use, and protect your data." />
       </Helmet>

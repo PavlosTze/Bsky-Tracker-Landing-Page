@@ -13,18 +13,18 @@ const CSAEPolicy = () => {
       <Helmet>
         <title>CSAE Policy | Bsky Tracker</title>
         <meta name="description" content="Content Safety and Abuse Enforcement Policy for Tracker - Manager for Bluesky. Learn about our content moderation and safety guidelines." />
-        <link rel="canonical" href="https://blueskyapp.app/csae-policy" />
+        <link rel="canonical" href="https://blueskytracker.app/csae-policy" />
         
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://blueskyapp.app/csae-policy" />
+        <meta property="og:url" content="https://blueskytracker.app/csae-policy" />
         <meta property="og:title" content="CSAE Policy | Bsky Tracker" />
         <meta property="og:description" content="Content Safety and Abuse Enforcement Policy for Tracker - Manager for Bluesky. Learn about our content moderation and safety guidelines." />
         <meta property="og:site_name" content="Bluesky Tracker" />
         
         {/* Twitter */}
         <meta property="twitter:card" content="summary" />
-        <meta property="twitter:url" content="https://blueskyapp.app/csae-policy" />
+        <meta property="twitter:url" content="https://blueskytracker.app/csae-policy" />
         <meta property="twitter:title" content="CSAE Policy | Bsky Tracker" />
         <meta property="twitter:description" content="Content Safety and Abuse Enforcement Policy for Tracker - Manager for Bluesky. Learn about our content moderation and safety guidelines." />
       </Helmet>

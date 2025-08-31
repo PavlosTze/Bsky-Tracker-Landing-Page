@@ -21,7 +21,7 @@ const Footer = () => {
               <span className="text-white font-semibold">Tracker - Manager for Bluesky</span>
             </div>
             <p className="text-white/70 text-sm">
-              The ultimate Bluesky companion app for tracking and managing your network.
+              The must-have Bluesky companion app for tracking and managing your network.
             </p>
           </div>
           

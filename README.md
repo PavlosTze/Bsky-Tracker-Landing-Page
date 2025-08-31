@@ -1,6 +1,6 @@
 # Tracker - Manager for Bluesky
 
-A React-based landing page for the [Tracker - Manager for Bluesky](https://blueskyapp.app/) mobile app.
+A React-based landing page for the [Tracker - Manager for Bluesky](https://blueskytracker.app/) mobile app.
 
 ## Local Development
 
@@ -50,7 +50,7 @@ The application will be available at `http://localhost:3000`.
 The project uses CRACO (Create React App Configuration Override) for enhanced webpack configuration and uses Yarn as the package manager.
 
 ## About the App
-This is a landing page for [Tracker - Manager for Bluesky](https://blueskyapp.app/), a mobile app available on:
+This is a landing page for [Tracker - Manager for Bluesky](https://blueskytracker.app/), a mobile app available on:
 - [Google Play Store](https://play.google.com/store/apps/details?id=com.bluesky.followers.analyzer)
 - [Apple App Store](https://apps.apple.com/us/app/tracker-manager-for-bluesky/id6740998282)
 - [Bluesky Profile](https://bsky.app/profile/blueskytracker.app)
