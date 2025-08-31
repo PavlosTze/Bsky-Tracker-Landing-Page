@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { Card, CardContent } from './ui/card';
-import { BookOpen, Bookmark, ArrowRight } from 'lucide-react';
+import { BookOpen, Bookmark, ArrowRight, Wrench } from 'lucide-react';
 import Header from './Header';
 import Footer from './Footer';
 import DownloadDialog from './DownloadDialog';
@@ -16,6 +16,12 @@ const Guides = () => {
       title: "How to Have Bookmarks on Bluesky",
       description: "Learn how to create and manage bookmarks for your favorite posts on Bluesky using the app.",
       icon: <Bookmark className="w-6 h-6" />
+    },
+    {
+      id: 'fix-followings',
+      title: "How to Fix Following Count on Bluesky",
+      description: "Learn how to correct your inaccurate following count by removing deleted, suspended, and blocked accounts.",
+      icon: <Wrench className="w-6 h-6" />
     }
   ];
 

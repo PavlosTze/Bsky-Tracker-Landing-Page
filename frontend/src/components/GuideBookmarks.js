@@ -2,34 +2,20 @@ import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { Badge } from './ui/badge';
-import { Separator } from './ui/separator';
 import { 
   Bookmark, 
   ArrowLeft, 
-  Clock, 
-  Star,
-  ChevronRight,
   CheckCircle,
   AlertCircle,
-  Lightbulb,
-  ExternalLink,
-  Copy,
-  Share2,
-  Download,
-  Smartphone,
-  Menu,
   Shield,
   Database
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import logo from '../assets/logo.webp';
 import openBookmarksScreen from '../assets/open_bookmarks_screen.webp';
 import copyLinkToPost from '../assets/copy_link_to_post.webp';
 import startBokomarkAdd from '../assets/start_bokomark_add.webp';
 import pasteLink from '../assets/paste_link.webp';
 import addBookmark from '../assets/add_bookmark.webp';
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from './ui/sheet';
 import Header from './Header';
 import Footer from './Footer';
 import DownloadDialog from './DownloadDialog';

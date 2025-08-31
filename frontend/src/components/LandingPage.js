@@ -19,12 +19,15 @@ import {
   History,
   Heart,
   Bookmark,
-  Wrench
+  Wrench,
+  BookOpen,
+  ArrowRight
 } from 'lucide-react';
 import { mockData } from '../data/mock';
 import { changelogData } from '../data/changelog';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from './ui/carousel';
 import { Dialog, DialogContent } from './ui/dialog';
+import { Link } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 import ss1 from '../assets/1.webp';
@@ -55,7 +58,9 @@ const LandingPage = () => {
     {
       icon: <Wrench className="w-6 h-6" />,
       title: "Fix Followings",
-      description: "Automatically remove deleted, suspended, or blocked accounts to correct inaccurate Bluesky following counts."
+      description: "Automatically remove deleted, suspended, or blocked accounts to correct inaccurate Bluesky following counts.",
+      hasGuide: true,
+      guideId: "fix-followings"
     },
     {
       icon: <Shield className="w-6 h-6" />,
@@ -75,7 +80,9 @@ const LandingPage = () => {
     {
       icon: <Bookmark className="w-6 h-6" />,
       title: "Bookmark Posts",
-      description: "Save and organize your favorite Bluesky posts privately with an easy search functionality for better content curation."
+      description: "Save and organize your favorite Bluesky posts privately with an easy search functionality for better content curation.",
+      hasGuide: true,
+      guideId: "bookmarks"
     },
     {
       icon: <BarChart3 className="w-6 h-6" />,
@@ -302,9 +309,20 @@ const LandingPage = () => {
                       }`}>
                         {feature.icon}
                       </div>
-                      <div>
+                      <div className="flex-1">
                         <h3 className="text-lg font-semibold text-white mb-2">{feature.title}</h3>
                         <p className="text-white/80">{feature.description}</p>
+                          {feature.hasGuide && (
+                           <Link 
+                             to={`/guides/${feature.guideId}`}
+                             target="_blank"
+                             rel="noopener noreferrer"
+                             className="inline-flex items-center text-blue-300 hover:text-blue-200 text-sm mt-3 transition-colors"
+                             onClick={(e) => e.stopPropagation()}
+                           >
+                             Learn More <ArrowRight className="w-3 h-3 ml-1" />
+                           </Link>
+                         )}
                       </div>
                     </div>
                   </div>
@@ -387,8 +405,79 @@ const LandingPage = () => {
           </div>
         </section>
 
+        {/* Learn How Section */}
+        <section className="py-20">
+          <div className="container mx-auto px-6">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold text-white mb-4">
+                Learn How to Use the Bluesky Tracker
+              </h2>
+              <p className="text-xl text-white/70">
+                Get the most out of your Bluesky experience with our step-by-step guides
+              </p>
+            </div>
+
+            <div className="max-w-4xl mx-auto">
+              <div className="grid md:grid-cols-2 gap-8">
+                <Link to="/guides/bookmarks" target="_blank" rel="noopener noreferrer" className="block">
+                   <Card className="bg-white/10 border-white/20 backdrop-blur-md hover:bg-white/20 transition-all duration-300 cursor-pointer h-full">
+                    <CardContent className="p-6">
+                      <div className="flex items-start space-x-4">
+                        <div className="p-3 bg-blue-500/20 rounded-lg">
+                          <Bookmark className="w-6 h-6 text-blue-300" />
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-lg font-semibold text-white mb-2">How to Have Bookmarks on Bluesky</h3>
+                          <p className="text-white/80 mb-4">Learn how to create and manage bookmarks for your favorite posts on Bluesky using the app.</p>
+                          <div className="flex items-center text-blue-300 text-sm">
+                            <span>View Guide</span>
+                            <ArrowRight className="w-4 h-4 ml-2" />
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
+
+                  <Link to="/guides/clean-follows-bluesky" target="_blank" rel="noopener noreferrer" className="block">
+                   <Card className="bg-white/10 border-white/20 backdrop-blur-md hover:bg-white/20 transition-all duration-300 cursor-pointer h-full">
+                    <CardContent className="p-6">
+                      <div className="flex items-start space-x-4">
+                        <div className="p-3 bg-blue-500/20 rounded-lg">
+                          <Wrench className="w-6 h-6 text-blue-300" />
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-lg font-semibold text-white mb-2">How to Clean your Follows on Bluesky</h3>
+                          <p className="text-white/80 mb-4">Learn how to correct your inaccurate following count by removing deleted, suspended, and blocked accounts and clean your follows.</p>
+                          <div className="flex items-center text-blue-300 text-sm">
+                            <span>View Guide</span>
+                            <ArrowRight className="w-4 h-4 ml-2" />
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
+              </div>
+            </div>
+
+            <div className="text-center mt-12">
+                <Link to="/guides" target="_blank" rel="noopener noreferrer">
+                 <Button
+                   size="lg"
+                   variant="outline"
+                   className="border-white/30 text-white hover:bg-white/10 px-8 py-4 text-lg"
+                 >
+                   <BookOpen className="w-5 h-5 mr-2" />
+                   View All Guides
+                 </Button>
+               </Link>
+            </div>
+          </div>
+        </section>
+
         {/* FAQ */}
-        <section id="faq" className="py-20">
+        <section id="faq" className="pb-20">
           <div className="container mx-auto px-6">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold text-white mb-4">
@@ -404,7 +493,33 @@ const LandingPage = () => {
                       {item.question}
                     </AccordionTrigger>
                     <AccordionContent className="text-white/80">
-                      {item.answer}
+                      <div>
+                        {item.answer}
+                          {item.question.includes("bookmark") && (
+                           <div className="mt-4">
+                             <Link 
+                               to="/guides/bookmarks"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               className="inline-flex items-center text-blue-300 hover:text-blue-200 text-sm transition-colors"
+                             >
+                               Learn how to use bookmarks <ArrowRight className="w-3 h-3 ml-1" />
+                             </Link>
+                           </div>
+                         )}
+                                                 {item.question.includes("following") && (
+                           <div className="mt-4">
+                             <Link 
+                               to="/guides/clean-follows-bluesky"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               className="inline-flex items-center text-blue-300 hover:text-blue-200 text-sm transition-colors"
+                             >
+                               Learn how to fix following counts <ArrowRight className="w-3 h-3 ml-1" />
+                             </Link>
+                           </div>
+                         )}
+                      </div>
                     </AccordionContent>
                   </AccordionItem>
                 ))}
