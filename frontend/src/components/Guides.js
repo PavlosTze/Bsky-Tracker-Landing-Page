@@ -18,7 +18,7 @@ const Guides = () => {
       icon: <Bookmark className="w-6 h-6" />
     },
     {
-      id: 'fix-followings',
+      id: 'clean-follows-bluesky',
       title: "How to Fix Following Count on Bluesky",
       description: "Learn how to correct your inaccurate following count by removing deleted, suspended, and blocked accounts.",
       icon: <Wrench className="w-6 h-6" />
