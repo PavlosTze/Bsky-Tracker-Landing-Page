@@ -14,19 +14,17 @@ import {
   Download,
   CheckCircle,
   Target,
-  Smartphone,
   Trophy,
   ExternalLink,
-  Menu,
   History,
-  Heart
+  Heart,
+  Bookmark,
+  Wrench
 } from 'lucide-react';
 import { mockData } from '../data/mock';
-import logo from '../assets/logo.webp';
+import { changelogData } from '../data/changelog';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from './ui/carousel';
 import { Dialog, DialogContent } from './ui/dialog';
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from './ui/sheet';
-import { Link } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 import ss1 from '../assets/1.webp';
@@ -55,6 +53,11 @@ const LandingPage = () => {
       description: "Instantly see when someone follows or unfollows you with live updates."
     },
     {
+      icon: <Wrench className="w-6 h-6" />,
+      title: "Fix Followings",
+      description: "Automatically remove deleted, suspended, or blocked accounts to correct inaccurate Bluesky following counts."
+    },
+    {
       icon: <Shield className="w-6 h-6" />,
       title: "Block & Mute Management", 
       description: "See who has blocked you and manage your blocks and mutes effectively."
@@ -68,6 +71,11 @@ const LandingPage = () => {
       icon: <Target className="w-6 h-6" />,
       title: "Bulk Follow & Unfollow",
       description: "Follow or unfollow users in bulk to efficiently manage your Bluesky network."
+    },
+    {
+      icon: <Bookmark className="w-6 h-6" />,
+      title: "Bookmark Posts",
+      description: "Save and organize your favorite Bluesky posts privately with an easy search functionality for better content curation."
     },
     {
       icon: <BarChart3 className="w-6 h-6" />,
@@ -244,11 +252,11 @@ const LandingPage = () => {
               {/* Download & User Stats */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-white">13,000+</div>
+                  <div className="text-2xl font-bold text-white">15,000+</div>
                   <div className="text-sm text-white/70">Downloads</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-white">4,000+</div>
+                  <div className="text-2xl font-bold text-white">4,500+</div>
                   <div className="text-sm text-white/70">Active Users</div>
                 </div>
                 <div className="text-center">
@@ -414,7 +422,7 @@ const LandingPage = () => {
                 Ready to Master Your Bluesky Network?
               </h2>
               <p className="text-xl text-white/80 mb-8">
-                Join 13,000+ users who trust Tracker - Manager for Bluesky to track and manage their Bluesky presence. 
+                Join 15,000+ users who trust Tracker - Manager for Bluesky to track and manage their Bluesky presence. 
                 Download now and see results immediately.
               </p>
               
@@ -472,518 +480,40 @@ const LandingPage = () => {
             </div>
 
             <div className="max-w-4xl mx-auto">
-              <div className="space-y-8">
-                {/* Version 2.5.0 */}
-                <Card className="bg-white/10 border-white/20 backdrop-blur-md">
-                  <CardHeader>
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <CardTitle className="text-white text-xl">Version 2.5.0</CardTitle>
-                        <p className="text-white/60 text-sm mt-1">August 5, 2025</p>
-                      </div>
-                      <Badge className="bg-blue-500/20 text-blue-200 border-blue-400/30">Latest</Badge>
-                    </div>
-                  </CardHeader>
-                 <CardContent>
-                   <ul className="space-y-2 text-white/80">
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Support for custom PDS domains
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Search within Likes Timeline
-                     </li>
-                   </ul>
-                 </CardContent>
-               </Card>
-
-                {/* Version 2.4.1 */}
-                <Card className="bg-white/10 border-white/20 backdrop-blur-md">
-                  <CardHeader>
-                    <div>
-                      <CardTitle className="text-white text-xl">Version 2.4.1</CardTitle>
-                      <p className="text-white/60 text-sm mt-1">July 24, 2025</p>
-                    </div>
-                  </CardHeader>
-                 <CardContent>
-                   <ul className="space-y-2 text-white/80">
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       New user list: Mutes
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Improved overall user experience
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Bulk actions are now handled fully in-app (faster, no auto-refresh)
-                     </li>
-                   </ul>
-                 </CardContent>
-               </Card>
-
-                {/* Version 2.3.1 */}
-                <Card className="bg-white/10 border-white/20 backdrop-blur-md">
-                  <CardHeader>
-                    <div>
-                      <CardTitle className="text-white text-xl">Version 2.3.1</CardTitle>
-                      <p className="text-white/60 text-sm mt-1">July 13, 2025</p>
-                    </div>
-                  </CardHeader>
-                 <CardContent>
-                   <ul className="space-y-2 text-white/80">
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Get background notifications when followers change (enable it in settings)
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Auto-whitelist unfollowed users in "Skip on Follow All" (enable it in settings)
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Advanced Filters: Filter by follower/following ratio
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Advanced Filters: Filter by follow date
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Advanced Filters: Filter by labels
-                     </li>
-                   </ul>
-                 </CardContent>
-               </Card>
-
-                {/* Version 2.2.0 */}
-                <Card className="bg-white/10 border-white/20 backdrop-blur-md">
-                  <CardHeader>
-                    <div>
-                      <CardTitle className="text-white text-xl">Version 2.2.0</CardTitle>
-                      <p className="text-white/60 text-sm mt-1">June 25, 2025</p>
-                    </div>
-                  </CardHeader>
-                 <CardContent>
-                   <ul className="space-y-2 text-white/80">
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Filter posts by post type
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Advanced Filters: filter users with no avatar or no bio
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Advanced Filters: filter by join date
-                     </li>
-                   </ul>
-                 </CardContent>
-               </Card>
-
-                {/* Version 2.1.0 */}
-                <Card className="bg-white/10 border-white/20 backdrop-blur-md">
-                  <CardHeader>
-                    <div>
-                      <CardTitle className="text-white text-xl">Version 2.1.0</CardTitle>
-                      <p className="text-white/60 text-sm mt-1">June 12, 2025</p>
-                    </div>
-                  </CardHeader>
-                 <CardContent>
-                   <ul className="space-y-2 text-white/80">
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Keyword search now includes bio
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Discover suggested follows based on any user
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Bulk actions & filters now work on any user's followers/followings
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Mute users directly from the app
-                     </li>
-                   </ul>
-                 </CardContent>
-               </Card>
-
-                {/* Version 2.0.2 */}
-                <Card className="bg-white/10 border-white/20 backdrop-blur-md">
-                  <CardHeader>
-                    <div>
-                      <CardTitle className="text-white text-xl">Version 2.0.2</CardTitle>
-                      <p className="text-white/60 text-sm mt-1">May 30, 2025</p>
-                    </div>
-                  </CardHeader>
-                 <CardContent>
-                   <ul className="space-y-2 text-white/80">
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Advanced Filters: Filter users by keyword, follower count, post count & activity
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Post Stats & Analysis: See detailed stats on your own and others' posts – by type, likes, reposts, replies, and more
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Portuguese Language Support now available
-                     </li>
-                   </ul>
-                 </CardContent>
-               </Card>
-
-                {/* Version 1.21.0 */}
-                <Card className="bg-white/10 border-white/20 backdrop-blur-md">
-                  <CardHeader>
-                    <div>
-                      <CardTitle className="text-white text-xl">Version 1.21.0</CardTitle>
-                      <p className="text-white/60 text-sm mt-1">May 9, 2025</p>
-                    </div>
-                  </CardHeader>
-                 <CardContent>
-                   <ul className="space-y-2 text-white/80">
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Fix Followings: Automatically remove blocked, suspended, or deleted accounts from your following count — fixing a known issue with Bluesky's counts
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Import/Export Data: Easily back up your data or transfer it to another device
-                     </li>
-                   </ul>
-                 </CardContent>
-               </Card>
-
-                {/* Version 1.20.0 */}
-                <Card className="bg-white/10 border-white/20 backdrop-blur-md">
-                  <CardHeader>
-                    <div>
-                      <CardTitle className="text-white text-xl">Version 1.20.0</CardTitle>
-                      <p className="text-white/60 text-sm mt-1">April 20, 2025</p>
-                    </div>
-                  </CardHeader>
-                 <CardContent>
-                   <ul className="space-y-2 text-white/80">
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Likes Timeline: View the liked posts of any user — including your own
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Block All: Instantly block everyone in your "Blocked By" list
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Enhanced user experience with various improvements and fixes
-                     </li>
-                   </ul>
-                 </CardContent>
-               </Card>
-
-                {/* Version 1.12.0 */}
-                <Card className="bg-white/10 border-white/20 backdrop-blur-md">
-                  <CardHeader>
-                    <div>
-                      <CardTitle className="text-white text-xl">Version 1.12.0</CardTitle>
-                      <p className="text-white/60 text-sm mt-1">April 12, 2025</p>
-                    </div>
-                  </CardHeader>
-                 <CardContent>
-                   <ul className="space-y-2 text-white/80">
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Added Turkish language support
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Bulk-add users from lists to whitelists for faster management
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Enhanced user experience with various improvements
-                     </li>
-                   </ul>
-                 </CardContent>
-               </Card>
-
-                {/* Version 1.11.0 */}
-                <Card className="bg-white/10 border-white/20 backdrop-blur-md">
-                  <CardHeader>
-                    <div>
-                      <CardTitle className="text-white text-xl">Version 1.11.0</CardTitle>
-                      <p className="text-white/60 text-sm mt-1">March 24, 2025</p>
-                    </div>
-                  </CardHeader>
-                 <CardContent>
-                   <ul className="space-y-2 text-white/80">
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Relationship History: See when you followed someone – or when they followed you
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Username History: View the full history of any user's past handles/usernames
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Copy User DID: Easily copy any user's decentralized ID (DID) for reference or sharing
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Improved User Experience: Enjoy a smoother experience with various enhancements and more robust error handling
-                     </li>
-                   </ul>
-                 </CardContent>
-               </Card>
-
-                {/* Version 1.10.0 */}
-                <Card className="bg-white/10 border-white/20 backdrop-blur-md">
-                  <CardHeader>
-                    <div>
-                      <CardTitle className="text-white text-xl">Version 1.10.0</CardTitle>
-                      <p className="text-white/60 text-sm mt-1">March 7, 2025</p>
-                    </div>
-                  </CardHeader>
-                 <CardContent>
-                   <ul className="space-y-2 text-white/80">
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Track Posts: Monitor post history for both yourself and any other user
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Custom User Labels: Create private labels for users to easily categorize them
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Enhanced user experience with various improvements
-                     </li>
-                   </ul>
-                 </CardContent>
-               </Card>
-
-                {/* Version 1.9.1 */}
-                <Card className="bg-white/10 border-white/20 backdrop-blur-md">
-                  <CardHeader>
-                    <div>
-                      <CardTitle className="text-white text-xl">Version 1.9.1</CardTitle>
-                      <p className="text-white/60 text-sm mt-1">February 26, 2025</p>
-                    </div>
-                  </CardHeader>
-                 <CardContent>
-                   <ul className="space-y-2 text-white/80">
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Follow/unfollow users directly from lists for easier management
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Latest post activity now visible on user profiles
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       "Whitelisted" label is now shown on whitelisted users within lists
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Updated branding for a fresh, consistent look
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Enhanced user experience with various improvements
-                     </li>
-                   </ul>
-                 </CardContent>
-               </Card>
-
-                {/* Version 1.8.0 */}
-                <Card className="bg-white/10 border-white/20 backdrop-blur-md">
-                  <CardHeader>
-                    <div>
-                      <CardTitle className="text-white text-xl">Version 1.8.0</CardTitle>
-                      <p className="text-white/60 text-sm mt-1">February 13, 2025</p>
-                    </div>
-                  </CardHeader>
-                 <CardContent>
-                   <ul className="space-y-2 text-white/80">
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       View the full history of users who unfollowed you and those you've unfollowed
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Data loads significantly quicker, especially for large accounts
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Scrollbars added for smoother browsing in user lists
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Introduced localized number formatting for major countries
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Various user experience improvements
-                     </li>
-                   </ul>
-                 </CardContent>
-               </Card>
-
-                {/* Version 1.7.0 */}
-                <Card className="bg-white/10 border-white/20 backdrop-blur-md">
-                  <CardHeader>
-                    <div>
-                      <CardTitle className="text-white text-xl">Version 1.7.0</CardTitle>
-                      <p className="text-white/60 text-sm mt-1">February 6, 2025</p>
-                    </div>
-                  </CardHeader>
-                 <CardContent>
-                   <ul className="space-y-2 text-white/80">
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Added the ability to search for any user in Bluesky
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Added the ability to follow any user's followers or followings
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Performance improvements and bug fixes
-                     </li>
-                   </ul>
-                 </CardContent>
-               </Card>
-
-                {/* Version 1.5.1 */}
-                <Card className="bg-white/10 border-white/20 backdrop-blur-md">
-                  <CardHeader>
-                    <div>
-                      <CardTitle className="text-white text-xl">Version 1.5.1</CardTitle>
-                      <p className="text-white/60 text-sm mt-1">January 31, 2025</p>
-                    </div>
-                  </CardHeader>
-                 <CardContent>
-                   <ul className="space-y-2 text-white/80">
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Updated the app's logo
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Improved performance and bug fixes
-                     </li>
-                   </ul>
-                 </CardContent>
-               </Card>
-
-                {/* Version 1.5.0 */}
-                <Card className="bg-white/10 border-white/20 backdrop-blur-md">
-                  <CardHeader>
-                    <div>
-                      <CardTitle className="text-white text-xl">Version 1.5.0</CardTitle>
-                      <p className="text-white/60 text-sm mt-1">January 23, 2025</p>
-                    </div>
-                  </CardHeader>
-                 <CardContent>
-                   <ul className="space-y-2 text-white/80">
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       New "Blocked by" and "Blocked" user lists
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Added "Follow", "Unfollow", "Block" and "Unblock" actions in user profiles
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Introduced "Whitelists" to skip users in "Follow all" and "Unfollow all" actions
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Improved performance and bug fixes
-                     </li>
-                   </ul>
-                 </CardContent>
-               </Card>
-
-                {/* Version 1.1.1 */}
-                <Card className="bg-white/10 border-white/20 backdrop-blur-md">
-                  <CardHeader>
-                    <div>
-                      <CardTitle className="text-white text-xl">Version 1.1.1</CardTitle>
-                      <p className="text-white/60 text-sm mt-1">January 12, 2025</p>
-                    </div>
-                  </CardHeader>
-                 <CardContent>
-                   <ul className="space-y-2 text-white/80">
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Enable scrolling in all screens to support smaller ones
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Created a new "App Info" screen to access app-related information through the in-app settings
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Numerous bug fixes & optimizations that improve user experience
-                     </li>
-                   </ul>
-                 </CardContent>
-               </Card>
-
-                {/* Version 1.1.0 */}
-                <Card className="bg-white/10 border-white/20 backdrop-blur-md">
-                  <CardHeader>
-                    <div>
-                      <CardTitle className="text-white text-xl">Version 1.1.0</CardTitle>
-                      <p className="text-white/60 text-sm mt-1">January 3, 2025</p>
-                    </div>
-                  </CardHeader>
-                 <CardContent>
-                   <ul className="space-y-2 text-white/80">
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Support of custom domains as handles
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       "Follow All" and "Unfollow All" actions are now available for all different groups of users
-                     </li>
-                     <li className="flex items-start">
-                       <span className="text-blue-400 mr-2">•</span>
-                       Numerous bug fixes & optimizations that improve user experience
-                     </li>
-                   </ul>
-                 </CardContent>
-               </Card>
-
-                {/* Version 1.0.0 */}
-                <Card className="bg-white/10 border-white/20 backdrop-blur-md">
-                  <CardHeader>
-                    <div>
-                      <CardTitle className="text-white text-xl">Version 1.0.0</CardTitle>
-                      <p className="text-white/60 text-sm mt-1">December 19, 2024</p>
-                    </div>
-                  </CardHeader>
-                 <CardContent>
-                   <p className="text-white/80">
-                     Tracker - Manager for Bluesky goes LIVE.
-                   </p>
-                 </CardContent>
-               </Card>
+               <div className="space-y-8">
+                 {changelogData.map((version, index) => (
+                   <Card key={index} className="bg-white/10 border-white/20 backdrop-blur-md">
+                     <CardHeader>
+                       <div className="flex items-center justify-between">
+                         <div>
+                           <CardTitle className="text-white text-xl">Version {version.version}</CardTitle>
+                           <p className="text-white/60 text-sm mt-1">{version.date}</p>
+                         </div>
+                         {version.isLatest && (
+                           <Badge className="bg-blue-500/20 text-blue-200 border-blue-400/30">Latest</Badge>
+                         )}
+                       </div>
+                     </CardHeader>
+                     <CardContent>
+                       {version.changes.length === 1 && version.changes[0] === "Tracker - Manager for Bluesky goes LIVE." ? (
+                         <p className="text-white/80">
+                           {version.changes[0]}
+                         </p>
+                       ) : (
+                         <ul className="space-y-2 text-white/80">
+                           {version.changes.map((change, changeIndex) => (
+                             <li key={changeIndex} className="flex items-start">
+                               <span className="text-blue-400 mr-2">•</span>
+                               {change}
+                             </li>
+                           ))}
+                         </ul>
+                       )}
+                     </CardContent>
+                   </Card>
+                 ))}
+               </div>
              </div>
-           </div>
          </div>
        </section>
 
