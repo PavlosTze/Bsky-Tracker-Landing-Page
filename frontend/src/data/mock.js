@@ -48,11 +48,11 @@ export const mockData = {
     },
     {
       question: "What makes this different from other social media tracking apps?",
-      answer: "Bsky Tracker is specifically designed for Bluesky's unique ecosystem. Unlike generic social media tools, we understand Bluesky's features like custom PDS domains, the federated network structure, and Bluesky-specific engagement patterns. Our advanced filtering and bulk management tools are tailored specifically for Bluesky users."
+      answer: "Bluesky Tracker is specifically designed for Bluesky's unique ecosystem. Unlike generic social media tools, we understand Bluesky's features like custom PDS domains, the federated network structure, and Bluesky-specific engagement patterns. Our advanced filtering and bulk management tools are tailored specifically for Bluesky users."
     },
     {
       question: "Is the app suitable for businesses and content creators?",
-      answer: "Absolutely! Many content creators, businesses, and influencers use Bsky Tracker to manage their Bluesky presence. The advanced filtering options help identify your most engaged followers, and the bulk management tools save significant time when growing your network."
+      answer: "Absolutely! Many content creators, businesses, and influencers use Bluesky Tracker to manage their Bluesky presence. The advanced filtering options help identify your most engaged followers, and the bulk management tools save significant time when growing your network."
     }
   ]
 };
