@@ -236,7 +236,7 @@ const LandingPage = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
                 <Button 
                   size="lg" 
-                  className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 text-lg"
+                  className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-lg"
                   onClick={scrollToCTA}
                 >
                   <Download className="w-5 h-5 mr-2" />
@@ -332,7 +332,7 @@ const LandingPage = () => {
             <div className="text-center mt-12">
               <Button
                 size="lg"
-                className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 text-lg"
+                className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-lg"
                 onClick={scrollToCTA}
               >
                 <Download className="w-5 h-5 mr-2" />
@@ -395,7 +395,7 @@ const LandingPage = () => {
             <div className="text-center mt-12">
               <Button
                 size="lg"
-                className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 text-lg"
+                className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-lg"
                 onClick={scrollToCTA}
               >
                 <Download className="w-5 h-5 mr-2" />

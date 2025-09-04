@@ -66,7 +66,7 @@ const Header = ({ showGuides = true, showFeatures = true, onDownloadClick }) => 
               Find me on Bluesky
             </Button>
             <Button 
-              className="bg-blue-500 hover:bg-blue-600 text-white"
+              className="bg-green-600 hover:bg-green-700 text-white"
               onClick={handleDownloadClick}
             >
               <Download className="w-4 h-4 mr-2" />
@@ -117,7 +117,7 @@ const Header = ({ showGuides = true, showFeatures = true, onDownloadClick }) => 
                   </SheetClose>
                   <SheetClose asChild>
                     <Button 
-                      className="bg-blue-500 hover:bg-blue-600 text-white" 
+                      className="bg-green-600 hover:bg-green-700 text-white" 
                       onClick={handleDownloadClick}
                     >
                       <Download className="w-4 h-4 mr-2" />
