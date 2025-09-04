@@ -11,7 +11,35 @@ const Footer = () => {
     navigate('/');
     // Use setTimeout to ensure the page has loaded before scrolling
     setTimeout(() => {
+      // Temporarily enable smooth scrolling for this specific scroll
+      const htmlElement = document.documentElement;
+      const originalScrollBehavior = htmlElement.style.scrollBehavior;
+      htmlElement.style.scrollBehavior = 'smooth';
+      
       document.querySelector('#features')?.scrollIntoView({ behavior: 'smooth' });
+      
+      // Restore original scroll behavior after scrolling
+      setTimeout(() => {
+        htmlElement.style.scrollBehavior = originalScrollBehavior;
+      }, 1000);
+    }, 1000);
+  };
+
+  const handleFAQClick = () => {
+    navigate('/');
+    // Use setTimeout to ensure the page has loaded before scrolling
+    setTimeout(() => {
+      // Temporarily enable smooth scrolling for this specific scroll
+      const htmlElement = document.documentElement;
+      const originalScrollBehavior = htmlElement.style.scrollBehavior;
+      htmlElement.style.scrollBehavior = 'smooth';
+      
+      document.querySelector('#faq')?.scrollIntoView({ behavior: 'smooth' });
+      
+      // Restore original scroll behavior after scrolling
+      setTimeout(() => {
+        htmlElement.style.scrollBehavior = originalScrollBehavior;
+      }, 1000);
     }, 1000);
   };
 
@@ -40,7 +68,7 @@ const Footer = () => {
             <ul className="space-y-2 text-white/70 text-sm">
               <li><button onClick={handleFeaturesClick} className="hover:text-white text-left">Features</button></li>
               <li><a href="/guides" target="_blank" rel="noopener noreferrer" className="hover:text-white">Guides & Tutorials</a></li>
-              <li><Link to="/#faq" className="hover:text-white">FAQ</Link></li>
+              <li><button onClick={handleFAQClick} className="hover:text-white text-left">FAQ</button></li>
             </ul>
           </div>
           

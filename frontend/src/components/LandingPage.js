@@ -240,7 +240,7 @@ const LandingPage = () => {
                   onClick={scrollToCTA}
                 >
                   <Download className="w-5 h-5 mr-2" />
-                  Download for Free
+                  Download Now
                 </Button>
               </div>
               
@@ -336,7 +336,7 @@ const LandingPage = () => {
                 onClick={scrollToCTA}
               >
                 <Download className="w-5 h-5 mr-2" />
-                Download for Free
+                Download Now
               </Button>
             </div>
           </div>
@@ -399,7 +399,7 @@ const LandingPage = () => {
                 onClick={scrollToCTA}
               >
                 <Download className="w-5 h-5 mr-2" />
-                Download for Free
+                Download Now
               </Button>
             </div>
           </div>

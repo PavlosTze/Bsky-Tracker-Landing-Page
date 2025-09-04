@@ -8,6 +8,7 @@ import NotFound from "./components/NotFound";
 import Guides from "./components/Guides";
 import GuideBookmarks from "./components/GuideBookmarks";
 import GuideFixFollowings from "./components/GuideFixFollowings";
+import ScrollToTop from "./components/ScrollToTop";
 import { SpeedInsights } from "@vercel/speed-insights/react"
 import { Analytics } from '@vercel/analytics/react';
 
@@ -20,6 +21,7 @@ function App() {
     <HelmetProvider>
       <div className="App">
         <BrowserRouter>
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<Home />}>
               <Route index element={<Home />} />

@@ -70,7 +70,7 @@ const Header = ({ showGuides = true, showFeatures = true, onDownloadClick }) => 
               onClick={handleDownloadClick}
             >
               <Download className="w-4 h-4 mr-2" />
-              Download for Free
+              Download Now
             </Button>
           </nav>
           {/* Mobile menu button */}
@@ -121,7 +121,7 @@ const Header = ({ showGuides = true, showFeatures = true, onDownloadClick }) => 
                       onClick={handleDownloadClick}
                     >
                       <Download className="w-4 h-4 mr-2" />
-                      Download for Free
+                      Download Now
                     </Button>
                   </SheetClose>
                 </div>
