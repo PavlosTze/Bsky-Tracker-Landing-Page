@@ -1,8 +1,18 @@
 export const changelogData = [
   {
+    version: "2.7.0",
+    date: "September 4, 2025",
+    isLatest: true,
+    changes: [
+      "Advanced Filters: Filter users by join date (now supports both before & after)",
+      "Bulk Actions: Set a “Stop At” threshold",
+      "Export Data:Save your full network data in JSON"
+    ]
+  },
+  {
     version: "2.6.1",
     date: "August 23, 2025",
-    isLatest: true,
+    isLatest: false,
     changes: [
       "Bookmarks, save your favorite Bluesky posts.",
       "Advanced Filters: Filter users by latest post date (now supports both before & after)",

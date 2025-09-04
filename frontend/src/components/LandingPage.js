@@ -60,7 +60,7 @@ const LandingPage = () => {
       title: "Fix Followings",
       description: "Automatically remove deleted, suspended, or blocked accounts to correct inaccurate Bluesky following counts.",
       hasGuide: true,
-      guideId: "fix-followings"
+      guideId: "clean-follows-bluesky"
     },
     {
       icon: <Shield className="w-6 h-6" />,
