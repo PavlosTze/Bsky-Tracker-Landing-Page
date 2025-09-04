@@ -14,6 +14,10 @@ const Header = ({ showGuides = true, showFeatures = true, onDownloadClick }) => 
     document.querySelector('#cta-section')?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const scrollToFeatures = () => {
+    document.querySelector('#features')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   const handleDownloadClick = () => {
     if (onDownloadClick) {
       onDownloadClick();
@@ -43,10 +47,15 @@ const Header = ({ showGuides = true, showFeatures = true, onDownloadClick }) => 
           </div>
           <nav className="hidden md:flex items-center space-x-8">
             {showFeatures && (
-              <Link to="/#features" className="text-white/80 hover:text-white transition-colors">Features</Link>
+              <button 
+                onClick={scrollToFeatures}
+                className="text-white/80 hover:text-white transition-colors"
+              >
+                Features
+              </button>
             )}
             {showGuides && (
-              <Link to="/guides" className="text-white/80 hover:text-white transition-colors">Guides</Link>
+              <a href="/guides" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white transition-colors">Guides</a>
             )}
             <Button 
               variant="outline" 
@@ -84,7 +93,7 @@ const Header = ({ showGuides = true, showFeatures = true, onDownloadClick }) => 
                       <button
                         type="button"
                         className="text-white text-lg text-left"
-                        onClick={() => document.querySelector('#features')?.scrollIntoView({ behavior: 'smooth' })}
+                        onClick={scrollToFeatures}
                       >
                         Features
                       </button>
@@ -92,9 +101,9 @@ const Header = ({ showGuides = true, showFeatures = true, onDownloadClick }) => 
                   )}
                   {showGuides && (
                     <SheetClose asChild>
-                      <Link to="/guides" className="text-white text-lg text-left">
+                      <a href="/guides" target="_blank" rel="noopener noreferrer" className="text-white text-lg text-left">
                         Guides
-                      </Link>
+                      </a>
                     </SheetClose>
                   )}
                   <SheetClose asChild>

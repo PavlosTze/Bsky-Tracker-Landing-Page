@@ -1,10 +1,20 @@
 import React from 'react';
 import { Button } from './ui/button';
 import { Smartphone } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.webp';
 
 const Footer = () => {
+  const navigate = useNavigate();
+
+  const handleFeaturesClick = () => {
+    navigate('/');
+    // Use setTimeout to ensure the page has loaded before scrolling
+    setTimeout(() => {
+      document.querySelector('#features')?.scrollIntoView({ behavior: 'smooth' });
+    }, 1000);
+  };
+
   return (
     <footer className="bg-black/20 backdrop-blur-md border-t border-white/10">
       <div className="container mx-auto px-6 py-12">
@@ -28,8 +38,8 @@ const Footer = () => {
           <div>
             <h4 className="text-white font-semibold mb-4">Product</h4>
             <ul className="space-y-2 text-white/70 text-sm">
-              <li><Link to="/#features" className="hover:text-white">Features</Link></li>
-              <li><Link to="/guides" className="hover:text-white">Guides & Tutorials</Link></li>
+              <li><button onClick={handleFeaturesClick} className="hover:text-white text-left">Features</button></li>
+              <li><a href="/guides" target="_blank" rel="noopener noreferrer" className="hover:text-white">Guides & Tutorials</a></li>
               <li><Link to="/#faq" className="hover:text-white">FAQ</Link></li>
             </ul>
           </div>
@@ -38,10 +48,10 @@ const Footer = () => {
             <h4 className="text-white font-semibold mb-4">Support</h4>
             <ul className="space-y-2 text-white/70 text-sm">
               <li><a href="https://bsky.app/profile/blueskytracker.app" target="_blank" rel="noopener noreferrer" className="hover:text-white">Find me on Bluesky</a></li>
-              <li><Link to="/guides" className="hover:text-white">Guides & Tutorials</Link></li>
+              <li><a href="/guides" target="_blank" rel="noopener noreferrer" className="hover:text-white">Guides & Tutorials</a></li>
               <li><a href="mailto:tzegianapps@gmail.com" className="hover:text-white">Contact</a></li>
-              <li><Link to="/privacy-policy" className="hover:text-white">Privacy Policy</Link></li>
-              <li><Link to="/csae-policy" className="hover:text-white">CSAE Policy</Link></li>
+              <li><a href="/privacy-policy" target="_blank" rel="noopener noreferrer" className="hover:text-white">Privacy Policy</a></li>
+              <li><a href="/csae-policy" target="_blank" rel="noopener noreferrer" className="hover:text-white">CSAE Policy</a></li>
             </ul>
           </div>
           
