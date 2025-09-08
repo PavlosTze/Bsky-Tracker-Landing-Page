@@ -149,14 +149,14 @@ const LandingPage = () => {
               <Badge className="mb-6 bg-blue-500/20 text-blue-200 border-blue-400/30">
                 15K+ downloads • 4.7⭐ rating
               </Badge>
-              
-              <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+
+              <h1 className="text-2xl font-bold text-white mb-6 leading-tight">
                 Track & Manage Your <br />
                 <span className="bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent"> Bluesky </span>
                 <br />Network in Real-Time
               </h1>
 
-              <div className="text-xl text-white/80 mb-12 max-w-2xl mx-auto">
+              <div className="text-lg text-white/80 mb-12 max-w-2xl mx-auto">
                 The must-have companion app for Bluesky. Real-time insights that help you understand your network better.
               </div>
 
@@ -283,10 +283,10 @@ const LandingPage = () => {
         <section id="features" className="py-20">
           <div className="container mx-auto px-6">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-white mb-4">
+              <h2 className="text-xl font-bold text-white mb-4">
                 Powerful Features That Deliver Results
               </h2>
-              <p className="text-xl text-white/70">
+              <p className="text-lg text-white/70">
                 Everything you need to take control of your Bluesky network
               </p>
             </div>
@@ -311,7 +311,7 @@ const LandingPage = () => {
                       </div>
                       <div className="flex-1">
                         <h3 className="text-lg font-semibold text-white mb-2">{feature.title}</h3>
-                        <p className="text-white/80">{feature.description}</p>
+                        <p className="text-white/80 text-md">{feature.description}</p>
                           {feature.hasGuide && (
                            <Link 
                              to={`/guides/${feature.guideId}`}
@@ -346,7 +346,7 @@ const LandingPage = () => {
         <section className="py-20 bg-white/5">
           <div className="container mx-auto px-6">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-white mb-4">
+              <h2 className="text-xl font-bold text-white mb-4">
                 Real Reviews from App Stores
               </h2>
               <div className="flex items-center justify-center space-x-2 mb-8">
@@ -409,10 +409,10 @@ const LandingPage = () => {
         <section className="py-20">
           <div className="container mx-auto px-6">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-white mb-4">
+              <h2 className="text-xl font-bold text-white mb-4">
                 Learn How to Use the Bluesky Tracker
               </h2>
-              <p className="text-xl text-white/70">
+              <p className="text-lg text-white/70">
                 Get the most out of your Bluesky experience with our step-by-step guides
               </p>
             </div>
@@ -480,7 +480,7 @@ const LandingPage = () => {
         <section id="faq" className="pb-20">
           <div className="container mx-auto px-6">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-white mb-4">
+              <h2 className="text-xl font-bold text-white mb-4">
                 Frequently Asked Questions
               </h2>
             </div>
@@ -533,10 +533,10 @@ const LandingPage = () => {
           <div className="container mx-auto px-6 text-center">
             <div className="max-w-3xl mx-auto">
               <Trophy className="w-16 h-16 text-yellow-400 mx-auto mb-6" />
-              <h2 className="text-4xl font-bold text-white mb-4">
+              <h2 className="text-xl font-bold text-white mb-4">
                 Ready to Master Your Bluesky Network?
               </h2>
-              <p className="text-xl text-white/80 mb-8">
+              <p className="text-lg text-white/80 mb-8">
                 Join 15,000+ users who trust Tracker - Manager for Bluesky to track and manage their Bluesky presence. 
                 Download now and see results immediately.
               </p>
@@ -586,10 +586,10 @@ const LandingPage = () => {
         <section id="changelog" className="py-20 bg-white/5">
           <div className="container mx-auto px-6">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-white mb-4">
+              <h2 className="text-xl font-bold text-white mb-4">
                 What's New
               </h2>
-              <p className="text-xl text-white/70">
+              <p className="text-lg text-white/70">
                 Track our journey of continuous improvements and new features
               </p>
             </div>
@@ -601,7 +601,7 @@ const LandingPage = () => {
                      <CardHeader>
                        <div className="flex items-center justify-between">
                          <div>
-                           <CardTitle className="text-white text-xl">Version {version.version}</CardTitle>
+                           <CardTitle className="text-white text-lg">Version {version.version}</CardTitle>
                            <p className="text-white/60 text-sm mt-1">{version.date}</p>
                          </div>
                          {version.isLatest && (
@@ -610,20 +610,14 @@ const LandingPage = () => {
                        </div>
                      </CardHeader>
                      <CardContent>
-                       {version.changes.length === 1 && version.changes[0] === "Tracker - Manager for Bluesky goes LIVE." ? (
-                         <p className="text-white/80">
-                           {version.changes[0]}
-                         </p>
-                       ) : (
-                         <ul className="space-y-2 text-white/80">
-                           {version.changes.map((change, changeIndex) => (
-                             <li key={changeIndex} className="flex items-start">
-                               <span className="text-blue-400 mr-2">•</span>
-                               {change}
-                             </li>
-                           ))}
-                         </ul>
-                       )}
+                      <ul className="space-y-2 text-white/80 text-md">
+                        {version.changes.map((change, changeIndex) => (
+                          <li key={changeIndex} className="flex items-start">
+                            <span className="text-blue-400 mr-2">•</span>
+                            {change}
+                          </li>
+                        ))}
+                      </ul>
                      </CardContent>
                    </Card>
                  ))}

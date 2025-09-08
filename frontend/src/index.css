@@ -83,4 +83,71 @@ code {
   body {
     @apply bg-background text-foreground;
     }
+  
+  /* Fix heading font-size override on mobile devices */
+  h1, h2, h3 {
+    font-size: unset !important;
+  }
+  
+  /* H1 - Main title */
+  h1.text-2xl {
+    font-size: 2rem !important;
+    line-height: 2rem !important;
+  }
+  
+  /* H2 - Section titles */
+  h2.text-xl {
+    font-size: 1.5rem !important;
+    line-height: 1.75rem !important;
+  }
+  
+  /* H3 - Feature titles & subtitles */
+  h3.text-lg {
+    font-size: 1rem !important;
+    line-height: 1.75rem !important;
+  }
+  
+  /* Subtitles */
+  .text-lg {
+    font-size: 1rem !important;
+    line-height: 1.75rem !important;
+  }
+  
+  /* Description in features */
+  .text-md {
+    font-size: 0.9rem !important;
+    line-height: 1.5rem !important;
+  }
+  
+  @media (min-width: 768px) {
+    /* H1 - Main title on desktop */
+    h1.text-2xl {
+      font-size: 3rem !important;
+      line-height: 1 !important;
+    }
+  
+    /* H2 - Section titles */
+    h2.text-xl {
+      font-size: 1.5rem !important;
+      line-height: 1.75rem !important;
+    }
+    
+    /* H3 - Feature titles & subtitles */
+    h3.text-lg {
+      font-size: 1.125rem !important;
+      line-height: 1.75rem !important;
+    }
+  
+    /* Subtitles on desktop */
+    .text-lg {
+      font-size: 1.125rem !important;
+      line-height: 1.75rem !important;
+    }
+  
+    /* Description in features */
+    .text-md {
+      font-size: 1rem !important;
+      line-height: 1.5rem !important; 
+    }
+  }
 }

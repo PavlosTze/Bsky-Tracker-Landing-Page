@@ -58,11 +58,11 @@ const Guides = () => {
                   <BookOpen className="w-8 h-8 text-blue-300" />
                 </div>
               </div>
-              <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-                Guides & <br />
-                <span className="bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent">Tutorials</span>
+              <h1 className="text-2xl font-bold text-white mb-6 leading-tight">
+                Guides &
+                <span className="bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent"> Tutorials</span>
               </h1>
-              <div className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+              <div className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
                 Optimize your Bluesky experience with our comprehensive guides. From basic features to advanced tips, 
                 learn everything you need to get the most out of your Bluesky experience using Bsky Tracker.
               </div>
@@ -86,10 +86,10 @@ const Guides = () => {
                             </div>
                             <div className="flex-1">
                               <h3 className="text-lg font-semibold text-white mb-2">{guide.title}</h3>
-                              <p className="text-white/80">{guide.description}</p>
+                              <p className="text-white/80 text-sm">{guide.description}</p>
                             </div>
                           </div>
-                          <div className="flex items-center space-x-2 text-white/60">
+                          <div className="flex items-center space-x-2 text-white/80">
                             <span className="text-sm">View</span>
                             <ArrowRight className="w-4 h-4" />
                           </div>

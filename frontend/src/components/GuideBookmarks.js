@@ -95,12 +95,12 @@ const GuideBookmarks = () => {
                   <Bookmark className="w-8 h-8 text-blue-300" />
                 </div>
               </div>
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+              <h1 className="text-2xl md:text-6xl font-bold text-white mb-6 leading-tight">
                 How to Have <br />
                 <span className="bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent">Bookmarks</span>
                 <br /> on Bluesky
               </h1>
-              <div className="text-xl text-white/80 max-w-2xl mx-auto">
+              <div className="text-lg text-white/80 max-w-2xl mx-auto">
                 Learn how to save and organize your favorite posts on Bluesky using Bsky Tracker. 
                 Never lose important content again with our comprehensive & 100% private bookmarking system.
               </div>
@@ -182,13 +182,13 @@ const GuideBookmarks = () => {
                         </div>
                         <div>
                           <CardTitle className="text-white text-xl">{step.title}</CardTitle>
-                          <p className="text-white/80 mt-1">{step.description}</p>
+                          <p className="text-white/80 mt-1 text-md">{step.description}</p>
                         </div>
                       </div>
                     </CardHeader>
                     <CardContent className="p-6">
                       <div className="space-y-4">
-                        <p className="text-white/80 leading-relaxed">{step.details}</p>
+                        <p className="text-white leading-relaxed text-md">{step.details}</p>
                         
                         <div className="bg-black/20 border border-white/10 rounded-lg p-4">
                           <div className="flex justify-center">

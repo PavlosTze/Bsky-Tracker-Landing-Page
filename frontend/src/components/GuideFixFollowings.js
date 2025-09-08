@@ -69,12 +69,12 @@ const GuideFixFollowings = () => {
                   <Wrench className="w-8 h-8 text-blue-300" />
                 </div>
               </div>
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+              <h1 className="text-2xl md:text-6xl font-bold text-white mb-6 leading-tight">
                 How to Fix <br />
                 <span className="bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent">Following</span>
                 <br /> Count on Bluesky
               </h1>
-              <div className="text-xl text-white/80 max-w-2xl mx-auto">
+              <div className="text-lg text-white/80 max-w-2xl mx-auto">
                 Learn how to correct your inaccurate following count on Bluesky by removing deleted, suspended, and blocked accounts. 
                 Get accurate numbers that match reality with our automated fixing tool and clean your follows in Bluesky.
               </div>
@@ -156,13 +156,13 @@ const GuideFixFollowings = () => {
                         </div>
                         <div>
                           <CardTitle className="text-white text-xl">{step.title}</CardTitle>
-                          <p className="text-white/80 mt-1">{step.description}</p>
+                          <p className="text-white/80 mt-1 text-md">{step.description}</p>
                         </div>
                       </div>
                     </CardHeader>
                     <CardContent className="p-6">
                       <div className="space-y-4">
-                        <p className="text-white/80 leading-relaxed">{step.details}</p>
+                        <p className="text-white leading-relaxed">{step.details}</p>
                         
                         <div className="bg-black/20 border border-white/10 rounded-lg p-4">
                           <div className="flex justify-center">
