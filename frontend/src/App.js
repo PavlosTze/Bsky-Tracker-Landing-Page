@@ -6,7 +6,6 @@ import PrivacyPolicy from "./components/PrivacyPolicy";
 import CSAEPolicy from "./components/CSAEPolicy";
 import NotFound from "./components/NotFound";
 import Guides from "./components/Guides";
-import GuideBookmarks from "./components/GuideBookmarks";
 import GuideFixFollowings from "./components/GuideFixFollowings";
 import ScrollToTop from "./components/ScrollToTop";
 import { SpeedInsights } from "@vercel/speed-insights/react"
@@ -29,7 +28,6 @@ function App() {
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/csae-policy" element={<CSAEPolicy />} />
             <Route path="/guides" element={<Guides />} />
-            <Route path="/guides/bookmarks" element={<GuideBookmarks />} />
             <Route path="/guides/clean-follows-bluesky" element={<GuideFixFollowings />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

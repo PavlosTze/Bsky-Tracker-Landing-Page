@@ -1,8 +1,17 @@
 export const changelogData = [
   {
+    version: "2.8.0",
+    date: "September 9, 2025",
+    isLatest: true,
+    changes: [
+      "New “Lists” section with Lists Blocked By and Starter Packs In",
+      "Support for Bluesky bookmarks"
+    ]
+  },
+  {
     version: "2.7.0",
     date: "September 4, 2025",
-    isLatest: true,
+    isLatest: false,
     changes: [
       "Advanced Filters: Filter users by join date (now supports both before & after)",
       "Bulk Actions: Set a “Stop At” threshold",

@@ -21,7 +21,8 @@ import {
   Bookmark,
   Wrench,
   BookOpen,
-  ArrowRight
+  ArrowRight,
+  List
 } from 'lucide-react';
 import { mockData } from '../data/mock';
 import { changelogData } from '../data/changelog';
@@ -73,16 +74,19 @@ const LandingPage = () => {
       description: "Filter users based on keywords, followers count, follower-to-following ratio, engagement, and activity level."
     },
     {
+      icon: <List className="w-6 h-6" />,
+      title: "Lists & Starter Packs",
+      description: "View lists that have blocked you and discover starter packs you're included in to better understand your Bluesky presence."
+    },
+    {
       icon: <Target className="w-6 h-6" />,
       title: "Bulk Follow & Unfollow",
       description: "Follow or unfollow users in bulk to efficiently manage your Bluesky network."
     },
     {
       icon: <Bookmark className="w-6 h-6" />,
-      title: "Bookmark Posts",
-      description: "Save and organize your favorite Bluesky posts privately with an easy search functionality for better content curation.",
-      hasGuide: true,
-      guideId: "bookmarks"
+      title: "Bookmarks Support & Search",
+      description: "View your saved posts in Bluesky and"
     },
     {
       icon: <BarChart3 className="w-6 h-6" />,
@@ -90,19 +94,14 @@ const LandingPage = () => {
       description: "Detailed metrics for any user's posts including reach, replies, and engagement."
     },
     {
-      icon: <Clock className="w-6 h-6" />,
-      title: "Relationship History",
-      description: "Track when you followed someone and when they followed you back."
+      icon: <History className="w-6 h-6" />,
+      title: "Account & Relationship History",
+      description: "Track when you followed someone and when they followed you back, plus check past usernames for any account to verify identity and name changes."
     },
     {
       icon: <Heart className="w-6 h-6" />,
       title: "Likes Timeline",
       description: "See posts liked by any user on Bluesky, including yourself, to explore interests and engagement patterns."
-    },
-    {
-      icon: <History className="w-6 h-6" />,
-      title: "Handle History",
-      description: "Check past usernames for any account to verify identity and name changes."
     }
   ];
 
@@ -418,27 +417,7 @@ const LandingPage = () => {
             </div>
 
             <div className="max-w-4xl mx-auto">
-              <div className="grid md:grid-cols-2 gap-8">
-                <Link to="/guides/bookmarks" target="_blank" rel="noopener noreferrer" className="block">
-                   <Card className="bg-white/10 border-white/20 backdrop-blur-md hover:bg-white/20 transition-all duration-300 cursor-pointer h-full">
-                    <CardContent className="p-6">
-                      <div className="flex items-start space-x-4">
-                        <div className="p-3 bg-blue-500/20 rounded-lg">
-                          <Bookmark className="w-6 h-6 text-blue-300" />
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="text-lg font-semibold text-white mb-2">How to Have Bookmarks on Bluesky</h3>
-                          <p className="text-white/80 mb-4">Learn how to create and manage bookmarks for your favorite posts on Bluesky using the app.</p>
-                          <div className="flex items-center text-blue-300 text-sm">
-                            <span>View Guide</span>
-                            <ArrowRight className="w-4 h-4 ml-2" />
-                          </div>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </Link>
-
+              <div className="grid md:grid-cols-1 gap-8">
                   <Link to="/guides/clean-follows-bluesky" target="_blank" rel="noopener noreferrer" className="block">
                    <Card className="bg-white/10 border-white/20 backdrop-blur-md hover:bg-white/20 transition-all duration-300 cursor-pointer h-full">
                     <CardContent className="p-6">
@@ -495,18 +474,6 @@ const LandingPage = () => {
                     <AccordionContent className="text-white/80">
                       <div>
                         {item.answer}
-                          {item.question.includes("bookmark") && (
-                           <div className="mt-4">
-                             <Link 
-                               to="/guides/bookmarks"
-                               target="_blank"
-                               rel="noopener noreferrer"
-                               className="inline-flex items-center text-blue-300 hover:text-blue-200 text-sm transition-colors"
-                             >
-                               Learn how to use bookmarks <ArrowRight className="w-3 h-3 ml-1" />
-                             </Link>
-                           </div>
-                         )}
                                                  {item.question.includes("following") && (
                            <div className="mt-4">
                              <Link 
