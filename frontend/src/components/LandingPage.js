@@ -76,7 +76,7 @@ const LandingPage = () => {
     {
       icon: <List className="w-6 h-6" />,
       title: "Lists & Starter Packs",
-      description: "View lists that have blocked you and discover starter packs you're included in to better understand your Bluesky presence."
+      description: "View lists that have blocked you and discover starter packs you're included in or lists you are blocking/muting to better understand your Bluesky presence."
     },
     {
       icon: <Target className="w-6 h-6" />,
@@ -86,7 +86,7 @@ const LandingPage = () => {
     {
       icon: <Bookmark className="w-6 h-6" />,
       title: "Bookmarks Support & Search",
-      description: "View your saved posts in Bluesky and"
+      description: "View your saved posts in Bluesky and easily search for those posts by keywords or author."
     },
     {
       icon: <BarChart3 className="w-6 h-6" />,

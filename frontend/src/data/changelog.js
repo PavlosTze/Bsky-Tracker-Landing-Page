@@ -1,8 +1,19 @@
 export const changelogData = [
   {
+    version: "2.10.0",
+    date: "September 19, 2025",
+    isLatest: true,
+    changes: [
+      "New lists: “Lists you're muting” and “Lists you're blocking”",
+      "Bookmark stats added to Posts and their Stats & Analysis",
+      "Bulk actions now available on search results",
+      "Advanced filters: filter by both before and after a date you followed"
+    ]
+  },
+  {
     version: "2.8.0",
     date: "September 9, 2025",
-    isLatest: true,
+    isLatest: false,
     changes: [
       "New “Lists” section with Lists Blocked By and Starter Packs In",
       "Support for Bluesky bookmarks"
