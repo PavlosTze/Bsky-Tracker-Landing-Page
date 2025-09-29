@@ -1,8 +1,17 @@
 export const changelogData = [
   {
+    version: "2.11.1",
+    date: "September 29, 2025",
+    isLatest: true,
+    changes: [
+      "Retry mechanism in some common errors from the Bluesky server",
+      "Minor other fixes & improvements"
+    ]
+  },
+  {
     version: "2.10.0",
     date: "September 19, 2025",
-    isLatest: true,
+    isLatest: false,
     changes: [
       "New lists: “Lists you're muting” and “Lists you're blocking”",
       "Bookmark stats added to Posts and their Stats & Analysis",
