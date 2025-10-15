@@ -59,7 +59,7 @@ const LandingPage = () => {
     {
       icon: <Wrench className="w-6 h-6" />,
       title: "Fix Followings",
-      description: "Automatically remove deleted, suspended, or blocked accounts to correct inaccurate Bluesky following counts.",
+      description: "Automatically remove deleted, suspended, deactivated or blocked accounts to correct inaccurate Bluesky following counts.",
       hasGuide: true,
       guideId: "clean-follows-bluesky"
     },

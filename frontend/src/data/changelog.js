@@ -1,8 +1,17 @@
 export const changelogData = [
   {
+    version: "2.12.0",
+    date: "October 16, 2025",
+    isLatest: true,
+    changes: [
+      "Allow full control over the “Fix Followings” feature",
+      "Minor other fixes & improvements"
+    ]
+  },
+  {
     version: "2.11.1",
     date: "September 29, 2025",
-    isLatest: true,
+    isLatest: false,
     changes: [
       "Retry mechanism in some common errors from the Bluesky server",
       "Minor other fixes & improvements"

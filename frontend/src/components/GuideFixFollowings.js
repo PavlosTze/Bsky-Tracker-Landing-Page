@@ -75,7 +75,7 @@ const GuideFixFollowings = () => {
                 <br /> Count on Bluesky
               </h1>
               <div className="text-lg text-white/80 max-w-2xl mx-auto">
-                Learn how to correct your inaccurate following count on Bluesky by removing deleted, suspended, and blocked accounts. 
+                Learn how to correct your inaccurate following count on Bluesky by removing deleted, suspended, deactivated and blocked accounts. 
                 Get accurate numbers that match reality with our automated fixing tool and clean your follows in Bluesky.
               </div>
             </div>
@@ -106,7 +106,7 @@ const GuideFixFollowings = () => {
                         <div>
                           <h4 className="text-red-200 font-medium mb-2">The Bluesky Bug</h4>
                           <p className="text-red-200 text-sm leading-relaxed">
-                            Bluesky has a known bug where deleted, suspended, and blocked accounts are still counted in the total number of followings shown in their official apps. This creates inaccurate following counts that don't reflect reality.
+                            Bluesky has a known bug where deleted, suspended, deactivated and blocked accounts are still counted in the total number of followings shown in their official apps. This creates inaccurate following counts that don't reflect reality.
                           </p>
                         </div>
                       </div>
@@ -118,7 +118,7 @@ const GuideFixFollowings = () => {
                         <div>
                           <h4 className="text-green-200 font-medium mb-2">Our Solution</h4>
                           <p className="text-green-200 text-sm leading-relaxed">
-                            Bluesky Tracker provides accurate following counts by filtering out these problematic accounts. Our "Fix Followings" feature automatically identifies and helps you remove deleted, suspended, and blocked accounts from your following list and clean it up.
+                            Bluesky Tracker provides accurate following counts by filtering out these problematic accounts. Our "Fix Followings" feature automatically identifies and helps you remove deleted, suspended, deactivated and blocked accounts from your following list and clean it up.
                           </p>
                         </div>
                       </div>
@@ -204,7 +204,7 @@ const GuideFixFollowings = () => {
                       <div className="bg-green-500/10 border border-green-400/20 rounded-lg p-4">
                         <h4 className="text-green-200 font-medium mb-2">Automatic Detection</h4>
                         <p className="text-green-200 text-sm">
-                          The app automatically scans your following list to identify accounts that are deleted, suspended, or have blocked you.
+                          The app automatically scans your following list to identify accounts that are deleted, suspended, deactivated or blocked by you.
                         </p>
                       </div>
                       <div className="bg-blue-500/10 border border-blue-400/20 rounded-lg p-4">
