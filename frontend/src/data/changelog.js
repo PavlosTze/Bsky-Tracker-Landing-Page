@@ -1,8 +1,17 @@
 export const changelogData = [
   {
+    version: "2.13.1",
+    date: "November 5, 2025",
+    isLatest: true,
+    changes: [
+      "Added \"Whitelists\" filter to Advanced Filters",
+      "Search within your own posts or any user's"
+    ]
+  },
+  {
     version: "2.12.0",
     date: "October 16, 2025",
-    isLatest: true,
+    isLatest: false,
     changes: [
       "Allow full control over the “Fix Followings” feature",
       "Minor other fixes & improvements"
