@@ -1,8 +1,17 @@
 export const changelogData = [
   {
+    version: "2.20.0",
+    date: "November 21, 2025",
+    isLatest: true,
+    changes: [
+      "Search History to find your recent user searches",
+      "Better handling of forced logouts to not lose any user data"
+    ]
+  },
+  {
     version: "2.13.1",
     date: "November 5, 2025",
-    isLatest: true,
+    isLatest: false,
     changes: [
       "Added \"Whitelists\" filter to Advanced Filters",
       "Search within your own posts or any user's"
