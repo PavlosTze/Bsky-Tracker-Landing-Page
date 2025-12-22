@@ -1,8 +1,20 @@
 export const changelogData = [
   {
+    version: "2.22.0",
+    date: "Decemer 15, 2025",
+    isLatest: true,
+    changes: [
+      "Advanced Filters now available in Unfollowed and Muted screens",
+      "Verification status shown for users and added as a filter",
+      "Bulk-remove accounts from Whitelists via Advanced Filters",
+      "Improved error handling and reliability in filters",
+      "Advanced Filters unlock now persists for 10 minutes after watching an ad"
+    ]
+  },
+  {
     version: "2.20.0",
     date: "November 21, 2025",
-    isLatest: true,
+    isLatest: false,
     changes: [
       "Search History to find your recent user searches",
       "Better handling of forced logouts to not lose any user data"
