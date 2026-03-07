@@ -69,6 +69,11 @@ const LandingPage = () => {
       description: "See who has blocked you and manage your blocks and mutes effectively."
     },
     {
+      icon: <BarChart3 className="w-6 h-6" />,
+      title: "Interactive Charts & Trends",
+      description: "Understand your growth at a glance with interactive charts for followers, followings, and engagement over time."
+    },
+    {
       icon: <Filter className="w-6 h-6" />,
       title: "Advanced Filtering",
       description: "Filter users based on keywords, followers count, follower-to-following ratio, engagement, and activity level."
@@ -146,7 +151,7 @@ const LandingPage = () => {
           <div className="container mx-auto px-6 relative z-10">
             <div className="text-center max-w-6xl mx-auto">
               <Badge className="mb-6 bg-blue-500/20 text-blue-200 border-blue-400/30">
-                15K+ downloads • 4.7⭐ rating
+                20K+ downloads • 4.8⭐ rating
               </Badge>
 
               <h1 className="text-2xl font-bold text-white mb-6 leading-tight">
@@ -258,19 +263,19 @@ const LandingPage = () => {
               {/* Download & User Stats */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-white">15,000+</div>
+                  <div className="text-2xl font-bold text-white">20,000+</div>
                   <div className="text-sm text-white/70">Downloads</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-white">4,500+</div>
+                  <div className="text-2xl font-bold text-white">5,000+</div>
                   <div className="text-sm text-white/70">Active Users</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-white">4.7⭐</div>
+                  <div className="text-2xl font-bold text-white">4.8⭐</div>
                   <div className="text-sm text-white/70">App Rating</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-white">450+</div>
+                  <div className="text-2xl font-bold text-white">500+</div>
                   <div className="text-sm text-white/70">Reviews</div>
                 </div>
               </div>
@@ -352,7 +357,7 @@ const LandingPage = () => {
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-6 h-6 text-yellow-400 fill-current" />
                 ))}
-                <span className="text-white/70 ml-2">4.7/5 from 450+ reviews</span>
+                <span className="text-white/70 ml-2">4.8/5 from 500+ reviews</span>
               </div>
             </div>
 
@@ -504,7 +509,7 @@ const LandingPage = () => {
                 Ready to Master Your Bluesky Network?
               </h2>
               <p className="text-lg text-white/80 mb-8">
-                Join 15,000+ users who trust Tracker - Manager for Bluesky to track and manage their Bluesky presence. 
+                Join 20,000+ users who trust Tracker - Manager for Bluesky to track and manage their Bluesky presence. 
                 Download now and see results immediately.
               </p>
               

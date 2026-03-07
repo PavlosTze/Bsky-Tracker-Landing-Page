@@ -1,8 +1,33 @@
 export const changelogData = [
   {
+    version: "3.0.4",
+    date: "March 7, 2025",
+    isLatest: true,
+    changes: [
+      "Charts now include totals for the selected period",
+      "Improved compatibility with different PDS setups such as eurosky.social"
+    ]
+  },
+  {
+    version: "3.0.3",
+    date: "February 14, 2025",
+    isLatest: false,
+    changes: [
+      "New Charts tab: Track your network for the last 30 days with visual insights."
+    ]
+  },
+  {
+    version: "2.23.0",
+    date: "January 23, 2025",
+    isLatest: false,
+    changes: [
+      "New Advanced Filter: filter users by latest like date"
+    ]
+  },
+  {
     version: "2.22.0",
     date: "Decemer 15, 2025",
-    isLatest: true,
+    isLatest: false,
     changes: [
       "Advanced Filters now available in Unfollowed and Muted screens",
       "Verification status shown for users and added as a filter",
