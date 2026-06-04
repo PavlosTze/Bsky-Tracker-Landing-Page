@@ -1,8 +1,27 @@
 export const changelogData = [
   {
-    version: "3.0.4",
-    date: "March 7, 2025",
+    version: "3.2.0",
+    date: "June 2, 2026",
     isLatest: true,
+    changes: [
+      "Minor fixes & improvements"
+    ]
+  },
+  {
+    version: "3.1.0",
+    date: "April 2, 2026",
+    isLatest: false,
+    changes: [
+      "[Reports] Get daily, weekly, and monthly breakdowns of your Bluesky activity",
+      "[Reports] Track follower growth, posts, and performance over time",
+      "[Reports] Discover insights like your best growth days and trends",
+      "[Reports] Get notified when your daily report is ready"
+    ]
+  },
+  {
+    version: "3.0.4",
+    date: "March 7, 2026",
+    isLatest: false,
     changes: [
       "Charts now include totals for the selected period",
       "Improved compatibility with different PDS setups such as eurosky.social"
@@ -10,7 +29,7 @@ export const changelogData = [
   },
   {
     version: "3.0.3",
-    date: "February 14, 2025",
+    date: "February 14, 2026",
     isLatest: false,
     changes: [
       "New Charts tab: Track your network for the last 30 days with visual insights."
@@ -18,7 +37,7 @@ export const changelogData = [
   },
   {
     version: "2.23.0",
-    date: "January 23, 2025",
+    date: "January 23, 2026",
     isLatest: false,
     changes: [
       "New Advanced Filter: filter users by latest like date"
