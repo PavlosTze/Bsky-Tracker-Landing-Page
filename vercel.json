@@ -1,13 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "cd frontend && yarn install && yarn build",
-  "outputDirectory": "frontend/build",
-  "framework": "create-react-app",
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ],
+  "buildCommand": "yarn build",
+  "framework": "nextjs",
   "installCommand": "yarn install"
 }

@@ -26,7 +26,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/csae-policy": {
+    "/guides/clean-follows-bluesky": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -39,8 +39,8 @@
         }
       ],
       "initialRevalidateSeconds": false,
-      "srcRoute": "/csae-policy",
-      "dataRoute": "/csae-policy.rsc",
+      "srcRoute": "/guides/clean-follows-bluesky",
+      "dataRoute": "/guides/clean-follows-bluesky.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -74,7 +74,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/guides/clean-follows-bluesky": {
+    "/": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -87,8 +87,8 @@
         }
       ],
       "initialRevalidateSeconds": false,
-      "srcRoute": "/guides/clean-follows-bluesky",
-      "dataRoute": "/guides/clean-follows-bluesky.rsc",
+      "srcRoute": "/",
+      "dataRoute": "/index.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -122,7 +122,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/": {
+    "/csae-policy": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -135,8 +135,8 @@
         }
       ],
       "initialRevalidateSeconds": false,
-      "srcRoute": "/",
-      "dataRoute": "/index.rsc",
+      "srcRoute": "/csae-policy",
+      "dataRoute": "/csae-policy.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
