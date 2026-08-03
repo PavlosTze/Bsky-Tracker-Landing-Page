@@ -181,7 +181,7 @@ const LandingPage = () => {
                                             <CarouselItem key={index} className="pl-2 basis-full">
                                                 <button
                                                     type="button"
-                                                    className="w-full h-[350px] flex items-center justify-center bg-black/20 rounded-2xl shadow-2xl overflow-hidden"
+                                                    className="w-full h-[300px] flex items-center justify-center bg-black/20 rounded-2xl shadow-2xl overflow-hidden"
                                                     onClick={() => openLightbox(index)}
                                                 >
                                                     <img
