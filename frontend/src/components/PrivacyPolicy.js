@@ -138,7 +138,7 @@ const PrivacyPolicy = () => {
               </p>
               <p className="text-white/80 mb-6">
                 Email: tzegianapps@gmail.com<br />
-                Bluesky: @bluesky-tracker.bsky.social
+                Bluesky: @blueskytracker.app
               </p>
 
               <div className="border-t border-white/20 pt-6 mt-8">

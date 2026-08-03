@@ -105,8 +105,7 @@ const CSAEPolicy = () => {
               <ul className="text-white/80 mb-6 list-disc pl-6">
                 <li>In-app reporting feature</li>
                 <li>Email: tzegianapps@gmail.com</li>
-                <li>Bluesky: @bluesky-tracker.bsky.social</li>
-                <li>Direct reporting to Bluesky's moderation team</li>
+                <li>Bluesky: @blueskytracker.app</li>
               </ul>
 
               <h2 className="text-2xl font-bold text-white mb-4">5. Review Process</h2>
@@ -140,7 +139,7 @@ const CSAEPolicy = () => {
               </p>
               <p className="text-white/80 mb-6">
                 Email: tzegianapps@gmail.com<br />
-                Bluesky: @bluesky-tracker.bsky.social<br />
+                Bluesky: @blueskytracker.app<br />
                 Emergency: For immediate threats, contact local law enforcement
               </p>
 
