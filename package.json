@@ -8,7 +8,7 @@
   "scripts": {
     "build": "cd frontend && yarn build",
     "start": "cd frontend && yarn start",
-    "dev": "cd frontend && yarn start"
+    "dev": "cd frontend && yarn dev"
   },
   "packageManager": "yarn@1.22.22",
   "dependencies": {

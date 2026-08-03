@@ -1,15 +1,20 @@
+'use client';
+
 import React from 'react';
+import Link from 'next/link';
 import { Button } from './ui/button';
 import { 
   ExternalLink,
   Download,
   Menu
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import logo from '../assets/logo.webp';
+import { getImageSrc } from '../lib/images';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from './ui/sheet';
 
 const Header = ({ showGuides = true, showFeatures = true, onDownloadClick }) => {
+  const logoSrc = getImageSrc(logo);
+
   const scrollToCTA = () => {
     document.querySelector('#cta-section')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -32,16 +37,16 @@ const Header = ({ showGuides = true, showFeatures = true, onDownloadClick }) => 
       <div className="container mx-auto px-6 py-3 sm:py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2 md:space-x-3">
-            <Link to="/" className="block">
+            <Link href="/" className="block">
               <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl overflow-hidden">
                 <img
-                  src={logo}
+                  src={logoSrc}
                   alt="Bsky Tracker"
                   className="w-full h-full object-contain"
                 />
               </div>
             </Link>
-            <Link to="/" className="block">
+            <Link href="/" className="block">
               <span className="text-base lg:text-lg font-bold text-white leading-tight hover:text-blue-300 transition-colors">Tracker - Manager for Bluesky</span>
             </Link>
           </div>

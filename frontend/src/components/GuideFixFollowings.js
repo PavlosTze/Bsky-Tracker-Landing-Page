@@ -1,5 +1,6 @@
+'use client';
+
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { 
@@ -11,19 +12,16 @@ import {
   XCircle,
   AlertTriangle
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import openFixFollowings from '../assets/open_fix_followings.webp';
 import fixFollowingsScreen from '../assets/fix_followings_screen.webp';
 import Header from './Header';
 import Footer from './Footer';
 import DownloadDialog from './DownloadDialog';
+import { getImageSrc } from '../lib/images';
 
 const GuideFixFollowings = () => {
   const [downloadDialogOpen, setDownloadDialogOpen] = useState(false);
-
-  const pageTitle = 'How to Fix Following Count on Bluesky | Bsky Tracker';
-  const pageDescription = 'Learn how to fix inaccurate following counts on Bluesky using Bsky Tracker. Remove deleted, suspended, deactivated, and blocked accounts to clean your follows.';
-  const pageUrl = 'https://blueskytracker.app/guides/clean-follows-bluesky';
 
   const steps = [
     {
@@ -31,7 +29,7 @@ const GuideFixFollowings = () => {
       title: "Access the Fix Followings Feature",
       description: "Open the app and navigate to the Fix Followings section in the home screen.",
       details: "The Fix Followings feature is located in menu at the top right corner of the home screen. Tap on the 'Fix Followings to access the feature that helps you correct inaccurate following counts.",
-      image: openFixFollowings,
+      image: getImageSrc(openFixFollowings),
       imageAlt: "Screenshot showing the Fix Followings screen access in Bluesky Tracker app"
     },
     {
@@ -39,59 +37,10 @@ const GuideFixFollowings = () => {
       title: "Start Fixing Your Followings",
       description: "On the Fix Followings screen, tap the 'Fix Now' button to begin the process.",
       details: "Once you're on the Fix Followings screen, you'll see a 'Fix Now' button. Tap on it to begin the process of identifying, removing deleted, suspended, or blocked accounts from your following list and clean your follows.",
-      image: fixFollowingsScreen,
+      image: getImageSrc(fixFollowingsScreen),
       imageAlt: "Screenshot of Fix Followings screen with Start Fixing button"
     }
   ];
-
-  const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'HowTo',
-    name: 'How to Fix Following Count on Bluesky',
-    description: pageDescription,
-    url: pageUrl,
-    image: 'https://blueskytracker.app/banner.png',
-    publisher: {
-      '@type': 'Organization',
-      name: 'Bsky Tracker',
-      url: 'https://blueskytracker.app/'
-    },
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': pageUrl
-    },
-    step: steps.map((step) => ({
-      '@type': 'HowToStep',
-      position: step.id,
-      name: step.title,
-      text: `${step.description} ${step.details}`
-    }))
-  };
-
-  const breadcrumbData = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Home',
-        item: 'https://blueskytracker.app/'
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'Guides',
-        item: 'https://blueskytracker.app/guides'
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name: 'How to Fix Following Count on Bluesky',
-        item: pageUrl
-      }
-    ]
-  };
 
   const handleDownloadClick = () => {
     setDownloadDialogOpen(true);
@@ -99,33 +48,6 @@ const GuideFixFollowings = () => {
 
   return (
     <>
-      <Helmet>
-        <title>{pageTitle}</title>
-        <meta name="description" content={pageDescription} />
-        <meta name="keywords" content="bluesky fix followings, cleanfollow, bluesky cleanfollow, bluesky following count, bsky tracker fix followings, bluesky deleted accounts" />
-        <link rel="canonical" href={pageUrl} />
-
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content={pageUrl} />
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDescription} />
-        <meta property="og:image" content="https://blueskytracker.app/banner.png" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:site_name" content="Bluesky Tracker" />
-        <meta property="og:locale" content="en_US" />
-
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content={pageUrl} />
-        <meta property="twitter:title" content={pageTitle} />
-        <meta property="twitter:description" content={pageDescription} />
-        <meta property="twitter:image" content="https://blueskytracker.app/banner.png" />
-        <meta property="twitter:image:alt" content="How to fix following count on Bluesky with Bsky Tracker" />
-
-        <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
-        <script type="application/ld+json">{JSON.stringify(breadcrumbData)}</script>
-      </Helmet>
-
       <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
         <Header 
           showGuides={true} 
@@ -314,7 +236,7 @@ const GuideFixFollowings = () => {
               <div className="bg-white/10 rounded-lg border border-white/20 backdrop-blur-md p-6">
                 <h3 className="text-white text-center text-lg font-semibold mb-4">Ready to explore more guides?</h3>
                 <div className="flex justify-center">
-                  <Link to="/guides">
+                  <Link href="/guides">
                     <Button variant="outline" className="border-white/30 text-white hover:bg-white/10">
                       <ArrowLeft className="w-4 h-4 mr-2" />
                       Back to All Guides

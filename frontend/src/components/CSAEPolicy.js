@@ -1,33 +1,18 @@
+'use client';
+
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import { useRouter } from 'next/navigation';
 import { Button } from './ui/button';
 import { ArrowLeft } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.webp';
+import { getImageSrc } from '../lib/images';
 
 const CSAEPolicy = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
+  const logoSrc = getImageSrc(logo);
 
   return (
     <>
-      <Helmet>
-        <title>CSAE Policy | Bsky Tracker</title>
-        <meta name="description" content="Content Safety and Abuse Enforcement Policy for Tracker - Manager for Bluesky. Learn about our content moderation and safety guidelines." />
-        <link rel="canonical" href="https://blueskytracker.app/csae-policy" />
-        
-        {/* Open Graph / Facebook */}
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://blueskytracker.app/csae-policy" />
-        <meta property="og:title" content="CSAE Policy | Bsky Tracker" />
-        <meta property="og:description" content="Content Safety and Abuse Enforcement Policy for Tracker - Manager for Bluesky. Learn about our content moderation and safety guidelines." />
-        <meta property="og:site_name" content="Bluesky Tracker" />
-        
-        {/* Twitter */}
-        <meta property="twitter:card" content="summary" />
-        <meta property="twitter:url" content="https://blueskytracker.app/csae-policy" />
-        <meta property="twitter:title" content="CSAE Policy | Bsky Tracker" />
-        <meta property="twitter:description" content="Content Safety and Abuse Enforcement Policy for Tracker - Manager for Bluesky. Learn about our content moderation and safety guidelines." />
-      </Helmet>
       <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
       {/* Header */}
       <header className="relative z-50 bg-white/10 backdrop-blur-md border-b border-white/10">
@@ -37,7 +22,7 @@ const CSAEPolicy = () => {
               <Button 
                 variant="ghost" 
                 className="text-white hover:bg-white/10"
-                onClick={() => navigate('/')}
+                onClick={() => router.push('/')}
               >
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Back to Home
@@ -46,7 +31,7 @@ const CSAEPolicy = () => {
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 rounded-xl flex items-center justify-center overflow-hidden">
                 <img 
-                  src={logo}
+                  src={logoSrc}
                   alt="Bsky Tracker Logo"
                   className="w-full h-full object-cover"
                 />

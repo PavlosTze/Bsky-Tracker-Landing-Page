@@ -1,14 +1,19 @@
+'use client';
+
 import React from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Button } from './ui/button';
 import { Smartphone } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.webp';
+import { getImageSrc } from '../lib/images';
 
 const Footer = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
+  const logoSrc = getImageSrc(logo);
 
   const handleFeaturesClick = () => {
-    navigate('/');
+    router.push('/');
     // Use setTimeout to ensure the page has loaded before scrolling
     setTimeout(() => {
       // Temporarily enable smooth scrolling for this specific scroll
@@ -26,7 +31,7 @@ const Footer = () => {
   };
 
   const handleFAQClick = () => {
-    navigate('/');
+    router.push('/');
     // Use setTimeout to ensure the page has loaded before scrolling
     setTimeout(() => {
       // Temporarily enable smooth scrolling for this specific scroll
@@ -51,7 +56,7 @@ const Footer = () => {
             <div className="flex items-center space-x-3 mb-4">
               <div className="w-8 h-8 rounded-lg overflow-hidden">
                 <img
-                  src={logo}
+                  src={logoSrc}
                   alt="Bsky Tracker"
                   className="w-full h-full object-contain"
                 />
@@ -67,7 +72,7 @@ const Footer = () => {
             <h4 className="text-white font-semibold mb-4">Product</h4>
             <ul className="space-y-2 text-white/70 text-sm">
               <li><button onClick={handleFeaturesClick} className="hover:text-white text-left">Features</button></li>
-              <li><a href="/guides" target="_blank" rel="noopener noreferrer" className="hover:text-white">Guides & Tutorials</a></li>
+              <li><Link href="/guides" target="_blank" rel="noopener noreferrer" className="hover:text-white">Guides & Tutorials</Link></li>
               <li><button onClick={handleFAQClick} className="hover:text-white text-left">FAQ</button></li>
             </ul>
           </div>
@@ -76,10 +81,10 @@ const Footer = () => {
             <h4 className="text-white font-semibold mb-4">Support</h4>
             <ul className="space-y-2 text-white/70 text-sm">
               <li><a href="https://bsky.app/profile/blueskytracker.app" target="_blank" rel="noopener noreferrer" className="hover:text-white">Find me on Bluesky</a></li>
-              <li><a href="/guides" target="_blank" rel="noopener noreferrer" className="hover:text-white">Guides & Tutorials</a></li>
+              <li><Link href="/guides" target="_blank" rel="noopener noreferrer" className="hover:text-white">Guides & Tutorials</Link></li>
               <li><a href="mailto:tzegianapps@gmail.com" className="hover:text-white">Contact</a></li>
-              <li><a href="/privacy-policy" target="_blank" rel="noopener noreferrer" className="hover:text-white">Privacy Policy</a></li>
-              <li><a href="/csae-policy" target="_blank" rel="noopener noreferrer" className="hover:text-white">CSAE Policy</a></li>
+              <li><Link href="/privacy-policy" target="_blank" rel="noopener noreferrer" className="hover:text-white">Privacy Policy</Link></li>
+              <li><Link href="/csae-policy" target="_blank" rel="noopener noreferrer" className="hover:text-white">CSAE Policy</Link></li>
             </ul>
           </div>
           

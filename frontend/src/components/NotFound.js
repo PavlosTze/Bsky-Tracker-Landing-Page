@@ -1,30 +1,17 @@
+'use client';
+
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Button } from './ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import logo from '../assets/logo.webp';
+import { getImageSrc } from '../lib/images';
 
 const NotFound = () => {
+  const logoSrc = getImageSrc(logo);
+
   return (
     <>
-      <Helmet>
-        <title>Page Not Found | Bsky Tracker</title>
-        <meta name="description" content="The page you're looking for could not be found. Return to the Bsky Tracker homepage." />
-        
-        {/* Open Graph / Facebook */}
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://blueskytracker.app/" />
-        <meta property="og:title" content="Page Not Found | Bsky Tracker" />
-        <meta property="og:description" content="The page you're looking for could not be found. Return to the Bsky Tracker homepage." />
-        <meta property="og:site_name" content="Bluesky Tracker" />
-        
-        {/* Twitter */}
-        <meta property="twitter:card" content="summary" />
-        <meta property="twitter:url" content="https://blueskytracker.app/" />
-        <meta property="twitter:title" content="Page Not Found | Bsky Tracker" />
-        <meta property="twitter:description" content="The page you're looking for could not be found. Return to the Bsky Tracker homepage." />
-      </Helmet>
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center p-4">
       <div className="max-w-md w-full">
         <Card className="shadow-2xl border-0 bg-white/80 backdrop-blur-sm">
@@ -48,8 +35,8 @@ const NotFound = () => {
             
                          <div className="flex flex-col sm:flex-row gap-3 justify-center">
                <Button asChild className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-medium px-6 py-2 rounded-lg transition-all duration-200 transform hover:scale-105">
-                 <Link to="/" className="flex items-center gap-2">
-                   <img src={logo} alt="Bsky Tracker Logo" className="w-5 h-5" />
+                  <Link href="/" className="flex items-center gap-2">
+                    <img src={logoSrc} alt="Bsky Tracker Logo" className="w-5 h-5" />
                    Go Home
                  </Link>
                </Button>
@@ -66,7 +53,7 @@ const NotFound = () => {
             <div className="pt-4 border-t border-gray-200">
               <p className="text-xs text-gray-400">
                 Need help? Check out our{' '}
-                <Link to="/privacy-policy" className="text-blue-500 hover:text-blue-600 underline">
+                <Link href="/privacy-policy" className="text-blue-500 hover:text-blue-600 underline">
                   Privacy Policy
                 </Link>
               </p>

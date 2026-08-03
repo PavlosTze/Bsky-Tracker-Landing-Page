@@ -1,6 +1,7 @@
+'use client';
+
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Card, CardContent } from './ui/card';
 import { BookOpen, ArrowRight, Wrench } from 'lucide-react';
 import Header from './Header';
@@ -9,10 +10,6 @@ import DownloadDialog from './DownloadDialog';
 
 const Guides = () => {
   const [downloadDialogOpen, setDownloadDialogOpen] = useState(false);
-
-  const pageTitle = 'Guides & Tutorials | Bsky Tracker';
-  const pageDescription = 'Learn how to use Bsky Tracker effectively with Bluesky guides and tutorials for fixing followings, cleaning your network, and managing your account.';
-  const pageUrl = 'https://blueskytracker.app/guides';
 
   const guides = [
     {
@@ -23,65 +20,12 @@ const Guides = () => {
     }
   ];
 
-  const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'CollectionPage',
-    name: pageTitle,
-    description: pageDescription,
-    url: pageUrl,
-    isPartOf: {
-      '@type': 'WebSite',
-      name: 'Bsky Tracker',
-      url: 'https://blueskytracker.app/'
-    },
-    mainEntity: {
-      '@type': 'ItemList',
-      itemListElement: guides.map((guide, index) => ({
-        '@type': 'ListItem',
-        position: index + 1,
-        name: guide.title,
-        description: guide.description,
-        url: `https://blueskytracker.app/guides/${guide.id}`
-      }))
-    }
-  };
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   const handleDownloadClick = () => {
     setDownloadDialogOpen(true);
   };
 
   return (
     <>
-      <Helmet>
-        <title>{pageTitle}</title>
-        <meta name="description" content={pageDescription} />
-        <meta name="keywords" content="bluesky guides, bluesky tutorials, bsky tracker help, bluesky tips" />
-        <link rel="canonical" href={pageUrl} />
-
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={pageUrl} />
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDescription} />
-        <meta property="og:image" content="https://blueskytracker.app/banner.png" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:site_name" content="Bluesky Tracker" />
-        <meta property="og:locale" content="en_US" />
-
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content={pageUrl} />
-        <meta property="twitter:title" content={pageTitle} />
-        <meta property="twitter:description" content={pageDescription} />
-        <meta property="twitter:image" content="https://blueskytracker.app/banner.png" />
-        <meta property="twitter:image:alt" content="Bluesky Tracker guides and tutorials" />
-
-        <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
-      </Helmet>
-
       <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
         <Header 
           showGuides={true} 
@@ -117,7 +61,7 @@ const Guides = () => {
             <div className="max-w-4xl mx-auto">
               <div className="grid grid-cols-1 gap-6">
                 {guides.map((guide) => (
-                  <Link key={guide.id} to={`/guides/${guide.id}`} className="block">
+                  <Link key={guide.id} href={`/guides/${guide.id}`} className="block">
                     <Card className="bg-white/10 border-white/20 backdrop-blur-md hover:bg-white/20 transition-all duration-300 cursor-pointer">
                       <CardContent className="p-6">
                         <div className="flex items-start justify-between">

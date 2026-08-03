@@ -1,5 +1,7 @@
+'use client';
+
 import React, {useState} from 'react';
-import {Helmet} from 'react-helmet-async';
+import Link from 'next/link';
 import {Button} from './ui/button';
 import {Card, CardContent, CardHeader, CardTitle} from './ui/card';
 import {Badge} from './ui/badge';
@@ -9,6 +11,7 @@ import {
     BarChart3,
     Bookmark,
     BookOpen,
+    CalendarDays,
     CheckCircle,
     Download,
     ExternalLink,
@@ -27,9 +30,9 @@ import {mockData} from '../data/mock';
 import {changelogData} from '../data/changelog';
 import {Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious} from './ui/carousel';
 import {Dialog, DialogContent} from './ui/dialog';
-import {Link} from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
+import {getImageSrc} from '../lib/images';
 import ss1 from '../assets/1.webp';
 import ss2 from '../assets/2.webp';
 import ss3 from '../assets/3.webp';
@@ -38,7 +41,6 @@ import ss5 from '../assets/5.webp';
 import ss6 from '../assets/6.webp';
 
 const LandingPage = () => {
-    const [activeFeature, setActiveFeature] = useState(0);
     const [lightboxOpen, setLightboxOpen] = useState(false);
     const [lightboxIndex, setLightboxIndex] = useState(0);
 
@@ -67,6 +69,11 @@ const LandingPage = () => {
             icon: <Shield className="w-6 h-6"/>,
             title: "Block & Mute Management",
             description: "See who has blocked you and manage your blocks and mutes effectively."
+        },
+        {
+            icon: <CalendarDays className="w-6 h-6"/>,
+            title: "Daily, Weekly & Monthly Reports",
+            description: "Get breakdowns of your Bluesky activity with reports that track follower growth, posts, and performance over time."
         },
         {
             icon: <BarChart3 className="w-6 h-6"/>,
@@ -110,7 +117,7 @@ const LandingPage = () => {
         }
     ];
 
-    const screenshots = [ss1, ss2, ss3, ss4, ss5, ss6];
+    const screenshots = [ss1, ss2, ss3, ss4, ss5, ss6].map(getImageSrc);
     const openLightbox = (index) => {
         setLightboxIndex(index);
         setLightboxOpen(true);
@@ -118,35 +125,6 @@ const LandingPage = () => {
 
     return (
         <>
-            <Helmet>
-                <title>Bluesky Followers Tracker & Manager | Bsky Tracker</title>
-                <meta name="description"
-                      content="The must-have Bluesky follower tracker and network management app. Real-time analytics, bulk actions, and advanced filtering to grow your Bluesky presence. Free download for iOS & Android."/>
-                <link rel="canonical" href="https://blueskytracker.app/"/>
-
-                {/* Open Graph / Facebook */}
-                <meta property="og:type" content="website"/>
-                <meta property="og:url" content="https://blueskytracker.app/"/>
-                <meta property="og:title"
-                      content="Bsky Tracker - The must-have Bluesky Followers Analytics & Network Manager"/>
-                <meta property="og:description"
-                      content="Track followers, analyze engagement, and manage your Bluesky network with real-time insights. Free app with advanced filtering and bulk actions for iOS & Android."/>
-                <meta property="og:image" content="https://blueskytracker.app/banner.png"/>
-                <meta property="og:image:width" content="1200"/>
-                <meta property="og:image:height" content="630"/>
-                <meta property="og:site_name" content="Bluesky Tracker"/>
-                <meta property="og:locale" content="en_US"/>
-
-                {/* Twitter */}
-                <meta property="twitter:card" content="summary_large_image"/>
-                <meta property="twitter:url" content="https://blueskytracker.app/"/>
-                <meta property="twitter:title"
-                      content="Bsky Tracker - The must-have Bluesky Followers Analytics & Network Manager"/>
-                <meta property="twitter:description"
-                      content="Track followers, analyze engagement, and manage your Bluesky network with real-time insights. Free app with advanced filtering and bulk actions for iOS & Android."/>
-                <meta property="twitter:image" content="https://blueskytracker.app/banner.png"/>
-                <meta property="twitter:image:alt" content="Bluesky Tracker Banner"/>
-            </Helmet>
             <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
                 <Header showGuides={true} showFeatures={true}/>
 
@@ -311,17 +289,10 @@ const LandingPage = () => {
                                 {features.map((feature, index) => (
                                     <div
                                         key={index}
-                                        className={`p-6 rounded-xl border transition-all duration-300 cursor-pointer ${
-                                            activeFeature === index
-                                                ? 'bg-blue-500/20 border-blue-400/50'
-                                                : 'bg-white/5 border-white/10 hover:bg-white/10'
-                                        }`}
-                                        onClick={() => setActiveFeature(index)}
+                                        className="p-6 rounded-xl border transition-all duration-300 bg-white/5 border-white/10"
                                     >
                                         <div className="flex items-start space-x-4">
-                                            <div className={`p-2 rounded-lg ${
-                                                activeFeature === index ? 'bg-blue-500' : 'bg-white/10'
-                                            }`}>
+                                            <div className="p-2 rounded-lg bg-blue-500 text-white">
                                                 {feature.icon}
                                             </div>
                                             <div className="flex-1">
@@ -329,11 +300,10 @@ const LandingPage = () => {
                                                 <p className="text-white/80 text-md">{feature.description}</p>
                                                 {feature.hasGuide && (
                                                     <Link
-                                                        to={`/guides/${feature.guideId}`}
+                                                        href={`/guides/${feature.guideId}`}
                                                         target="_blank"
                                                         rel="noopener noreferrer"
                                                         className="inline-flex items-center text-blue-300 hover:text-blue-200 text-sm mt-3 transition-colors"
-                                                        onClick={(e) => e.stopPropagation()}
                                                     >
                                                         Learn More <ArrowRight className="w-3 h-3 ml-1"/>
                                                     </Link>
@@ -434,7 +404,7 @@ const LandingPage = () => {
 
                         <div className="max-w-4xl mx-auto">
                             <div className="grid md:grid-cols-1 gap-8">
-                                <Link to="/guides/clean-follows-bluesky" target="_blank" rel="noopener noreferrer"
+                                <Link href="/guides/clean-follows-bluesky" target="_blank" rel="noopener noreferrer"
                                       className="block">
                                     <Card
                                         className="bg-white/10 border-white/20 backdrop-blur-md hover:bg-white/20 transition-all duration-300 cursor-pointer h-full">
@@ -462,7 +432,7 @@ const LandingPage = () => {
                         </div>
 
                         <div className="text-center mt-12">
-                            <Link to="/guides" target="_blank" rel="noopener noreferrer">
+                            <Link href="/guides" target="_blank" rel="noopener noreferrer">
                                 <Button
                                     size="lg"
                                     variant="outline"
@@ -499,7 +469,7 @@ const LandingPage = () => {
                                                 {item.question.includes("following") && (
                                                     <div className="mt-4">
                                                         <Link
-                                                            to="/guides/clean-follows-bluesky"
+                                                            href="/guides/clean-follows-bluesky"
                                                             target="_blank"
                                                             rel="noopener noreferrer"
                                                             className="inline-flex items-center text-blue-300 hover:text-blue-200 text-sm transition-colors"
