@@ -13,7 +13,6 @@ import {
     BookOpen,
     CalendarDays,
     CheckCircle,
-    Download,
     ExternalLink,
     Filter,
     Heart,
@@ -39,6 +38,30 @@ import ss3 from '../assets/3.webp';
 import ss4 from '../assets/4.webp';
 import ss5 from '../assets/5.webp';
 import ss6 from '../assets/6.webp';
+import playStoreButton from '../assets/play_store.webp';
+import appStoreButton from '../assets/app_store.webp';
+
+const StoreButtons = () => {
+    const appStoreButtonSrc = getImageSrc(appStoreButton);
+    const playStoreButtonSrc = getImageSrc(playStoreButton);
+
+    return (
+        <div className="flex flex-row flex-wrap items-center justify-center gap-3">
+            <a href="https://apps.apple.com/us/app/tracker-manager-for-bluesky/id6740998282" target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Download Bluesky Tracker on the App Store"
+               className="block transition hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#35F27C]">
+                <img src={appStoreButtonSrc} alt="Download on the App Store" className="h-14 w-auto"/>
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.bluesky.followers.analyzer" target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Download Bluesky Tracker on Google Play"
+               className="block transition hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#35F27C]">
+                <img src={playStoreButtonSrc} alt="Download on the Play Store" className="h-14 w-auto"/>
+            </a>
+        </div>
+    );
+};
 
 const LandingPage = () => {
     const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -226,22 +249,14 @@ const LandingPage = () => {
                                 </DialogContent>
                             </Dialog>
 
-                            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-                                <Button
-                                    size="lg"
-                                    className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-lg"
-                                    onClick={scrollToCTA}
-                                >
-                                    <Download className="w-5 h-5 mr-2"/>
-                                    Download Now
-                                </Button>
+                            <div className="mb-8">
+                                <StoreButtons/>
                             </div>
 
                             <div className="flex justify-center mb-12">
                                 <Button
-                                    variant="outline"
                                     size="lg"
-                                    className="border-white/30 text-white hover:bg-white/10 px-8 py-4 text-lg"
+                                    className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-lg"
                                     onClick={() => window.open('https://bsky.app/profile/blueskytracker.app', '_blank')}
                                 >
                                     <ExternalLink className="w-5 h-5 mr-2"/>
@@ -314,15 +329,9 @@ const LandingPage = () => {
                                 ))}
                             </div>
                         </div>
-                        <div className="text-center mt-12">
-                            <Button
-                                size="lg"
-                                className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-lg"
-                                onClick={scrollToCTA}
-                            >
-                                <Download className="w-5 h-5 mr-2"/>
-                                Download Now
-                            </Button>
+
+                        <div className="mt-12">
+                            <StoreButtons/>
                         </div>
                     </div>
                 </section>
@@ -377,15 +386,8 @@ const LandingPage = () => {
                                 </Card>
                             ))}
                         </div>
-                        <div className="text-center mt-12">
-                            <Button
-                                size="lg"
-                                className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-lg"
-                                onClick={scrollToCTA}
-                            >
-                                <Download className="w-5 h-5 mr-2"/>
-                                Download Now
-                            </Button>
+                        <div className="mt-12">
+                            <StoreButtons/>
                         </div>
                     </div>
                 </section>
@@ -502,23 +504,8 @@ const LandingPage = () => {
                                 Download now and see results immediately.
                             </p>
 
-                            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-                                <Button
-                                    size="lg"
-                                    className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-lg"
-                                    onClick={() => window.open('https://play.google.com/store/apps/details?id=com.bluesky.followers.analyzer', '_blank')}
-                                >
-                                    <Download className="w-5 h-5 mr-2"/>
-                                    Android
-                                </Button>
-                                <Button
-                                    size="lg"
-                                    className="bg-gray-800 hover:bg-gray-900 text-white px-8 py-4 text-lg"
-                                    onClick={() => window.open('https://apps.apple.com/us/app/tracker-manager-for-bluesky/id6740998282', '_blank')}
-                                >
-                                    <Download className="w-5 h-5 mr-2"/>
-                                    iOS
-                                </Button>
+                            <div className="mb-8">
+                                <StoreButtons/>
                             </div>
 
                             <Badge className="bg-green-500/20 text-green-300 border-green-400/50 mb-8">
@@ -533,6 +520,10 @@ const LandingPage = () => {
                                 <div className="flex items-center space-x-2">
                                     <CheckCircle className="w-4 h-4 text-green-400"/>
                                     <span>Real-time tracking</span>
+                                </div>
+                                <div className="flex items-center space-x-2">
+                                    <CheckCircle className="w-4 h-4 text-green-400"/>
+                                    <span>Growth & Activity Reports</span>
                                 </div>
                                 <div className="flex items-center space-x-2">
                                     <CheckCircle className="w-4 h-4 text-green-400"/>

@@ -21,16 +21,8 @@
       "static/chunks/c7879cf7-b5ab1053c1d9a2e7.js",
       "static/chunks/131-ac614514037a2435.js",
       "static/chunks/main-app-1daae6bb11c83448.js",
-      "static/css/dbe14283f6cf41ce.css",
+      "static/css/aa8083ba0016b4cd.css",
       "static/chunks/app/layout-f5b0396219ae434b.js"
-    ],
-    "/csae-policy/page": [
-      "static/chunks/webpack-bbd9b46c5f1deefb.js",
-      "static/chunks/c7879cf7-b5ab1053c1d9a2e7.js",
-      "static/chunks/131-ac614514037a2435.js",
-      "static/chunks/main-app-1daae6bb11c83448.js",
-      "static/chunks/45-cf7e2935992169e6.js",
-      "static/chunks/app/csae-policy/page-7bcd6bd128dd4d93.js"
     ],
     "/page": [
       "static/chunks/webpack-bbd9b46c5f1deefb.js",
@@ -42,7 +34,26 @@
       "static/chunks/454-aa81bae50fbb39b5.js",
       "static/chunks/896-bb26f582588fefc5.js",
       "static/chunks/138-5e0ed11e915e3d93.js",
-      "static/chunks/app/page-818495c8817047af.js"
+      "static/chunks/app/page-ad8777f495fd7ccf.js"
+    ],
+    "/guides/page": [
+      "static/chunks/webpack-bbd9b46c5f1deefb.js",
+      "static/chunks/c7879cf7-b5ab1053c1d9a2e7.js",
+      "static/chunks/131-ac614514037a2435.js",
+      "static/chunks/main-app-1daae6bb11c83448.js",
+      "static/chunks/45-cf7e2935992169e6.js",
+      "static/chunks/197-f7c33a0114fc3db3.js",
+      "static/chunks/454-aa81bae50fbb39b5.js",
+      "static/chunks/138-5e0ed11e915e3d93.js",
+      "static/chunks/app/guides/page-ab280654b2df99dd.js"
+    ],
+    "/csae-policy/page": [
+      "static/chunks/webpack-bbd9b46c5f1deefb.js",
+      "static/chunks/c7879cf7-b5ab1053c1d9a2e7.js",
+      "static/chunks/131-ac614514037a2435.js",
+      "static/chunks/main-app-1daae6bb11c83448.js",
+      "static/chunks/45-cf7e2935992169e6.js",
+      "static/chunks/app/csae-policy/page-7bcd6bd128dd4d93.js"
     ],
     "/privacy-policy/page": [
       "static/chunks/webpack-bbd9b46c5f1deefb.js",
@@ -62,17 +73,6 @@
       "static/chunks/454-aa81bae50fbb39b5.js",
       "static/chunks/138-5e0ed11e915e3d93.js",
       "static/chunks/app/guides/clean-follows-bluesky/page-6890265a70b388dc.js"
-    ],
-    "/guides/page": [
-      "static/chunks/webpack-bbd9b46c5f1deefb.js",
-      "static/chunks/c7879cf7-b5ab1053c1d9a2e7.js",
-      "static/chunks/131-ac614514037a2435.js",
-      "static/chunks/main-app-1daae6bb11c83448.js",
-      "static/chunks/45-cf7e2935992169e6.js",
-      "static/chunks/197-f7c33a0114fc3db3.js",
-      "static/chunks/454-aa81bae50fbb39b5.js",
-      "static/chunks/138-5e0ed11e915e3d93.js",
-      "static/chunks/app/guides/page-ab280654b2df99dd.js"
     ]
   }
 }

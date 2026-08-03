@@ -1,8 +1,8 @@
 {
   "/_not-found/page": "/_not-found",
-  "/csae-policy/page": "/csae-policy",
   "/page": "/",
+  "/guides/page": "/guides",
+  "/csae-policy/page": "/csae-policy",
   "/privacy-policy/page": "/privacy-policy",
-  "/guides/clean-follows-bluesky/page": "/guides/clean-follows-bluesky",
-  "/guides/page": "/guides"
+  "/guides/clean-follows-bluesky/page": "/guides/clean-follows-bluesky"
 }
