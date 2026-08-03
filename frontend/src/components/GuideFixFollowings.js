@@ -21,6 +21,10 @@ import DownloadDialog from './DownloadDialog';
 const GuideFixFollowings = () => {
   const [downloadDialogOpen, setDownloadDialogOpen] = useState(false);
 
+  const pageTitle = 'How to Fix Following Count on Bluesky | Bsky Tracker';
+  const pageDescription = 'Learn how to fix inaccurate following counts on Bluesky using Bsky Tracker. Remove deleted, suspended, deactivated, and blocked accounts to clean your follows.';
+  const pageUrl = 'https://blueskytracker.app/guides/clean-follows-bluesky';
+
   const steps = [
     {
       id: 1,
@@ -40,6 +44,55 @@ const GuideFixFollowings = () => {
     }
   ];
 
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'How to Fix Following Count on Bluesky',
+    description: pageDescription,
+    url: pageUrl,
+    image: 'https://blueskytracker.app/banner.png',
+    publisher: {
+      '@type': 'Organization',
+      name: 'Bsky Tracker',
+      url: 'https://blueskytracker.app/'
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': pageUrl
+    },
+    step: steps.map((step) => ({
+      '@type': 'HowToStep',
+      position: step.id,
+      name: step.title,
+      text: `${step.description} ${step.details}`
+    }))
+  };
+
+  const breadcrumbData = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://blueskytracker.app/'
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Guides',
+        item: 'https://blueskytracker.app/guides'
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: 'How to Fix Following Count on Bluesky',
+        item: pageUrl
+      }
+    ]
+  };
+
   const handleDownloadClick = () => {
     setDownloadDialogOpen(true);
   };
@@ -47,9 +100,30 @@ const GuideFixFollowings = () => {
   return (
     <>
       <Helmet>
-        <title>How to Fix Following Count on Bluesky | Bsky Tracker</title>
-        <meta name="description" content="Learn how to fix inaccurate following counts on Bluesky using Bsky Tracker. Remove deleted, suspended, and blocked accounts to get accurate numbers. A cleanfollow alternative." />
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
         <meta name="keywords" content="bluesky fix followings, cleanfollow, bluesky cleanfollow, bluesky following count, bsky tracker fix followings, bluesky deleted accounts" />
+        <link rel="canonical" href={pageUrl} />
+
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:image" content="https://blueskytracker.app/banner.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:site_name" content="Bluesky Tracker" />
+        <meta property="og:locale" content="en_US" />
+
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content={pageUrl} />
+        <meta property="twitter:title" content={pageTitle} />
+        <meta property="twitter:description" content={pageDescription} />
+        <meta property="twitter:image" content="https://blueskytracker.app/banner.png" />
+        <meta property="twitter:image:alt" content="How to fix following count on Bluesky with Bsky Tracker" />
+
+        <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
+        <script type="application/ld+json">{JSON.stringify(breadcrumbData)}</script>
       </Helmet>
 
       <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
