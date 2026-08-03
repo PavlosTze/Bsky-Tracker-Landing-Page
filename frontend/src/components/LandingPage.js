@@ -67,14 +67,6 @@ const LandingPage = () => {
     const [lightboxOpen, setLightboxOpen] = useState(false);
     const [lightboxIndex, setLightboxIndex] = useState(0);
 
-    const scrollToCTA = () => {
-        document.querySelector('#cta-section')?.scrollIntoView({behavior: 'smooth'});
-    };
-
-    const scrollToTop = () => {
-        window.scrollTo({top: 0, behavior: 'smooth'});
-    };
-
     const features = [
         {
             icon: <Users className="w-6 h-6"/>,
@@ -299,35 +291,33 @@ const LandingPage = () => {
                             </p>
                         </div>
 
-                        <div className="max-w-4xl mx-auto">
-                            <div className="grid md:grid-cols-2 gap-8">
-                                {features.map((feature, index) => (
-                                    <div
-                                        key={index}
-                                        className="p-6 rounded-xl border transition-all duration-300 bg-white/5 border-white/10"
-                                    >
-                                        <div className="flex items-start space-x-4">
-                                            <div className="p-2 rounded-lg bg-blue-500 text-white">
-                                                {feature.icon}
-                                            </div>
-                                            <div className="flex-1">
-                                                <h3 className="text-lg font-semibold text-white mb-2">{feature.title}</h3>
-                                                <p className="text-white/80 text-md">{feature.description}</p>
-                                                {feature.hasGuide && (
-                                                    <Link
-                                                        href={`/guides/${feature.guideId}`}
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        className="inline-flex items-center text-blue-300 hover:text-blue-200 text-sm mt-3 transition-colors"
-                                                    >
-                                                        Learn More <ArrowRight className="w-3 h-3 ml-1"/>
-                                                    </Link>
-                                                )}
-                                            </div>
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {features.map((feature, index) => (
+                                <div
+                                    key={index}
+                                    className="p-6 rounded-xl border transition-all duration-300 bg-white/5 border-white/10"
+                                >
+                                    <div className="flex items-start space-x-4">
+                                        <div className="p-2 rounded-lg bg-blue-500 text-white">
+                                            {feature.icon}
+                                        </div>
+                                        <div className="flex-1">
+                                            <h3 className="text-lg font-semibold text-white mb-2">{feature.title}</h3>
+                                            <p className="text-white/80 text-md">{feature.description}</p>
+                                            {feature.hasGuide && (
+                                                <Link
+                                                    href={`/guides/${feature.guideId}`}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="inline-flex items-center text-blue-300 hover:text-blue-200 text-sm mt-3 transition-colors"
+                                                >
+                                                    Learn More <ArrowRight className="w-3 h-3 ml-1"/>
+                                                </Link>
+                                            )}
                                         </div>
                                     </div>
-                                ))}
-                            </div>
+                                </div>
+                            ))}
                         </div>
 
                         <div className="mt-12">
