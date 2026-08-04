@@ -66,6 +66,7 @@ const StoreButtons = () => {
 const LandingPage = () => {
     const [lightboxOpen, setLightboxOpen] = useState(false);
     const [lightboxIndex, setLightboxIndex] = useState(0);
+    const [showAllReleases, setShowAllReleases] = useState(false);
 
     const features = [
         {
@@ -133,6 +134,8 @@ const LandingPage = () => {
     ];
 
     const screenshots = [ss1, ss2, ss3, ss4, ss5, ss6].map(getImageSrc);
+    const visibleChangelog = showAllReleases ? changelogData : changelogData.slice(0, 5);
+
     const openLightbox = (index) => {
         setLightboxIndex(index);
         setLightboxOpen(true);
@@ -538,7 +541,7 @@ const LandingPage = () => {
 
                         <div className="max-w-4xl mx-auto">
                             <div className="space-y-8">
-                                {changelogData.map((version, index) => (
+                                {visibleChangelog.map((version, index) => (
                                     <Card key={index} className="bg-white/10 border-white/20 backdrop-blur-md">
                                         <CardHeader>
                                             <div className="flex items-center justify-between">
@@ -566,6 +569,18 @@ const LandingPage = () => {
                                     </Card>
                                 ))}
                             </div>
+                            {!showAllReleases && changelogData.length > visibleChangelog.length && (
+                                <div className="mt-10 text-center">
+                                    <Button
+                                        type="button"
+                                        variant="outline"
+                                        className="border-white/30 text-white hover:bg-white/10 px-8 py-4 text-lg"
+                                        onClick={() => setShowAllReleases(true)}
+                                    >
+                                        View more
+                                    </Button>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </section>
