@@ -1,4 +1,4 @@
-import CSAEPolicy from '../../src/components/CSAEPolicy';
+import CSAEPolicy from '../../../src/components/CSAEPolicy';
 
 const description = 'Content Safety and Abuse Enforcement Policy for Tracker - Manager for Bluesky. Learn about our content moderation and safety guidelines.';
 

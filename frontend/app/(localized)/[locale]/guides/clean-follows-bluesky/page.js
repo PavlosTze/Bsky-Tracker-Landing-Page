@@ -1,7 +1,7 @@
 import {notFound} from 'next/navigation';
-import GuideFixFollowings from '../../../../src/components/GuideFixFollowings';
-import {getAlternates, isSupportedLocale, locales, ogLocales} from '../../../../src/i18n/config';
-import {getMessages} from '../../../../src/i18n/messages';
+import GuideFixFollowings from '../../../../../src/components/GuideFixFollowings';
+import {getAlternates, isSupportedLocale, locales, ogLocales} from '../../../../../src/i18n/config';
+import {getMessages} from '../../../../../src/i18n/messages';
 
 const guidePath = '/guides/clean-follows-bluesky';
 

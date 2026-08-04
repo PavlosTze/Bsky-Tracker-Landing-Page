@@ -1,4 +1,4 @@
-import PrivacyPolicy from '../../src/components/PrivacyPolicy';
+import PrivacyPolicy from '../../../src/components/PrivacyPolicy';
 
 const description = 'Privacy Policy for Tracker - Manager for Bluesky. Learn how we collect, use, and protect your data.';
 

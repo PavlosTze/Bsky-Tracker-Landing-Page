@@ -1,7 +1,7 @@
 import {notFound} from 'next/navigation';
-import LandingPage from '../../src/components/LandingPage';
-import {getAlternates, isSupportedLocale, locales, ogLocales} from '../../src/i18n/config';
-import {getMessages} from '../../src/i18n/messages';
+import LandingPage from '../../../src/components/LandingPage';
+import {getAlternates, isSupportedLocale, locales, ogLocales} from '../../../src/i18n/config';
+import {getMessages} from '../../../src/i18n/messages';
 
 const siteUrl = 'https://blueskytracker.app';
 

@@ -1,7 +1,7 @@
 import {notFound} from 'next/navigation';
-import Guides from '../../../src/components/Guides';
-import {getAlternates, isSupportedLocale, locales, ogLocales} from '../../../src/i18n/config';
-import {getMessages} from '../../../src/i18n/messages';
+import Guides from '../../../../src/components/Guides';
+import {getAlternates, isSupportedLocale, locales, ogLocales} from '../../../../src/i18n/config';
+import {getMessages} from '../../../../src/i18n/messages';
 
 export function generateStaticParams() {
   return locales.map((locale) => ({locale}));

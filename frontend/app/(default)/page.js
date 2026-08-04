@@ -1,4 +1,4 @@
-import LandingPage from '../src/components/LandingPage';
+import LandingPage from '../../src/components/LandingPage';
 
 const structuredData = {
   '@context': 'https://schema.org',

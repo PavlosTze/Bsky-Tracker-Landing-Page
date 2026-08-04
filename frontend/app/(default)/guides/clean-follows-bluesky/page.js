@@ -1,4 +1,4 @@
-import GuideFixFollowings from '../../../src/components/GuideFixFollowings';
+import GuideFixFollowings from '../../../../src/components/GuideFixFollowings';
 
 const title = 'How to Fix Following Count on Bluesky';
 const description = 'Learn how to fix inaccurate following counts on Bluesky using Bsky Tracker. Remove deleted, suspended, deactivated, and blocked accounts to clean your follows.';

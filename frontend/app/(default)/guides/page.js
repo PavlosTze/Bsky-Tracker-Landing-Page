@@ -1,4 +1,4 @@
-import Guides from '../../src/components/Guides';
+import Guides from '../../../src/components/Guides';
 
 const title = 'Guides & Tutorials';
 const description = 'Learn how to use Bsky Tracker effectively with Bluesky guides and tutorials for fixing followings, cleaning your network, and managing your account.';
