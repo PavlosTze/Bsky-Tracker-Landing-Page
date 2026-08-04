@@ -9,15 +9,18 @@ import {
   X
 } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from './ui/dialog';
+import {getMessages} from '../i18n/messages';
 
-const DownloadDialog = ({ isOpen, onClose }) => {
+const DownloadDialog = ({ isOpen, onClose, messages = getMessages('en') }) => {
+  const common = messages.common;
+
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="w-[95vw] max-w-2xl bg-slate-900/95 border-white/10 p-0 overflow-hidden [&>button]:hidden">
         <DialogHeader className="p-6 pb-4">
           <div className="flex items-center justify-between">
             <DialogTitle className="text-2xl font-bold text-white">
-              Download Options
+              {messages.downloadDialog.title}
             </DialogTitle>
             <button
               onClick={onClose}
@@ -51,21 +54,21 @@ const DownloadDialog = ({ isOpen, onClose }) => {
             </div>
 
             <Badge className="bg-green-500/20 text-green-300 border-green-400/50 mb-6">
-              ✓ 100% Free forever • No credit card required
+              {common.freeBadge}
             </Badge>
 
             <div className="flex items-center justify-center flex-wrap gap-4 text-white/70 text-sm">
               <div className="flex items-center space-x-2">
                 <CheckCircle className="w-4 h-4 text-green-400" />
-                <span>Privacy-first</span>
+                <span>{common.privacyFirst}</span>
               </div>
               <div className="flex items-center space-x-2">
                 <CheckCircle className="w-4 h-4 text-green-400" />
-                <span>Real-time tracking</span>
+                <span>{common.realTimeTracking}</span>
               </div>
               <div className="flex items-center space-x-2">
                 <CheckCircle className="w-4 h-4 text-green-400" />
-                <span>Advanced Filters</span>
+                <span>{common.advancedFilters}</span>
               </div>
             </div>
           </div>

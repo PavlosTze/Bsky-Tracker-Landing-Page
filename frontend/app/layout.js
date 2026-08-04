@@ -1,8 +1,10 @@
 import Script from 'next/script';
+import {headers} from 'next/headers';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import '../src/index.css';
 import '../src/App.css';
+import {defaultLocale} from '../src/i18n/config';
 
 const siteUrl = 'https://blueskytracker.app';
 const siteName = 'Bluesky Tracker';
@@ -85,9 +87,12 @@ export const viewport = {
   themeColor: '#000000',
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const headersList = await headers();
+  const locale = headersList.get('x-bsky-locale') || defaultLocale;
+
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body>
         {children}
         <Analytics />

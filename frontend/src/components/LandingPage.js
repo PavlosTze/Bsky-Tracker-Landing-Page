@@ -25,7 +25,6 @@ import {
     Users,
     Wrench
 } from 'lucide-react';
-import {mockData} from '../data/mock';
 import {changelogData} from '../data/changelog';
 import {Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious} from './ui/carousel';
 import {Dialog, DialogContent} from './ui/dialog';
@@ -40,98 +39,43 @@ import ss5 from '../assets/5.webp';
 import ss6 from '../assets/6.webp';
 import playStoreButton from '../assets/play_store.webp';
 import appStoreButton from '../assets/app_store.webp';
+import {getMessages} from '../i18n/messages';
 
-const StoreButtons = () => {
+const StoreButtons = ({messages}) => {
     const appStoreButtonSrc = getImageSrc(appStoreButton);
     const playStoreButtonSrc = getImageSrc(playStoreButton);
+    const storeButtons = messages.storeButtons;
 
     return (
         <div className="flex flex-row flex-wrap items-center justify-center gap-3">
             <a href="https://apps.apple.com/us/app/tracker-manager-for-bluesky/id6740998282" target="_blank"
                rel="noopener noreferrer"
-               aria-label="Download Bluesky Tracker on the App Store"
+               aria-label={storeButtons.appStoreAria}
                className="block transition hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#35F27C]">
-                <img src={appStoreButtonSrc} alt="Download on the App Store" className="h-14 w-auto"/>
+                 <img src={appStoreButtonSrc} alt={storeButtons.appStoreAlt} className="h-14 w-auto"/>
             </a>
             <a href="https://play.google.com/store/apps/details?id=com.bluesky.followers.analyzer" target="_blank"
                rel="noopener noreferrer"
-               aria-label="Download Bluesky Tracker on Google Play"
+               aria-label={storeButtons.playStoreAria}
                className="block transition hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#35F27C]">
-                <img src={playStoreButtonSrc} alt="Download on the Play Store" className="h-14 w-auto"/>
+                 <img src={playStoreButtonSrc} alt={storeButtons.playStoreAlt} className="h-14 w-auto"/>
             </a>
         </div>
     );
 };
 
-const LandingPage = () => {
+const LandingPage = ({locale = 'en', messages = getMessages('en')}) => {
     const [lightboxOpen, setLightboxOpen] = useState(false);
     const [lightboxIndex, setLightboxIndex] = useState(0);
     const [showAllReleases, setShowAllReleases] = useState(false);
+    const common = messages.common;
+    const landing = messages.landing;
 
-    const features = [
-        {
-            icon: <Users className="w-6 h-6"/>,
-            title: "Real-time Follower Tracking",
-            description: "Instantly see when someone follows or unfollows you with live updates."
-        },
-        {
-            icon: <Wrench className="w-6 h-6"/>,
-            title: "Fix Followings",
-            description: "Automatically remove deleted, suspended, deactivated or blocked accounts to correct inaccurate Bluesky following counts.",
-            hasGuide: true,
-            guideId: "clean-follows-bluesky"
-        },
-        {
-            icon: <Shield className="w-6 h-6"/>,
-            title: "Block & Mute Management",
-            description: "See who has blocked you and manage your blocks and mutes effectively."
-        },
-        {
-            icon: <CalendarDays className="w-6 h-6"/>,
-            title: "Daily, Weekly & Monthly Reports",
-            description: "Get breakdowns of your Bluesky activity with reports that track follower growth, posts, and performance over time."
-        },
-        {
-            icon: <BarChart3 className="w-6 h-6"/>,
-            title: "Interactive Charts & Trends",
-            description: "Understand your growth at a glance with interactive charts for followers, followings, and engagement over time."
-        },
-        {
-            icon: <Filter className="w-6 h-6"/>,
-            title: "Advanced Filtering",
-            description: "Filter users based on keywords, followers count, follower-to-following ratio, engagement, and activity level."
-        },
-        {
-            icon: <List className="w-6 h-6"/>,
-            title: "Lists & Starter Packs",
-            description: "View lists that have blocked you and discover starter packs you're included in or lists you are blocking/muting to better understand your Bluesky presence."
-        },
-        {
-            icon: <Target className="w-6 h-6"/>,
-            title: "Bulk Follow & Unfollow",
-            description: "Follow or unfollow users in bulk to efficiently manage your Bluesky network."
-        },
-        {
-            icon: <Bookmark className="w-6 h-6"/>,
-            title: "Bookmarks Support & Search",
-            description: "View your saved posts in Bluesky and easily search for those posts by keywords or author."
-        },
-        {
-            icon: <BarChart3 className="w-6 h-6"/>,
-            title: "Post Analytics",
-            description: "Detailed metrics for any user's posts including reach, replies, and engagement."
-        },
-        {
-            icon: <History className="w-6 h-6"/>,
-            title: "Account & Relationship History",
-            description: "Track when you followed someone and when they followed you back, plus check past usernames for any account to verify identity and name changes."
-        },
-        {
-            icon: <Heart className="w-6 h-6"/>,
-            title: "Likes Timeline",
-            description: "See posts liked by any user on Bluesky, including yourself, to explore interests and engagement patterns."
-        }
-    ];
+    const featureIcons = [Users, Wrench, Shield, CalendarDays, BarChart3, Filter, List, Target, Bookmark, BarChart3, History, Heart];
+    const features = landing.features.map((feature, index) => {
+        const Icon = featureIcons[index];
+        return {...feature, icon: <Icon className="w-6 h-6"/>};
+    });
 
     const screenshots = [ss1, ss2, ss3, ss4, ss5, ss6].map(getImageSrc);
     const visibleChangelog = showAllReleases ? changelogData : changelogData.slice(0, 5);
@@ -144,7 +88,7 @@ const LandingPage = () => {
     return (
         <>
             <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
-                <Header showGuides={true} showFeatures={true}/>
+                <Header showGuides={true} showFeatures={true} locale={locale} messages={messages}/>
 
                 {/* Hero Section */}
                 <section className="relative pt-10 pb-20 overflow-hidden">
@@ -153,19 +97,18 @@ const LandingPage = () => {
                     <div className="container mx-auto px-6 relative z-10">
                         <div className="text-center max-w-6xl mx-auto">
                             <Badge className="mb-6 bg-blue-500/20 text-blue-200 border-blue-400/30">
-                                20K+ downloads • 4.8⭐ rating
+                                {landing.badge}
                             </Badge>
 
                             <h1 className="text-2xl font-bold text-white mb-6 leading-tight">
-                                Track & Manage Your <br/>
+                                {landing.heroTitleStart} <br/>
                                 <span
-                                    className="bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent"> Bluesky </span>
-                                <br/>Network in Real-Time
+                                    className="bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent"> {landing.heroTitleBrand} </span>
+                                <br/>{landing.heroTitleEnd}
                             </h1>
 
                             <div className="text-lg text-white/80 mb-12 max-w-2xl mx-auto">
-                                The must-have companion app for Bluesky. Real-time insights that help you understand
-                                your network better.
+                                {landing.heroDescription}
                             </div>
 
                             {/* App Screenshots */}
@@ -182,7 +125,7 @@ const LandingPage = () => {
                                                 >
                                                     <img
                                                         src={src}
-                                                        alt={`Bluesky App screenshot ${index + 1}`}
+                                                        alt={landing.screenshotAlt.replace('{number}', index + 1)}
                                                         className="w-full h-full object-contain"
                                                         loading="lazy"
                                                         decoding="async"
@@ -209,7 +152,7 @@ const LandingPage = () => {
                                         >
                                             <img
                                                 src={src}
-                                                alt={`Bluesky App screenshot ${index + 1}`}
+                                                alt={landing.screenshotAlt.replace('{number}', index + 1)}
                                                 className="w-full h-auto"
                                                 loading="lazy"
                                                 decoding="async"
@@ -230,11 +173,11 @@ const LandingPage = () => {
                                                         className="w-full h-[70vh] flex items-center justify-center overflow-hidden">
                                                         <img
                                                             src={src}
-                                                            alt={`App screenshot ${index + 1}`}
+                                                            alt={landing.screenshotAlt.replace('{number}', index + 1)}
                                                             className="max-h-full max-w-full object-contain"
                                                         />
                                                     </div>
-                                                    <p className="mt-3 text-center text-white/80 text-sm">Screenshot {index + 1}</p>
+                                                     <p className="mt-3 text-center text-white/80 text-sm">{landing.lightboxScreenshot.replace('{number}', index + 1)}</p>
                                                 </CarouselItem>
                                             ))}
                                         </CarouselContent>
@@ -245,7 +188,7 @@ const LandingPage = () => {
                             </Dialog>
 
                             <div className="mb-8">
-                                <StoreButtons/>
+                                <StoreButtons messages={messages}/>
                             </div>
 
                             <div className="flex justify-center mb-12">
@@ -255,28 +198,18 @@ const LandingPage = () => {
                                     onClick={() => window.open('https://bsky.app/profile/blueskytracker.app', '_blank')}
                                 >
                                     <ExternalLink className="w-5 h-5 mr-2"/>
-                                    Find me on Bluesky
+                                    {common.findMe}
                                 </Button>
                             </div>
 
                             {/* Download & User Stats */}
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
-                                <div className="text-center">
-                                    <div className="text-2xl font-bold text-white">20,000+</div>
-                                    <div className="text-sm text-white/70">Downloads</div>
-                                </div>
-                                <div className="text-center">
-                                    <div className="text-2xl font-bold text-white">5,000+</div>
-                                    <div className="text-sm text-white/70">Active Users</div>
-                                </div>
-                                <div className="text-center">
-                                    <div className="text-2xl font-bold text-white">4.8⭐</div>
-                                    <div className="text-sm text-white/70">App Rating</div>
-                                </div>
-                                <div className="text-center">
-                                    <div className="text-2xl font-bold text-white">500+</div>
-                                    <div className="text-sm text-white/70">Reviews</div>
-                                </div>
+                                {landing.stats.map((stat) => (
+                                    <div key={stat.label} className="text-center">
+                                        <div className="text-2xl font-bold text-white">{stat.value}</div>
+                                        <div className="text-sm text-white/70">{stat.label}</div>
+                                    </div>
+                                ))}
                             </div>
                         </div>
                     </div>
@@ -287,10 +220,10 @@ const LandingPage = () => {
                     <div className="container mx-auto px-6">
                         <div className="text-center mb-16">
                             <h2 className="text-xl font-bold text-white mb-4">
-                                Powerful Features That Deliver Results
+                                {landing.featuresTitle}
                             </h2>
                             <p className="text-lg text-white/70">
-                                Everything you need to take control of your Bluesky network
+                                {landing.featuresSubtitle}
                             </p>
                         </div>
 
@@ -309,12 +242,12 @@ const LandingPage = () => {
                                             <p className="text-white/80 text-md">{feature.description}</p>
                                             {feature.hasGuide && (
                                                 <Link
-                                                    href={`/guides/${feature.guideId}`}
+                                                    href={`/${locale}/guides/${feature.guideId}`}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
                                                     className="inline-flex items-center text-blue-300 hover:text-blue-200 text-sm mt-3 transition-colors"
                                                 >
-                                                    Learn More <ArrowRight className="w-3 h-3 ml-1"/>
+                                                    {common.learnMore} <ArrowRight className="w-3 h-3 ml-1"/>
                                                 </Link>
                                             )}
                                         </div>
@@ -324,7 +257,7 @@ const LandingPage = () => {
                         </div>
 
                         <div className="mt-12">
-                            <StoreButtons/>
+                            <StoreButtons messages={messages}/>
                         </div>
                     </div>
                 </section>
@@ -334,18 +267,18 @@ const LandingPage = () => {
                     <div className="container mx-auto px-6">
                         <div className="text-center mb-16">
                             <h2 className="text-xl font-bold text-white mb-4">
-                                Real Reviews from App Stores
+                                {landing.reviewsTitle}
                             </h2>
                             <div className="flex items-center justify-center space-x-2 mb-8">
                                 {[...Array(5)].map((_, i) => (
                                     <Star key={i} className="w-6 h-6 text-yellow-400 fill-current"/>
                                 ))}
-                                <span className="text-white/70 ml-2">4.8/5 from 500+ reviews</span>
+                                <span className="text-white/70 ml-2">{landing.reviewsSummary}</span>
                             </div>
                         </div>
 
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {mockData.testimonials.slice(0, 3).map((testimonial, index) => (
+                            {landing.testimonials.slice(0, 3).map((testimonial, index) => (
                                 <Card key={index} className="bg-white/10 border-white/20 backdrop-blur-md">
                                     <CardContent className="p-6">
                                         <div className="flex items-center space-x-2 mb-4">
@@ -353,9 +286,9 @@ const LandingPage = () => {
                                                 <Star key={i} className="w-4 h-4 text-yellow-400 fill-current"/>
                                             ))}
                                         </div>
-                                        <p className="text-white/80 mb-4 italic">"{testimonial.content}"</p>
+                                        <p className="text-white/80 mb-4 italic">"{testimonial}"</p>
                                         <div className="flex items-center space-x-3">
-                                            <div className="text-white font-semibold">A happy Bluesky user</div>
+                                            <div className="text-white font-semibold">{landing.reviewAuthor}</div>
                                         </div>
                                     </CardContent>
                                 </Card>
@@ -363,7 +296,7 @@ const LandingPage = () => {
                         </div>
 
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-                            {mockData.testimonials.slice(3).map((testimonial, index) => (
+                            {landing.testimonials.slice(3).map((testimonial, index) => (
                                 <Card key={index + 3} className="bg-white/10 border-white/20 backdrop-blur-md">
                                     <CardContent className="p-6">
                                         <div className="flex items-center space-x-2 mb-4">
@@ -371,16 +304,16 @@ const LandingPage = () => {
                                                 <Star key={i} className="w-4 h-4 text-yellow-400 fill-current"/>
                                             ))}
                                         </div>
-                                        <p className="text-white/80 mb-4 italic">"{testimonial.content}"</p>
+                                        <p className="text-white/80 mb-4 italic">"{testimonial}"</p>
                                         <div className="flex items-center space-x-3">
-                                            <div className="text-white font-semibold">A happy Bluesky user</div>
+                                            <div className="text-white font-semibold">{landing.reviewAuthor}</div>
                                         </div>
                                     </CardContent>
                                 </Card>
                             ))}
                         </div>
                         <div className="mt-12">
-                            <StoreButtons/>
+                            <StoreButtons messages={messages}/>
                         </div>
                     </div>
                 </section>
@@ -390,16 +323,16 @@ const LandingPage = () => {
                     <div className="container mx-auto px-6">
                         <div className="text-center mb-16">
                             <h2 className="text-xl font-bold text-white mb-4">
-                                Learn How to Use the Bluesky Tracker
+                                {landing.learnTitle}
                             </h2>
                             <p className="text-lg text-white/70">
-                                Get the most out of your Bluesky experience with our step-by-step guides
+                                {landing.learnSubtitle}
                             </p>
                         </div>
 
                         <div className="max-w-4xl mx-auto">
                             <div className="grid md:grid-cols-1 gap-8">
-                                <Link href="/guides/clean-follows-bluesky" target="_blank" rel="noopener noreferrer"
+                                <Link href={`/${locale}/guides/clean-follows-bluesky`} target="_blank" rel="noopener noreferrer"
                                       className="block">
                                     <Card
                                         className="bg-white/10 border-white/20 backdrop-blur-md hover:bg-white/20 transition-all duration-300 cursor-pointer h-full">
@@ -409,13 +342,10 @@ const LandingPage = () => {
                                                     <Wrench className="w-6 h-6 text-blue-300"/>
                                                 </div>
                                                 <div className="flex-1">
-                                                    <h3 className="text-lg font-semibold text-white mb-2">How to Clean
-                                                        your Follows on Bluesky</h3>
-                                                    <p className="text-white/80 mb-4">Learn how to correct your
-                                                        inaccurate following count by removing deleted, suspended, and
-                                                        blocked accounts and clean your follows.</p>
+                                                    <h3 className="text-lg font-semibold text-white mb-2">{landing.guideCardTitle}</h3>
+                                                    <p className="text-white/80 mb-4">{landing.guideCardDescription}</p>
                                                     <div className="flex items-center text-blue-300 text-sm">
-                                                        <span>View Guide</span>
+                                                        <span>{common.viewGuide}</span>
                                                         <ArrowRight className="w-4 h-4 ml-2"/>
                                                     </div>
                                                 </div>
@@ -427,14 +357,14 @@ const LandingPage = () => {
                         </div>
 
                         <div className="text-center mt-12">
-                            <Link href="/guides" target="_blank" rel="noopener noreferrer">
+                            <Link href={`/${locale}/guides`} target="_blank" rel="noopener noreferrer">
                                 <Button
                                     size="lg"
                                     variant="outline"
                                     className="border-white/30 text-white hover:bg-white/10 px-8 py-4 text-lg"
                                 >
                                     <BookOpen className="w-5 h-5 mr-2"/>
-                                    View All Guides
+                                    {common.viewAllGuides}
                                 </Button>
                             </Link>
                         </div>
@@ -446,13 +376,13 @@ const LandingPage = () => {
                     <div className="container mx-auto px-6">
                         <div className="text-center mb-16">
                             <h2 className="text-xl font-bold text-white mb-4">
-                                Frequently Asked Questions
+                                {landing.faqTitle}
                             </h2>
                         </div>
 
                         <div className="max-w-3xl mx-auto">
                             <Accordion type="single" collapsible className="space-y-4">
-                                {mockData.faq.map((item, index) => (
+                                {landing.faq.map((item, index) => (
                                     <AccordionItem key={index} value={`item-${index}`}
                                                    className="bg-white/10 rounded-lg border-white/20 px-6">
                                         <AccordionTrigger className="text-white hover:text-blue-300">
@@ -461,15 +391,15 @@ const LandingPage = () => {
                                         <AccordionContent className="text-white/80">
                                             <div>
                                                 {item.answer}
-                                                {item.question.includes("following") && (
+                                                {index === 1 && (
                                                     <div className="mt-4">
                                                         <Link
-                                                            href="/guides/clean-follows-bluesky"
+                                                            href={`/${locale}/guides/clean-follows-bluesky`}
                                                             target="_blank"
                                                             rel="noopener noreferrer"
                                                             className="inline-flex items-center text-blue-300 hover:text-blue-200 text-sm transition-colors"
                                                         >
-                                                            Learn how to fix following counts <ArrowRight
+                                                            {landing.faqFollowingsLink} <ArrowRight
                                                             className="w-3 h-3 ml-1"/>
                                                         </Link>
                                                     </div>
@@ -489,39 +419,27 @@ const LandingPage = () => {
                         <div className="max-w-3xl mx-auto">
                             <Trophy className="w-16 h-16 text-yellow-400 mx-auto mb-6"/>
                             <h2 className="text-xl font-bold text-white mb-4">
-                                Ready to Master Your Bluesky Network?
+                                {landing.ctaTitle}
                             </h2>
                             <p className="text-lg text-white/80 mb-8">
-                                Join 20,000+ users who trust Tracker - Manager for Bluesky to track and manage their
-                                Bluesky presence.
-                                Download now and see results immediately.
+                                {landing.ctaDescription}
                             </p>
 
                             <div className="mb-8">
-                                <StoreButtons/>
+                                <StoreButtons messages={messages}/>
                             </div>
 
                             <Badge className="bg-green-500/20 text-green-300 border-green-400/50 mb-8">
-                                ✓ 100% Free forever • No credit card required
+                                {common.freeBadge}
                             </Badge>
 
                             <div className="flex items-center justify-center flex-wrap gap-6 text-white/70 text-sm">
-                                <div className="flex items-center space-x-2">
-                                    <CheckCircle className="w-4 h-4 text-green-400"/>
-                                    <span>Privacy-first</span>
-                                </div>
-                                <div className="flex items-center space-x-2">
-                                    <CheckCircle className="w-4 h-4 text-green-400"/>
-                                    <span>Real-time tracking</span>
-                                </div>
-                                <div className="flex items-center space-x-2">
-                                    <CheckCircle className="w-4 h-4 text-green-400"/>
-                                    <span>Growth & Activity Reports</span>
-                                </div>
-                                <div className="flex items-center space-x-2">
-                                    <CheckCircle className="w-4 h-4 text-green-400"/>
-                                    <span>Advanced Filters for your network</span>
-                                </div>
+                                {landing.ctaBenefits.map((benefit) => (
+                                    <div key={benefit} className="flex items-center space-x-2">
+                                        <CheckCircle className="w-4 h-4 text-green-400"/>
+                                        <span>{benefit}</span>
+                                    </div>
+                                ))}
                             </div>
                         </div>
                     </div>
@@ -532,10 +450,10 @@ const LandingPage = () => {
                     <div className="container mx-auto px-6">
                         <div className="text-center mb-16">
                             <h2 className="text-xl font-bold text-white mb-4">
-                                What's New
+                                {landing.changelogTitle}
                             </h2>
                             <p className="text-lg text-white/70">
-                                Track our journey of continuous improvements and new features
+                                {landing.changelogSubtitle}
                             </p>
                         </div>
 
@@ -547,12 +465,12 @@ const LandingPage = () => {
                                             <div className="flex items-center justify-between">
                                                 <div>
                                                     <CardTitle
-                                                        className="text-white text-lg">Version {version.version}</CardTitle>
+                                                        className="text-white text-lg">{common.version} {version.version}</CardTitle>
                                                     <p className="text-white/60 text-sm mt-1">{version.date}</p>
                                                 </div>
                                                 {version.isLatest && (
                                                     <Badge
-                                                        className="bg-blue-500/20 text-blue-200 border-blue-400/30">Latest</Badge>
+                                                        className="bg-blue-500/20 text-blue-200 border-blue-400/30">{common.latest}</Badge>
                                                 )}
                                             </div>
                                         </CardHeader>
@@ -577,7 +495,7 @@ const LandingPage = () => {
                                         className="border-white/30 text-white hover:bg-white/10 px-8 py-4 text-lg"
                                         onClick={() => setShowAllReleases(true)}
                                     >
-                                        View more
+                                        {common.viewMore}
                                     </Button>
                                 </div>
                             )}
@@ -585,7 +503,7 @@ const LandingPage = () => {
                     </div>
                 </section>
 
-                <Footer/>
+                <Footer locale={locale} messages={messages}/>
             </div>
         </>
     );

@@ -19,28 +19,14 @@ import Header from './Header';
 import Footer from './Footer';
 import DownloadDialog from './DownloadDialog';
 import { getImageSrc } from '../lib/images';
+import {getMessages} from '../i18n/messages';
 
-const GuideFixFollowings = () => {
+const GuideFixFollowings = ({locale = 'en', messages = getMessages('en')}) => {
   const [downloadDialogOpen, setDownloadDialogOpen] = useState(false);
+  const guide = messages.fixGuide;
 
-  const steps = [
-    {
-      id: 1,
-      title: "Access the Fix Followings Feature",
-      description: "Open the app and navigate to the Fix Followings section in the home screen.",
-      details: "The Fix Followings feature is located in menu at the top right corner of the home screen. Tap on the 'Fix Followings to access the feature that helps you correct inaccurate following counts.",
-      image: getImageSrc(openFixFollowings),
-      imageAlt: "Screenshot showing the Fix Followings screen access in Bluesky Tracker app"
-    },
-    {
-      id: 2,
-      title: "Start Fixing Your Followings",
-      description: "On the Fix Followings screen, tap the 'Fix Now' button to begin the process.",
-      details: "Once you're on the Fix Followings screen, you'll see a 'Fix Now' button. Tap on it to begin the process of identifying, removing deleted, suspended, or blocked accounts from your following list and clean your follows.",
-      image: getImageSrc(fixFollowingsScreen),
-      imageAlt: "Screenshot of Fix Followings screen with Start Fixing button"
-    }
-  ];
+  const stepImages = [getImageSrc(openFixFollowings), getImageSrc(fixFollowingsScreen)];
+  const steps = guide.steps.map((step, index) => ({...step, image: stepImages[index]}));
 
   const handleDownloadClick = () => {
     setDownloadDialogOpen(true);
@@ -53,6 +39,8 @@ const GuideFixFollowings = () => {
           showGuides={true} 
           showFeatures={false} 
           onDownloadClick={handleDownloadClick}
+          locale={locale}
+          messages={messages}
         />
 
         {/* Hero Section */}
@@ -66,13 +54,12 @@ const GuideFixFollowings = () => {
                 </div>
               </div>
               <h1 className="text-2xl md:text-6xl font-bold text-white mb-6 leading-tight">
-                How to Fix <br />
-                <span className="bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent">Following</span>
-                <br /> Count on Bluesky
+                {guide.heroTitleStart} <br />
+                <span className="bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent">{guide.heroTitleAccent}</span>
+                <br /> {guide.heroTitleEnd}
               </h1>
               <div className="text-lg text-white/80 max-w-2xl mx-auto">
-                Learn how to correct your inaccurate following count on Bluesky by removing deleted, suspended, deactivated and blocked accounts. 
-                Get accurate numbers that match reality with our automated fixing tool and clean your follows in Bluesky.
+                {guide.heroDescription}
               </div>
             </div>
           </div>
@@ -89,8 +76,8 @@ const GuideFixFollowings = () => {
                       <AlertTriangle className="w-6 h-6 text-blue-300" />
                     </div>
                     <div>
-                      <CardTitle className="text-white text-xl">Before You Start</CardTitle>
-                      <p className="text-white/80 mt-1">Understanding the Bluesky following count bug and how our app helps clean your follows.</p>
+                      <CardTitle className="text-white text-xl">{guide.beforeTitle}</CardTitle>
+                      <p className="text-white/80 mt-1">{guide.beforeDescription}</p>
                     </div>
                   </div>
                 </CardHeader>
@@ -100,9 +87,9 @@ const GuideFixFollowings = () => {
                       <div className="flex items-start space-x-3">
                         <XCircle className="w-5 h-5 text-red-400 mt-0.5 flex-shrink-0" />
                         <div>
-                          <h4 className="text-red-200 font-medium mb-2">The Bluesky Bug</h4>
+                          <h4 className="text-red-200 font-medium mb-2">{guide.bugTitle}</h4>
                           <p className="text-red-200 text-sm leading-relaxed">
-                            Bluesky has a known bug where deleted, suspended, deactivated and blocked accounts are still counted in the total number of followings shown in their official apps. This creates inaccurate following counts that don't reflect reality.
+                            {guide.bugDescription}
                           </p>
                         </div>
                       </div>
@@ -112,9 +99,9 @@ const GuideFixFollowings = () => {
                       <div className="flex items-start space-x-3">
                         <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
                         <div>
-                          <h4 className="text-green-200 font-medium mb-2">Our Solution</h4>
+                          <h4 className="text-green-200 font-medium mb-2">{guide.solutionTitle}</h4>
                           <p className="text-green-200 text-sm leading-relaxed">
-                            Bluesky Tracker provides accurate following counts by filtering out these problematic accounts. Our "Fix Followings" feature automatically identifies and helps you remove deleted, suspended, deactivated and blocked accounts from your following list and clean it up.
+                            {guide.solutionDescription}
                           </p>
                         </div>
                       </div>
@@ -124,9 +111,9 @@ const GuideFixFollowings = () => {
                       <div className="flex items-start space-x-3">
                         <Users className="w-5 h-5 text-blue-300 mt-0.5 flex-shrink-0" />
                         <div>
-                          <h4 className="text-blue-200 font-medium mb-2">Community Reports</h4>
+                          <h4 className="text-blue-200 font-medium mb-2">{guide.reportsTitle}</h4>
                                                      <p className="text-blue-200 text-sm leading-relaxed">
-                             This issue has been widely reported by the Bluesky community. You can find discussions about it on <a href="https://www.reddit.com/r/BlueskySocial/comments/1h10jl2/why_are_blocked_accounts_still_in_your_follower/" target="_blank" rel="noopener noreferrer" className="underline hover:text-blue-300">Reddit</a> and multiple <a href="https://github.com/bluesky-social/social-app/issues/7370" target="_blank" rel="noopener noreferrer" className="underline hover:text-blue-300">GitHub issues</a> in the official Bluesky repository, including <a href="https://github.com/bluesky-social/social-app/issues/7189" target="_blank" rel="noopener noreferrer" className="underline hover:text-blue-300">issue #7189</a> which documents the inconsistency between ATP follow records and the displayed following count.
+                             {guide.reportsIntro} <a href="https://www.reddit.com/r/BlueskySocial/comments/1h10jl2/why_are_blocked_accounts_still_in_your_follower/" target="_blank" rel="noopener noreferrer" className="underline hover:text-blue-300">{guide.reddit}</a> {guide.reportsMiddle} <a href="https://github.com/bluesky-social/social-app/issues/7370" target="_blank" rel="noopener noreferrer" className="underline hover:text-blue-300">{guide.githubIssues}</a> {guide.reportsOutro} <a href="https://github.com/bluesky-social/social-app/issues/7189" target="_blank" rel="noopener noreferrer" className="underline hover:text-blue-300">{guide.issue7189}</a> {guide.reportsEnd}
                            </p>
                         </div>
                       </div>
@@ -189,8 +176,8 @@ const GuideFixFollowings = () => {
                       <Lightbulb className="w-6 h-6 text-green-300" />
                     </div>
                     <div>
-                      <CardTitle className="text-white text-xl">How It Works</CardTitle>
-                      <p className="text-white/80 mt-1">Understanding the fixing process and what happens next.</p>
+                      <CardTitle className="text-white text-xl">{guide.howItWorksTitle}</CardTitle>
+                      <p className="text-white/80 mt-1">{guide.howItWorksDescription}</p>
                     </div>
                   </div>
                 </CardHeader>
@@ -198,28 +185,20 @@ const GuideFixFollowings = () => {
                   <div className="space-y-4">
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="bg-green-500/10 border border-green-400/20 rounded-lg p-4">
-                        <h4 className="text-green-200 font-medium mb-2">Automatic Detection</h4>
-                        <p className="text-green-200 text-sm">
-                          The app automatically scans your following list to identify accounts that are deleted, suspended, deactivated or blocked by you.
-                        </p>
+                        <h4 className="text-green-200 font-medium mb-2">{guide.howItWorks[0].title}</h4>
+                        <p className="text-green-200 text-sm">{guide.howItWorks[0].description}</p>
                       </div>
                       <div className="bg-blue-500/10 border border-blue-400/20 rounded-lg p-4">
-                        <h4 className="text-blue-200 font-medium mb-2">Safe Removal</h4>
-                        <p className="text-blue-200 text-sm">
-                          You can safely unfollow these accounts since they're no longer active or accessible, which will correct your following count.
-                        </p>
+                        <h4 className="text-blue-200 font-medium mb-2">{guide.howItWorks[1].title}</h4>
+                        <p className="text-blue-200 text-sm">{guide.howItWorks[1].description}</p>
                       </div>
                       <div className="bg-purple-500/10 border border-purple-400/20 rounded-lg p-4">
-                        <h4 className="text-purple-200 font-medium mb-2">Accurate Numbers</h4>
-                        <p className="text-purple-200 text-sm">
-                          After fixing, your following count in the Bluesky app will match the actual number of active accounts you follow.
-                        </p>
+                        <h4 className="text-purple-200 font-medium mb-2">{guide.howItWorks[2].title}</h4>
+                        <p className="text-purple-200 text-sm">{guide.howItWorks[2].description}</p>
                       </div>
                       <div className="bg-yellow-500/10 border border-yellow-400/20 rounded-lg p-4">
-                        <h4 className="text-yellow-200 font-medium mb-2">Regular Maintenance</h4>
-                        <p className="text-yellow-200 text-sm">
-                          Run this feature periodically to keep your following count accurate as accounts get deleted or suspended over time.
-                        </p>
+                        <h4 className="text-yellow-200 font-medium mb-2">{guide.howItWorks[3].title}</h4>
+                        <p className="text-yellow-200 text-sm">{guide.howItWorks[3].description}</p>
                       </div>
                     </div>
                   </div>
@@ -234,12 +213,12 @@ const GuideFixFollowings = () => {
           <div className="container mx-auto px-6">
             <div className="max-w-2xl mx-auto">
               <div className="bg-white/10 rounded-lg border border-white/20 backdrop-blur-md p-6">
-                <h3 className="text-white text-center text-lg font-semibold mb-4">Ready to explore more guides?</h3>
+                <h3 className="text-white text-center text-lg font-semibold mb-4">{guide.moreGuidesTitle}</h3>
                 <div className="flex justify-center">
-                  <Link href="/guides">
+                  <Link href={`/${locale}/guides`}>
                     <Button variant="outline" className="border-white/30 text-white hover:bg-white/10">
                       <ArrowLeft className="w-4 h-4 mr-2" />
-                      Back to All Guides
+                      {messages.common.backToAllGuides}
                     </Button>
                   </Link>
                 </div>
@@ -248,11 +227,12 @@ const GuideFixFollowings = () => {
           </div>
         </section>
 
-        <Footer />
+        <Footer locale={locale} messages={messages} />
 
         <DownloadDialog 
           isOpen={downloadDialogOpen} 
           onClose={() => setDownloadDialogOpen(false)} 
+          messages={messages}
         />
       </div>
     </>

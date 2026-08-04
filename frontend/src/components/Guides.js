@@ -7,18 +7,16 @@ import { BookOpen, ArrowRight, Wrench } from 'lucide-react';
 import Header from './Header';
 import Footer from './Footer';
 import DownloadDialog from './DownloadDialog';
+import {getMessages} from '../i18n/messages';
 
-const Guides = () => {
+const Guides = ({locale = 'en', messages = getMessages('en')}) => {
   const [downloadDialogOpen, setDownloadDialogOpen] = useState(false);
+  const guidesContent = messages.guides;
 
-  const guides = [
-    {
-      id: 'clean-follows-bluesky',
-      title: "How to Fix Following Count on Bluesky",
-      description: "Learn how to correct your inaccurate following count by removing deleted, suspended, and blocked accounts.",
-      icon: <Wrench className="w-6 h-6" />
-    }
-  ];
+  const guides = guidesContent.items.map((guide) => ({
+    ...guide,
+    icon: <Wrench className="w-6 h-6" />,
+  }));
 
   const handleDownloadClick = () => {
     setDownloadDialogOpen(true);
@@ -31,6 +29,8 @@ const Guides = () => {
           showGuides={true} 
           showFeatures={false} 
           onDownloadClick={handleDownloadClick}
+          locale={locale}
+          messages={messages}
         />
 
         {/* Hero Section */}
@@ -44,12 +44,11 @@ const Guides = () => {
                 </div>
               </div>
               <h1 className="text-2xl font-bold text-white mb-6 leading-tight">
-                Guides &
-                <span className="bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent"> Tutorials</span>
+                {guidesContent.titleStart}
+                <span className="bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent"> {guidesContent.titleAccent}</span>
               </h1>
               <div className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
-                Optimize your Bluesky experience with our comprehensive guides. From basic features to advanced tips, 
-                learn everything you need to get the most out of your Bluesky experience using Bsky Tracker.
+                {guidesContent.description}
               </div>
             </div>
           </div>
@@ -61,7 +60,7 @@ const Guides = () => {
             <div className="max-w-4xl mx-auto">
               <div className="grid grid-cols-1 gap-6">
                 {guides.map((guide) => (
-                  <Link key={guide.id} href={`/guides/${guide.id}`} className="block">
+                  <Link key={guide.id} href={`/${locale}/guides/${guide.id}`} className="block">
                     <Card className="bg-white/10 border-white/20 backdrop-blur-md hover:bg-white/20 transition-all duration-300 cursor-pointer">
                       <CardContent className="p-6">
                         <div className="flex items-start justify-between">
@@ -75,7 +74,7 @@ const Guides = () => {
                             </div>
                           </div>
                           <div className="flex items-center space-x-2 text-white/80">
-                            <span className="text-sm">View</span>
+                            <span className="text-sm">{guidesContent.view}</span>
                             <ArrowRight className="w-4 h-4" />
                           </div>
                         </div>
@@ -88,11 +87,12 @@ const Guides = () => {
           </div>
         </section>
 
-        <Footer />
+        <Footer locale={locale} messages={messages} />
 
         <DownloadDialog 
           isOpen={downloadDialogOpen} 
           onClose={() => setDownloadDialogOpen(false)} 
+          messages={messages}
         />
       </div>
     </>
