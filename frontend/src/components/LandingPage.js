@@ -31,15 +31,40 @@ import {Dialog, DialogContent} from './ui/dialog';
 import Header from './Header';
 import Footer from './Footer';
 import {getImageSrc} from '../lib/images';
-import ss1 from '../assets/1.webp';
-import ss2 from '../assets/2.webp';
-import ss3 from '../assets/3.webp';
-import ss4 from '../assets/4.webp';
-import ss5 from '../assets/5.webp';
-import ss6 from '../assets/6.webp';
+import en1 from '../assets/en/1.webp';
+import en2 from '../assets/en/2.webp';
+import en3 from '../assets/en/3.webp';
+import en4 from '../assets/en/4.webp';
+import en5 from '../assets/en/5.webp';
+import en6 from '../assets/en/6.webp';
+import tr1 from '../assets/tr/1.webp';
+import tr2 from '../assets/tr/2.webp';
+import tr3 from '../assets/tr/3.webp';
+import tr4 from '../assets/tr/4.webp';
+import tr5 from '../assets/tr/5.webp';
+import tr6 from '../assets/tr/6.webp';
+import ptBr1 from '../assets/pt-BR/1.webp';
+import ptBr2 from '../assets/pt-BR/2.webp';
+import ptBr3 from '../assets/pt-BR/3.webp';
+import ptBr4 from '../assets/pt-BR/4.webp';
+import ptBr5 from '../assets/pt-BR/5.webp';
+import ptBr6 from '../assets/pt-BR/6.webp';
+import ja1 from '../assets/ja/1.webp';
+import ja2 from '../assets/ja/2.webp';
+import ja3 from '../assets/ja/3.webp';
+import ja4 from '../assets/ja/4.webp';
+import ja5 from '../assets/ja/5.webp';
+import ja6 from '../assets/ja/6.webp';
 import playStoreButton from '../assets/play_store.webp';
 import appStoreButton from '../assets/app_store.webp';
 import {getMessages} from '../i18n/messages';
+
+const screenshotSources = {
+    en: [en1, en2, en3, en4, en5, en6],
+    tr: [tr1, tr2, tr3, tr4, tr5, tr6],
+    'pt-BR': [ptBr1, ptBr2, ptBr3, ptBr4, ptBr5, ptBr6],
+    ja: [ja1, ja2, ja3, ja4, ja5, ja6],
+};
 
 const StoreButtons = ({messages}) => {
     const appStoreButtonSrc = getImageSrc(appStoreButton);
@@ -77,7 +102,7 @@ const LandingPage = ({locale = 'en', messages = getMessages('en')}) => {
         return {...feature, icon: <Icon className="w-6 h-6"/>};
     });
 
-    const screenshots = [ss1, ss2, ss3, ss4, ss5, ss6].map(getImageSrc);
+    const screenshots = (screenshotSources[locale] || screenshotSources.en).map(getImageSrc);
     const visibleChangelog = showAllReleases ? changelogData : changelogData.slice(0, 5);
 
     const openLightbox = (index) => {
