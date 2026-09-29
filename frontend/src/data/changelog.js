@@ -1,8 +1,18 @@
 export const changelogData = [
     {
+        version: "3.6.0",
+        date: "September 27, 2026",
+        isLatest: true,
+        changes: [
+            "Long-press accounts to select multiple users in lists and perform bulk actions",
+            "Improved Settings, Restore Purchase, and Lifetime Supporter display.",
+            "Fixed data import issues and improved overall stability."
+        ]
+    },
+    {
         version: "3.5.0",
         date: "August 2, 2026",
-        isLatest: true,
+        isLatest: false,
         changes: [
             "Added Japanese language support.",
             "Refreshed theme, buttons, dialogs, and profile screen.",
