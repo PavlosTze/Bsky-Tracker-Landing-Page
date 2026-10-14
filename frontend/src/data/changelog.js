@@ -1,8 +1,17 @@
 export const changelogData = [
     {
+        version: "3.7.2",
+        date: "October 11, 2026",
+        isLatest: true,
+        changes: [
+            "Restored “Blocked By,” “Lists Blocked By,” “Handle History,” and “Starter Packs In” using new data sources.",
+            "Removed the dependency on Clearsky."
+        ]
+    },
+    {
         version: "3.6.0",
         date: "September 27, 2026",
-        isLatest: true,
+        isLatest: false,
         changes: [
             "Long-press accounts to select multiple users in lists and perform bulk actions",
             "Improved Settings, Restore Purchase, and Lifetime Supporter display.",
