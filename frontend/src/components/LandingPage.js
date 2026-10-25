@@ -270,7 +270,7 @@ const LandingPage = ({locale = 'en', messages = getMessages('en')}) => {
                                                     href={`/${locale}/guides/${feature.guideId}`}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    className="inline-flex items-center text-blue-300 hover:text-blue-200 text-sm mt-3 transition-colors"
+                                                    className="inline-flex items-center text-blue-200 hover:text-blue-100 text-sm mt-3 transition-colors"
                                                 >
                                                     {common.learnMore} <ArrowRight className="w-3 h-3 ml-1"/>
                                                 </Link>

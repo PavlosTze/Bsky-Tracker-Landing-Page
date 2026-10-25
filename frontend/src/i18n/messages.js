@@ -66,14 +66,14 @@ export const messages = {
       featuresTitle: 'Powerful Features That Deliver Results',
       featuresSubtitle: 'Everything you need to take control of your Bluesky network',
       features: [
-        {title: 'Real-time Follower Tracking', description: 'Instantly see when someone follows or unfollows you with live updates.'},
+        {title: 'Real-time Follower Tracking', description: 'Instantly see when someone follows or unfollows you with live updates.', hasGuide: true, guideId: 'see-who-unfollowed-you-bluesky'},
         {title: 'Fix Followings', description: 'Automatically remove deleted, suspended, deactivated or blocked accounts to correct inaccurate Bluesky following counts.', hasGuide: true, guideId: 'clean-follows-bluesky'},
-        {title: 'Block & Mute Management', description: 'See who has blocked you and manage your blocks and mutes effectively.'},
+        {title: 'Block & Mute Management', description: 'See who has blocked you and manage your blocks and mutes effectively.', hasGuide: true, guideId: 'see-who-blocked-you-bluesky'},
         {title: 'Daily, Weekly & Monthly Reports', description: 'Get breakdowns of your Bluesky activity with reports that track follower growth, posts, and performance over time.'},
         {title: 'Interactive Charts & Trends', description: 'Understand your growth at a glance with interactive charts for followers, followings, and engagement over time.'},
-        {title: 'Advanced Filtering', description: 'Filter users based on keywords, followers count, follower-to-following ratio, engagement, and activity level.'},
+        {title: 'Advanced Filtering', description: 'Filter users based on keywords, followers count, follower-to-following ratio, engagement, and activity level.', hasGuide: true, guideId: 'find-inactive-accounts-bluesky'},
         {title: 'Lists & Starter Packs', description: "View lists that have blocked you and discover starter packs you're included in or lists you are blocking/muting to better understand your Bluesky presence."},
-        {title: 'Bulk Follow & Unfollow', description: 'Follow or unfollow users in bulk to efficiently manage your Bluesky network.'},
+        {title: 'Bulk Follow & Unfollow', description: 'Follow or unfollow users in bulk to efficiently manage your Bluesky network.', hasGuide: true, guideId: 'bulk-unfollow-bluesky'},
         {title: 'Bookmarks Support & Search', description: 'View your saved posts in Bluesky and easily search for those posts by keywords or author.'},
         {title: 'Post Analytics', description: "Detailed metrics for any user's posts including reach, replies, and engagement."},
         {title: 'Account & Relationship History', description: 'Track when you followed someone and when they followed you back, plus check past usernames for any account to verify identity and name changes.'},
@@ -115,15 +115,20 @@ export const messages = {
     guides: {
       meta: {
         title: 'Guides & Tutorials',
-        description: 'Learn how to use Bsky Tracker effectively with Bluesky guides and tutorials for fixing followings, cleaning your network, and managing your account.',
+        description: 'Practical Bluesky guides for tracking unfollowers, checking follow-backs, finding inactive accounts, managing blocks, and cleaning your network.',
         imageAlt: 'Bluesky Tracker guides and tutorials',
       },
       titleStart: 'Guides &',
       titleAccent: 'Tutorials',
-      description: 'Optimize your Bluesky experience with our comprehensive guides. From basic features to advanced tips, learn everything you need to get the most out of your Bluesky experience using Bsky Tracker.',
+      description: 'Short, practical guides for tracking and managing your Bluesky network with Bsky Tracker.',
       view: 'View',
       items: [
         {id: 'clean-follows-bluesky', title: 'How to Fix Following Count on Bluesky', description: 'Learn how to correct your inaccurate following count by removing deleted, suspended, and blocked accounts.'},
+        {id: 'see-who-unfollowed-you-bluesky', title: 'How to See Who Unfollowed You on Bluesky', description: 'See recent unfollowers and review the history available to Bsky Tracker.'},
+        {id: 'who-doesnt-follow-back-bluesky', title: 'How to Find Who Doesn’t Follow You Back on Bluesky', description: 'Find the accounts you follow that do not currently follow you back.'},
+        {id: 'bulk-unfollow-bluesky', title: 'How to Unfollow Multiple Accounts on Bluesky', description: 'Select and unfollow multiple Bluesky accounts in one guided action.'},
+        {id: 'find-inactive-accounts-bluesky', title: 'How to Find Inactive Accounts on Bluesky', description: 'Use activity-date filters to find accounts that have not posted recently.'},
+        {id: 'see-who-blocked-you-bluesky', title: 'How to See Who Blocked You on Bluesky', description: 'Review the Bluesky block records available for your account.'},
       ],
     },
     fixGuide: {
@@ -330,6 +335,51 @@ messages.ja.fixGuide = {
     {title: '安全な削除', description: 'これらのアカウントはアクティブでない、またはアクセスできないため、安全にフォロー解除できます。'},
     {title: '正確な数値', description: '修正後、Blueskyアプリのフォロー数は実際にフォローしているアクティブなアカウント数と一致します。'},
     {title: '定期的なメンテナンス', description: 'アカウントが削除または停止されることがあるため、定期的にこの機能を実行するとフォロー数を正確に保てます。'},
+  ],
+};
+
+messages.en.guides.articleLabels = {
+  quickAnswer: 'Quick answer',
+  steps: 'Steps',
+  allGuides: 'All guides',
+};
+
+messages.tr.guides = {
+  ...messages.tr.guides,
+  articleLabels: {quickAnswer: 'Hızlı yanıt', steps: 'Adımlar', allGuides: 'Tüm rehberler'},
+  items: [
+    {id: 'clean-follows-bluesky', title: 'Bluesky’de Takip Edilen Sayısı Nasıl Düzeltilir?', description: 'Silinmiş, askıya alınmış ve engellenmiş hesapları kaldırarak hatalı takip edilen sayınızı düzeltin.'},
+    {id: 'see-who-unfollowed-you-bluesky', title: 'Bluesky’de Sizi Takip Etmeyi Bırakanları Görme', description: 'Son takipten çıkanları görün ve Bluesky Tracker’ın erişebildiği geçmişi inceleyin.'},
+    {id: 'who-doesnt-follow-back-bluesky', title: 'Bluesky’de Sizi Geri Takip Etmeyenleri Bulma', description: 'Takip ettiğiniz ancak şu anda sizi geri takip etmeyen hesapları bulun.'},
+    {id: 'bulk-unfollow-bluesky', title: 'Bluesky’de Birden Fazla Hesabı Takipten Çıkarma', description: 'Birden fazla Bluesky hesabını seçip tek bir yönlendirilmiş işlemle takipten çıkarın.'},
+    {id: 'find-inactive-accounts-bluesky', title: 'Bluesky’de Etkin Olmayan Hesapları Bulma', description: 'Yakın zamanda gönderi paylaşmamış hesapları etkinlik tarihi filtreleriyle bulun.'},
+    {id: 'see-who-blocked-you-bluesky', title: 'Bluesky’de Sizi Engelleyenleri Görme', description: 'Hesabınız için mevcut Bluesky engelleme kayıtlarını inceleyin.'},
+  ],
+};
+
+messages['pt-BR'].guides = {
+  ...messages['pt-BR'].guides,
+  articleLabels: {quickAnswer: 'Resposta rápida', steps: 'Passos', allGuides: 'Todos os guias'},
+  items: [
+    {id: 'clean-follows-bluesky', title: 'Como corrigir a contagem de seguindo no Bluesky', description: 'Corrija uma contagem incorreta removendo contas excluídas, suspensas e bloqueadas.'},
+    {id: 'see-who-unfollowed-you-bluesky', title: 'Como Ver Quem Deixou de Seguir Você no Bluesky', description: 'Veja quem deixou de seguir você recentemente e confira o histórico disponível para o Bluesky Tracker.'},
+    {id: 'who-doesnt-follow-back-bluesky', title: 'Como Descobrir Quem Não Segue Você de Volta no Bluesky', description: 'Encontre as contas que você segue, mas que não seguem você de volta atualmente.'},
+    {id: 'bulk-unfollow-bluesky', title: 'Como Deixar de Seguir Várias Contas no Bluesky', description: 'Selecione e deixe de seguir várias contas do Bluesky em uma única ação guiada.'},
+    {id: 'find-inactive-accounts-bluesky', title: 'Como Encontrar Contas Inativas no Bluesky', description: 'Use filtros de data de atividade para encontrar contas que não publicam há algum tempo.'},
+    {id: 'see-who-blocked-you-bluesky', title: 'Como Ver Quem Bloqueou Você no Bluesky', description: 'Confira os registros de bloqueio do Bluesky disponíveis para sua conta.'},
+  ],
+};
+
+messages.ja.guides = {
+  ...messages.ja.guides,
+  articleLabels: {quickAnswer: 'かんたん解説', steps: '手順', allGuides: 'すべてのガイド'},
+  items: [
+    {id: 'clean-follows-bluesky', title: 'Blueskyのフォロー数を修正する方法', description: '削除、停止、ブロックされたアカウントを除き、不正確なフォロー数を修正します。'},
+    {id: 'see-who-unfollowed-you-bluesky', title: 'Blueskyでフォロー解除した人を確認する方法', description: '最近のフォロー解除とBluesky Trackerで利用できる履歴を確認します。'},
+    {id: 'who-doesnt-follow-back-bluesky', title: 'Blueskyでフォローを返していない人を探す方法', description: '自分はフォローしているものの、現在フォローを返していないアカウントを探します。'},
+    {id: 'bulk-unfollow-bluesky', title: 'Blueskyで複数のアカウントを一括フォロー解除する方法', description: '複数のBlueskyアカウントを選択し、一度の操作でフォロー解除します。'},
+    {id: 'find-inactive-accounts-bluesky', title: 'Blueskyで活動していないアカウントを探す方法', description: 'アクティビティの日付フィルターで、最近投稿していないアカウントを探します。'},
+    {id: 'see-who-blocked-you-bluesky', title: 'Blueskyで自分をブロックした人を確認する方法', description: 'アカウントで利用可能なBlueskyのブロック記録を確認します。'},
   ],
 };
 

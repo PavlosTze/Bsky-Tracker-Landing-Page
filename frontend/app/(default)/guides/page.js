@@ -1,7 +1,9 @@
 import Guides from '../../../src/components/Guides';
+import {getMessages} from '../../../src/i18n/messages';
 
 const title = 'Guides & Tutorials';
-const description = 'Learn how to use Bsky Tracker effectively with Bluesky guides and tutorials for fixing followings, cleaning your network, and managing your account.';
+const description = 'Practical Bluesky guides for tracking unfollowers, checking follow-backs, finding inactive accounts, managing blocks, and cleaning your network.';
+const guideItems = getMessages('en').guides.items;
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -16,15 +18,13 @@ const structuredData = {
   },
   mainEntity: {
     '@type': 'ItemList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'How to Fix Following Count on Bluesky',
-        description: 'Learn how to correct your inaccurate following count by removing deleted, suspended, and blocked accounts.',
-        url: 'https://blueskytracker.app/guides/clean-follows-bluesky',
-      },
-    ],
+    itemListElement: guideItems.map((guide, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: guide.title,
+      description: guide.description,
+      url: `https://blueskytracker.app/en/guides/${guide.id}`,
+    })),
   },
 };
 

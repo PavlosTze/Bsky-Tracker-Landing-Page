@@ -1,6 +1,4 @@
-'use client';
-
-import React, { useState } from 'react';
+import React from 'react';
 import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { 
@@ -17,20 +15,15 @@ import openFixFollowings from '../assets/open_fix_followings.webp';
 import fixFollowingsScreen from '../assets/fix_followings_screen.webp';
 import Header from './Header';
 import Footer from './Footer';
-import DownloadDialog from './DownloadDialog';
+import GuideDownloadCTA from './GuideDownloadCTA';
 import { getImageSrc } from '../lib/images';
 import {getMessages} from '../i18n/messages';
 
 const GuideFixFollowings = ({locale = 'en', messages = getMessages('en')}) => {
-  const [downloadDialogOpen, setDownloadDialogOpen] = useState(false);
   const guide = messages.fixGuide;
 
   const stepImages = [getImageSrc(openFixFollowings), getImageSrc(fixFollowingsScreen)];
   const steps = guide.steps.map((step, index) => ({...step, image: stepImages[index]}));
-
-  const handleDownloadClick = () => {
-    setDownloadDialogOpen(true);
-  };
 
   return (
     <>
@@ -38,7 +31,6 @@ const GuideFixFollowings = ({locale = 'en', messages = getMessages('en')}) => {
         <Header 
           showGuides={true} 
           showFeatures={false} 
-          onDownloadClick={handleDownloadClick}
           locale={locale}
           messages={messages}
         />
@@ -208,6 +200,12 @@ const GuideFixFollowings = ({locale = 'en', messages = getMessages('en')}) => {
           </div>
         </section>
 
+        <div className="container mx-auto px-6 py-6">
+          <div className="mx-auto max-w-4xl">
+            <GuideDownloadCTA messages={messages} />
+          </div>
+        </div>
+
         {/* Navigation */}
         <section className="py-12">
           <div className="container mx-auto px-6">
@@ -228,12 +226,6 @@ const GuideFixFollowings = ({locale = 'en', messages = getMessages('en')}) => {
         </section>
 
         <Footer locale={locale} messages={messages} />
-
-        <DownloadDialog 
-          isOpen={downloadDialogOpen} 
-          onClose={() => setDownloadDialogOpen(false)} 
-          messages={messages}
-        />
       </div>
     </>
   );

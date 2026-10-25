@@ -50,10 +50,10 @@ const Header = ({ showGuides = true, showFeatures = true, onDownloadClick, local
               </div>
             </Link>
             <Link href={`/${locale}`} className="block">
-              <span className="text-base lg:text-lg font-bold text-white leading-tight hover:text-blue-300 transition-colors">{common.appName}</span>
+              <span className="whitespace-nowrap text-base font-bold leading-tight text-white transition-colors hover:text-blue-300 lg:text-lg">{common.appName}</span>
             </Link>
           </div>
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-8">
             {showFeatures && (
               <button 
                 onClick={scrollToFeatures}
@@ -83,7 +83,7 @@ const Header = ({ showGuides = true, showFeatures = true, onDownloadClick, local
             </Button>
           </nav>
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <Sheet>
               <SheetTrigger asChild>
                 <button type="button" aria-label="Open menu" className="p-2 rounded-lg border border-white/20 text-white hover:bg-white/10">
