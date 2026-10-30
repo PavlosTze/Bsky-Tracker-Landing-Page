@@ -1,8 +1,16 @@
 export const changelogData = [
     {
+        version: "4.0.0",
+        date: "October 29, 2026",
+        isLatest: true,
+        changes: [
+            "Added support for multiple accounts."
+        ]
+    },
+    {
         version: "3.7.2",
         date: "October 11, 2026",
-        isLatest: true,
+        isLatest: false,
         changes: [
             "Restored “Blocked By,” “Lists Blocked By,” “Handle History,” and “Starter Packs In” using new data sources.",
             "Removed the dependency on Clearsky."
